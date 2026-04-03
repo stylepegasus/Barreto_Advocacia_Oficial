@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barreto Advocacia</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/branding/favicon/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/branding/favicon/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/branding/favicon/favicon.png" />
+    
+    <style>
+      #global-loader {
+        position: fixed;
+        inset: 0;
+        background-color: #0a0a0a;
+        z-index: 999999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .loader-logo { 
+        width: 140px; 
+        margin-bottom: 40px; 
+        animation: pulse 2.5s infinite ease-in-out;
+      }
+      .loader-bar-container { 
+        width: 220px; 
+        height: 2px; 
+        background: rgba(255,255,255,0.05); 
+        overflow: hidden; 
+        border-radius: 2px; 
+      }
+      .loader-bar { 
+        width: 0%; 
+        height: 100%; 
+        background: #C5A880; 
+        animation: loadAnim 1.8s ease-out forwards; 
+      }
+      @keyframes loadAnim { 0% { width: 0%; opacity: 0.5; } 100% { width: 100%; opacity: 1; } }
+      @keyframes pulse { 0%, 100% { opacity: 0.85; transform: scale(1); filter: drop-shadow(0 0 10px rgba(197, 168, 128, 0.1)); } 50% { opacity: 1; transform: scale(1.02); filter: drop-shadow(0 0 20px rgba(197, 168, 128, 0.25)); } }
+      #global-loader.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen (Vanilla, Zero Overhead) -->
+    <div id="global-loader" aria-hidden="false" role="alert" aria-live="assertive" aria-busy="true">
+      <img src="/assets/branding/logo/logo-barreto.png" alt="Barreto Advocacia - Carregando..." class="loader-logo" loading="eager" />
+      <div class="loader-bar-container"><div class="loader-bar"></div></div>
+    </div>
+
+    <!-- React Root -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      (function() {
+        // Função de desarme
+        function dismissLoader() {
+          var loader = document.getElementById('global-loader');
+          if (loader && !loader.classList.contains('fade-out')) {
+            loader.classList.add('fade-out');
+            loader.setAttribute('aria-hidden', 'true');
+            loader.setAttribute('aria-busy', 'false');
+            setTimeout(function() {
+              if(loader.parentNode) loader.parentNode.removeChild(loader);
+            }, 800);
+          }
+        }
+
+        // 1) Quando o sistema estiver construído e pintado
+        window.addEventListener('load', function() {
+          setTimeout(dismissLoader, 700); // 700ms de smooth para hidratação pesada do React/Assets
+        });
+
+        // 2) Safety Timeout de 5 Segundos (Fallback máximo)
+        setTimeout(dismissLoader, 5000);
+      })();
+    </script>
+  </body>
+</html>
