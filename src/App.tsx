@@ -9,11 +9,13 @@ import { PoliticaPrivacidade } from './pages/PoliticaPrivacidade';
 import { PoliticaCookies } from './pages/PoliticaCookies';
 import { AvisoLegal } from './pages/AvisoLegal';
 import { MetaPixelRouterListener } from './components/MetaPixelRouterListener';
+import { GoogleAnalyticsRouterListener } from './components/GoogleAnalyticsRouterListener';
 
 export default function App() {
   return (
     <Router>
       <MetaPixelRouterListener />
+      <GoogleAnalyticsRouterListener />
       <div className="min-h-screen bg-bg-primary text-text-primary font-sans transition-colors duration-300">
         {/* Background ambient glow */}
         <div className="fixed inset-0 z-0 pointer-events-none">
