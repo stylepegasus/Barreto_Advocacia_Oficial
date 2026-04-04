@@ -7,14 +7,23 @@ declare global {
   }
 }
 
-const META_PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID || '1256595062560956';
-
 export const initMetaPixel = () => {
-  if (!META_PIXEL_ID) return;
   if (typeof window === 'undefined') return;
-  if (window.fbq) return; // já inicializado
 
-  !(function (f: any, b: any, e: string, v: string, n?: any, t?: any, s?: any) {
+  const META_PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID;
+
+  if (!META_PIXEL_ID) {
+    console.warn('[META_PIXEL] VITE_META_PIXEL_ID não definido. Pixel não será inicializado.');
+    return;
+  }
+
+  if (window.fbq) {
+    return; // Já inicializado
+  }
+
+  console.log('[META_PIXEL] Inicializando Pixel com ID:', META_PIXEL_ID);
+
+  !(function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
     if (f.fbq) return;
     n = f.fbq = function () {
       n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
