@@ -3,6 +3,7 @@ import { Moon, Sun, Menu, X } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { useTheme } from '../contexts/ThemeContext';
 import { Link, useLocation } from 'react-router-dom';
+import { trackMetaEvent } from '../lib/metaPixel';
 
 export function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -51,6 +52,7 @@ export function Navbar() {
               href="https://api.whatsapp.com/send/?phone=5561991591105&text=Vi+o+site+de+voc%C3%AAs+pelo+o+Google+e+gostaria+de+falar+com+um+advogado.&type=phone_number&app_absent=0"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackMetaEvent('Contact', { contact_method: 'WhatsApp', content_name: 'Botão WhatsApp Header' })}
               className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-4 py-2 rounded-full font-medium text-sm flex items-center gap-2.5 hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(52,211,153,0.3)] whitespace-nowrap m-0 hidden sm:flex"
             >
               <WhatsAppIcon className="w-[18px] h-[18px] shrink-0" />
@@ -104,7 +106,10 @@ export function Navbar() {
                 href="https://api.whatsapp.com/send/?phone=5561991591105&text=Vi+o+site+de+voc%C3%AAs+pelo+o+Google+e+gostaria+de+falar+com+um+advogado.&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={closeMenu}
+                onClick={() => {
+                  closeMenu();
+                  trackMetaEvent('Contact', { contact_method: 'WhatsApp', content_name: 'Botão WhatsApp Menu Mobile' });
+                }}
                 className="w-full bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 p-3 rounded-xl font-medium text-sm flex items-center justify-center gap-2.5 hover:opacity-90 transition-opacity"
               >
                 <WhatsAppIcon className="w-[18px] h-[18px] shrink-0" />

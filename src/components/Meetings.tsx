@@ -1,6 +1,28 @@
 import { WhatsAppIcon } from './WhatsAppIcon';
+import { trackMetaEvent } from '../lib/metaPixel';
 
 export function Meetings() {
+  const handleLeadClick = (meetingType: string) => {
+    const eventId = `lead-${Date.now()}`;
+    
+    // Pixel Event
+    trackMetaEvent('Lead', {
+      content_name: `Agendamento ${meetingType}`,
+      content_category: 'lead',
+    }, eventId);
+
+    // CAPI Event
+    fetch('/api/meta-conversions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event_name: 'Lead',
+        event_id: eventId,
+        event_source_url: window.location.href,
+        // E-mail e telefone virão pré-preenchidos se possível num chat bot
+      }),
+    }).catch(() => {});
+  };
   return (
     <section className="liquid-glass-section px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden">
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
@@ -19,6 +41,7 @@ export function Meetings() {
               href="https://api.whatsapp.com/send/?phone=5561991591105&text=Ol%C3%A1%21+Vi+o+site+de+voc%C3%AAs+e+gostaria+de+agendar+uma+reuni%C3%A3o+presencial+com+um+advogado.&type=phone_number&app_absent=0"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => handleLeadClick('Reunião Presencial')}
               className="self-start px-5 sm:px-6 py-2 rounded-full border border-white/30 text-white text-xs sm:text-sm hover:bg-white/10 transition-colors backdrop-blur-sm inline-flex items-center gap-2.5"
             >
               <WhatsAppIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px] shrink-0" />
@@ -42,6 +65,7 @@ export function Meetings() {
               href="https://api.whatsapp.com/send/?phone=5561991591105&text=Vi+o+site+de+voc%C3%AAs+e+gostaria+de+marcar+uma+reuni%C3%A3o+online.&type=phone_number&app_absent=0"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => handleLeadClick('Reunião Online')}
               className="self-start px-5 sm:px-6 py-2 rounded-full border border-white/30 text-white text-xs sm:text-sm hover:bg-white/10 transition-colors backdrop-blur-sm inline-flex items-center gap-2.5"
             >
               <WhatsAppIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px] shrink-0" />

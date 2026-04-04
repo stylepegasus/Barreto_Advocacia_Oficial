@@ -1,5 +1,6 @@
 import { Phone, Mail, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { trackMetaEvent } from '../lib/metaPixel';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -64,6 +65,7 @@ export function Footer() {
               <li>
                 <a 
                   href="tel:+5561991591105" 
+                  onClick={() => trackMetaEvent('Contact', { contact_method: 'Phone', content_name: 'Link Telefone Footer' })}
                   className="group relative flex items-center gap-2 hover:text-accent-primary transition-colors"
                 >
                   <Phone className="w-4 h-4 text-accent-primary" />
@@ -73,6 +75,7 @@ export function Footer() {
               <li>
                 <a 
                   href="mailto:barretoadvocacia01@gmail.com" 
+                  onClick={() => trackMetaEvent('Contact', { contact_method: 'Email', content_name: 'Link Email Footer' })}
                   className="group relative flex items-center gap-2 hover:text-accent-primary transition-colors"
                 >
                   <Mail className="w-4 h-4 text-accent-primary" />

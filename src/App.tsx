@@ -8,10 +8,12 @@ import { TermosDeUso } from './pages/TermosDeUso';
 import { PoliticaPrivacidade } from './pages/PoliticaPrivacidade';
 import { PoliticaCookies } from './pages/PoliticaCookies';
 import { AvisoLegal } from './pages/AvisoLegal';
+import { MetaPixelRouterListener } from './components/MetaPixelRouterListener';
 
 export default function App() {
   return (
     <Router>
+      <MetaPixelRouterListener />
       <div className="min-h-screen bg-bg-primary text-text-primary font-sans transition-colors duration-300">
         {/* Background ambient glow */}
         <div className="fixed inset-0 z-0 pointer-events-none">
