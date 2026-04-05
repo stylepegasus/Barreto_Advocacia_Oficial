@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { SEO } from '../components/SEO';
 
 export function AvisoLegal() {
   useEffect(() => {
@@ -6,10 +7,16 @@ export function AvisoLegal() {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-32 min-h-screen">
-      <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-accent-primary to-emerald-400 bg-clip-text text-transparent mb-12">
-        Aviso Legal
-      </h1>
+    <>
+      <SEO
+        title="Aviso Legal e Responsabilidade Profissional"
+        description="Veja o Aviso Legal da Barreto Advocacia sobre caráter informativo dos conteúdos, ausência de promessa de resultado e responsabilidade profissional."
+        canonical="https://advocaciabarreto.com/aviso-legal"
+      />
+      <div className="max-w-4xl mx-auto px-6 py-32 min-h-screen">
+        <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-accent-primary to-emerald-400 bg-clip-text text-transparent mb-12">
+          Aviso Legal
+        </h1>
       
       <div className="space-y-8 text-text-secondary leading-relaxed">
         <section>
@@ -54,5 +61,6 @@ export function AvisoLegal() {
         </div>
       </div>
     </div>
+    </>
   );
 }

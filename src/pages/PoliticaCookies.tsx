@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { SEO } from '../components/SEO';
 
 export function PoliticaCookies() {
   useEffect(() => {
@@ -6,10 +7,16 @@ export function PoliticaCookies() {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-32 min-h-screen">
-      <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-accent-primary to-emerald-400 bg-clip-text text-transparent mb-12">
-        Política de Cookies
-      </h1>
+    <>
+      <SEO
+        title="Política de Cookies"
+        description="Entenda como a Barreto Advocacia utiliza cookies para melhorar sua experiência de navegação e personalizar conteúdos."
+        canonical="https://advocaciabarreto.com/politica-de-cookies"
+      />
+      <div className="max-w-4xl mx-auto px-6 py-32 min-h-screen">
+        <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-accent-primary to-emerald-400 bg-clip-text text-transparent mb-12">
+          Política de Cookies
+        </h1>
       
       <div className="space-y-8 text-text-secondary leading-relaxed">
         <section>
@@ -50,5 +57,6 @@ export function PoliticaCookies() {
         </section>
       </div>
     </div>
+    </>
   );
 }

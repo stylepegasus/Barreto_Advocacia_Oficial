@@ -129,7 +129,7 @@ export function ExperienceTeam() {
                   <div className="team-photo-wrapper">
                     <img 
                       src={member.img} 
-                      alt={`Foto de ${member.name}`} 
+                      alt={`Advogado(a) ${member.name} - Equipe de advogados da Barreto Advocacia em Brasília`} 
                       className="team-photo group-hover:scale-105"
                       loading="lazy"
                     />
@@ -168,7 +168,7 @@ export function ExperienceTeam() {
             <div className="w-full md:w-2/5 h-64 md:h-auto relative">
               <img 
                 src={team[selectedMember].img} 
-                alt={`Foto de ${team[selectedMember].name}`} 
+                alt={`Foto de ${team[selectedMember].name} - Equipe de advogados da Barreto Advocacia`} 
                 className="w-full h-full object-cover"
                 loading="lazy"
               />

@@ -6,10 +6,16 @@ import { ExperienceTeam } from '../components/ExperienceTeam';
 import { Testimonials } from '../components/Testimonials';
 import { Location } from '../components/Location';
 import { MapEmbed } from '../components/MapEmbed';
+import { SEO } from '../components/SEO';
 
 export function Home() {
   return (
     <main className="flex flex-col gap-24 pb-24">
+      <SEO
+        title="Advogado em Brasília - Criminal, Civil e Trabalhista"
+        description="Barreto Advocacia é um escritório em Brasília especializado em Direito Criminal, Civil e Trabalhista. Atendimento ágil, sigiloso e estratégico para defender seus direitos."
+        canonical="https://advocaciabarreto.com/"
+      />
       <div id="home"><Hero /></div>
       <div id="diferenciais"><Features /></div>
       <div id="atendimento"><Meetings /></div>

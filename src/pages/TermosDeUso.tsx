@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { SEO } from '../components/SEO';
 
 export function TermosDeUso() {
   useEffect(() => {
@@ -6,10 +7,16 @@ export function TermosDeUso() {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-32 min-h-screen">
-      <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-accent-primary to-emerald-400 bg-clip-text text-transparent mb-12">
-        Termos de Uso
-      </h1>
+    <>
+      <SEO
+        title="Termos de Uso do Site"
+        description="Conheça os Termos de Uso do site Barreto Advocacia e entenda as condições de navegação, responsabilidade e uso das informações."
+        canonical="https://advocaciabarreto.com/termos-de-uso"
+      />
+      <div className="max-w-4xl mx-auto px-6 py-32 min-h-screen">
+        <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-accent-primary to-emerald-400 bg-clip-text text-transparent mb-12">
+          Termos de Uso
+        </h1>
       
       <div className="space-y-8 text-text-secondary leading-relaxed">
         <section>
@@ -62,5 +69,6 @@ export function TermosDeUso() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -81,6 +81,7 @@ export function Hero() {
       <div className="hero-content relative z-20 max-w-4xl w-full bg-text-primary/5 backdrop-blur-xl border border-text-primary/10 rounded-3xl p-5 sm:p-8 md:p-16 text-center shadow-2xl">
         <h1 ref={titleRef} className="hero-title parallax-title text-text-primary" data-text="Barreto Advocacia">
           Barreto Advocacia
+          <span className="sr-only"> - Advogado em Brasília</span>
         </h1>
         <h2 className="hero-subtitle">
           Compromisso com o Direito. Excelência no Resultado.
