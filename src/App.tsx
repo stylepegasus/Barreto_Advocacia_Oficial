@@ -8,6 +8,7 @@ import { TermosDeUso } from './pages/TermosDeUso';
 import { PoliticaPrivacidade } from './pages/PoliticaPrivacidade';
 import { PoliticaCookies } from './pages/PoliticaCookies';
 import { AvisoLegal } from './pages/AvisoLegal';
+import { EstudoPage } from './pages/EstudoPage';
 import { MetaPixelRouterListener } from './components/MetaPixelRouterListener';
 import { GoogleAnalyticsRouterListener } from './components/GoogleAnalyticsRouterListener';
 
@@ -29,6 +30,7 @@ export default function App() {
           <div className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/estudo" element={<EstudoPage />} />
               <Route path="/termos-de-uso" element={<TermosDeUso />} />
               <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
               <Route path="/politica-de-cookies" element={<PoliticaCookies />} />

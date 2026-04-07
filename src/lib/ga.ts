@@ -51,3 +51,12 @@ export const trackPageView = (path: string) => {
     page_title: document.title,
   });
 };
+
+export const trackGenerateLead = (leadSource: string) => {
+  if (typeof window === 'undefined' || !window.gtag || !GA_MEASUREMENT_ID) return;
+
+  window.gtag('event', 'generate_lead', {
+    lead_source: leadSource,
+    page_path: window.location.pathname,
+  });
+};

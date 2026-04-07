@@ -44,6 +44,7 @@ export function Navbar() {
             <a href={getHref('#areas')} className="text-text-muted hover:text-text-primary transition-colors">Áreas de Atuação</a>
             <a href={getHref('#equipe')} className="text-text-muted hover:text-text-primary transition-colors">Nossa Equipe</a>
             <a href={getHref('#localizacao')} className="text-text-muted hover:text-text-primary transition-colors">Localização</a>
+            <Link to="/estudo" className="text-text-muted hover:text-accent-primary transition-colors font-medium">Estudos</Link>
           </div>
 
           {/* Right Side: Actions & Mobile Toggle */}
@@ -101,6 +102,13 @@ export function Navbar() {
             >
               Localização
             </a>
+            <Link
+              to="/estudo"
+              onClick={closeMenu}
+              className="p-3 text-accent-primary hover:bg-accent-primary/10 rounded-xl font-semibold transition-colors flex items-center gap-2"
+            >
+              📚 Estudos
+            </Link>
             <div className="pt-2 border-t border-text-primary/10 mt-2">
               <a 
                 href="https://api.whatsapp.com/send/?phone=5561991591105&text=Vi+o+site+de+voc%C3%AAs+pelo+o+Google+e+gostaria+de+falar+com+um+advogado.&type=phone_number&app_absent=0"
