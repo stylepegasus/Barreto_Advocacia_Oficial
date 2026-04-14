@@ -17,16 +17,17 @@ export function ExperienceTeam() {
       name: "Dra. Rebecca Castro", 
       role: "Advogada Criminalista, Especializada em Execução Penal e Tribunal do Júri, Pós-Graduada em Criminologia.", 
       img: "/assets/images/team/dra-rebecca-castro-team.jpg",
+      alt: "Dra. Rebecca Castro - Barreto Advocacia",
       experience: "Atua na advocacia criminal com atenção especial a execução penal e Tribunal do Júri, conduzindo casos com sensibilidade, firmeza técnica e cuidado estratégico em cada etapa da defesa.",
       education: "Especializada em Execução Penal e Tribunal do Júri, com pós-graduação em Criminologia, possui formação voltada à compreensão aprofundada da dinâmica criminal e da construção técnica da defesa.",
       cases: "Atuação em pedidos e acompanhamentos na execução penal, procedimentos ligados ao Tribunal do Júri e casos que exigem leitura cuidadosa dos fatos, da prova e da estratégia processual."
     },
     { 
       name: "Dr. Gilmar Freitas", 
-      role: "Advogado Especialista em Direito Civil e Processual Civil e Pós-Graduado em Direito Tributário.", 
+      role: "Advogado Especialista em Direito Cível e Processo Cível e Pós-Graduado em Direito Tributário.", 
       img: "/assets/images/team/dr-gilmar-freitas-team.jpg",
       experience: "Atua em demandas cíveis com organização, estratégia e atenção aos detalhes, oferecendo condução jurídica segura em conflitos patrimoniais, obrigações, contratos e questões processuais.",
-      education: "Especialista em Direito Civil e Processual Civil, com pós-graduação em Direito Tributário, possui base técnica sólida para atuar em discussões jurídicas que exigem interpretação minuciosa e posicionamento estratégico.",
+      education: "Especialista em Direito Cível e Processo Cível, com pós-graduação em Direito Tributário, possui base técnica sólida para atuar em discussões jurídicas que exigem interpretação minuciosa e posicionamento estratégico.",
       cases: "Atuação em demandas contratuais, disputas patrimoniais e conflitos cíveis que exigem planejamento processual, análise técnica e condução consistente ao longo do caso."
     },
     { 
@@ -129,7 +130,7 @@ export function ExperienceTeam() {
                   <div className="team-photo-wrapper">
                     <img 
                       src={member.img} 
-                      alt={`Advogado(a) ${member.name} - Equipe de advogados da Barreto Advocacia em Brasília`} 
+                      alt={member.alt ?? `Advogado(a) ${member.name} - Equipe de advogados da Barreto Advocacia em Brasília`} 
                       className="team-photo group-hover:scale-105"
                       loading="lazy"
                     />

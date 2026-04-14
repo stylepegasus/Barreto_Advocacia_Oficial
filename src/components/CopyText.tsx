@@ -1,17 +1,18 @@
 import { useState } from 'react';
+import type { MouseEvent, ReactNode } from 'react';
 import { Check, Copy } from 'lucide-react';
 
 interface CopyTextProps {
   text: string;
   displayText?: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   className?: string;
 }
 
 export function CopyText({ text, displayText, icon, className = "" }: CopyTextProps) {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = async (e: React.MouseEvent) => {
+  const handleCopy = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
       await navigator.clipboard.writeText(text);

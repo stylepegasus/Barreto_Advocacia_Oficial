@@ -167,7 +167,9 @@ export function Testimonials() {
         {testimonials.map((t, idx) => (
           <div 
             key={idx} 
-            ref={el => cardsRef.current[idx] = el}
+            ref={el => {
+              cardsRef.current[idx] = el;
+            }}
             data-delay={idx * 150 + 100}
             data-index={idx}
             className="reveal-card"

@@ -87,7 +87,7 @@ export function Hero() {
           Compromisso com o Direito. Excelência no Resultado.
         </h2>
         <div className="hero-areas mb-8 md:mb-10">
-          Criminal - Civil - Família - Trabalhista
+          Criminal - Cível - Família - Trabalhista
         </div>
         
         <div className="flex flex-col items-center gap-4 w-full">

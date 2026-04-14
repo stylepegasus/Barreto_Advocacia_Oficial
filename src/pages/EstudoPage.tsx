@@ -39,7 +39,7 @@ const PRODUTOS = [
   {
     id: 'civil',
     slug: 'estudo_dir_civil',
-    nome: 'Direito Civil',
+    nome: 'Direito Cível',
     descricao: 'Pessoas, obrigações, contratos, responsabilidade civil e família estruturados.',
     idealPara: 'quem precisa dominar o imenso Código Civil.',
     imagem: 'https://picsum.photos/seed/civil/640/400',
@@ -49,7 +49,7 @@ const PRODUTOS = [
   {
     id: 'proc_civil',
     slug: 'estudo_dir_proc_civil',
-    nome: 'Direito Processual Civil',
+    nome: 'Direito Processual Cível',
     descricao: 'Mapas do CPC/2015: fases do processo, recursos e execução.',
     idealPara: 'visualizar o andamento das fatias do processo.',
     imagem: 'https://picsum.photos/seed/processo_civil/640/400',
@@ -262,7 +262,7 @@ export function EstudoPage() {
                 Mapas de Direito para estudar em menos tempo
               </h1>
               <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-8">
-                Materiais visuais criados dentro do Barreto Advocacia, em Brasília, para você revisar Penal, Processo Civil, Constitucional e outras matérias sem se afogar em PDFs.
+                Materiais visuais criados dentro do Barreto Advocacia, em Brasília, para você revisar Penal, Processo Cível, Constitucional e outras matérias sem se afogar em PDFs.
               </p>
               <p className="text-sm md:text-base text-accent-primary font-medium tracking-wide mb-10 uppercase">
                 Pensado para faculdade, OAB e concursos — em um formato que seu cérebro entende.
@@ -326,7 +326,7 @@ export function EstudoPage() {
                   Escolha o que faz sentido para você agora
                 </h2>
                 <p className="text-xl text-text-secondary">
-                  Comece por Penal, Processo Civil ou monte seu próprio combo de disciplinas.
+                  Comece por Penal, Processo Cível ou monte seu próprio combo de disciplinas.
                 </p>
               </div>
             </div>

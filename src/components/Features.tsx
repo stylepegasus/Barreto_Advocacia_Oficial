@@ -18,7 +18,7 @@ export function Features() {
     {
       icon: Target,
       title: "Defesa Estratégica",
-      desc: "Seja com um advogado criminal, civil ou trabalhista, montamos um plano de ação inteligente e focado na melhor solução prática.",
+      desc: "Seja com um advogado criminal, cível ou trabalhista, montamos um plano de ação inteligente e focado na melhor solução prática.",
       benefit: "Menos desgaste emocional e mais eficiência na resolução."
     },
     {
@@ -245,7 +245,9 @@ export function Features() {
           return (
             <div 
               key={idx} 
-              ref={el => cardsRef.current[idx] = el}
+              ref={el => {
+                cardsRef.current[idx] = el;
+              }}
               data-delay={idx * 200 + 400}
               data-index={idx}
               className="reveal-card"
