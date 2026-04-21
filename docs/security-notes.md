@@ -21,6 +21,7 @@ Referrer-Policy: strict-origin-when-cross-origin
 X-Frame-Options: DENY
 Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()
 X-Permitted-Cross-Domain-Policies: none
+Access-Control-Allow-Origin: https://www.advocaciabarreto.com
 Cross-Origin-Opener-Policy: same-origin
 ```
 

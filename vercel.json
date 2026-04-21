@@ -41,6 +41,10 @@
           "value": "none"
         },
         {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://www.advocaciabarreto.com"
+        },
+        {
           "key": "Cross-Origin-Opener-Policy",
           "value": "same-origin"
         },
