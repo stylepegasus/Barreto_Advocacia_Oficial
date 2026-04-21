@@ -3,27 +3,21 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
 >
   <url>
-    <loc>https://advocaciabarreto.com/</loc>
+    <loc>https://www.advocaciabarreto.com/</loc>
   </url>
   <url>
-    <loc>https://advocaciabarreto.com/#areas-de-atuacao</loc>
+    <loc>https://www.advocaciabarreto.com/estudo</loc>
   </url>
   <url>
-    <loc>https://advocaciabarreto.com/#nossa-equipe</loc>
+    <loc>https://www.advocaciabarreto.com/termos-de-uso</loc>
   </url>
   <url>
-    <loc>https://advocaciabarreto.com/#localizacao</loc>
+    <loc>https://www.advocaciabarreto.com/politica-de-privacidade</loc>
   </url>
   <url>
-    <loc>https://advocaciabarreto.com/termos-de-uso</loc>
+    <loc>https://www.advocaciabarreto.com/politica-de-cookies</loc>
   </url>
   <url>
-    <loc>https://advocaciabarreto.com/politica-de-privacidade</loc>
-  </url>
-  <url>
-    <loc>https://advocaciabarreto.com/politica-de-cookies</loc>
-  </url>
-  <url>
-    <loc>https://advocaciabarreto.com/aviso-legal</loc>
+    <loc>https://www.advocaciabarreto.com/aviso-legal</loc>
   </url>
 </urlset>

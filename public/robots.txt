@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://advocaciabarreto.com/sitemap.xml
+Sitemap: https://www.advocaciabarreto.com/sitemap.xml

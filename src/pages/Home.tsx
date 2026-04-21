@@ -14,7 +14,7 @@ export function Home() {
       <SEO
         title="Advogado em Brasília - Criminal, Cível e Trabalhista"
         description="Barreto Advocacia é um escritório em Brasília especializado em Direito Criminal, Cível e Trabalhista. Atendimento ágil, sigiloso e estratégico para defender seus direitos."
-        canonical="https://advocaciabarreto.com/"
+        canonical="/"
       />
       <div id="home"><Hero /></div>
       <div id="diferenciais"><Features /></div>

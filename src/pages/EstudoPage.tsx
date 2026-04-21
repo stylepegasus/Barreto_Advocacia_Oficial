@@ -246,7 +246,7 @@ export function EstudoPage() {
       <SEO
         title="Estudo — Barreto Advocacia"
         description="Mapas de Direito para estudar em menos tempo."
-        canonical="https://advocaciabarreto.com/estudo"
+        canonical="/estudo"
       />
 
       <div className="estudo-page font-sans text-text-primary bg-bg-primary">

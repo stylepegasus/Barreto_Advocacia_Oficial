@@ -11,7 +11,7 @@ export function AvisoLegal() {
       <SEO
         title="Aviso Legal e Responsabilidade Profissional"
         description="Veja o Aviso Legal da Barreto Advocacia sobre caráter informativo dos conteúdos, ausência de promessa de resultado e responsabilidade profissional."
-        canonical="https://advocaciabarreto.com/aviso-legal"
+        canonical="/aviso-legal"
       />
       <div className="max-w-4xl mx-auto px-6 py-32 min-h-screen">
         <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-accent-primary to-emerald-400 bg-clip-text text-transparent mb-12">

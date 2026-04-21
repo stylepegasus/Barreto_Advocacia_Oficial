@@ -11,7 +11,7 @@ export function TermosDeUso() {
       <SEO
         title="Termos de Uso do Site"
         description="Conheça os Termos de Uso do site Barreto Advocacia e entenda as condições de navegação, responsabilidade e uso das informações."
-        canonical="https://advocaciabarreto.com/termos-de-uso"
+        canonical="/termos-de-uso"
       />
       <div className="max-w-4xl mx-auto px-6 py-32 min-h-screen">
         <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-accent-primary to-emerald-400 bg-clip-text text-transparent mb-12">

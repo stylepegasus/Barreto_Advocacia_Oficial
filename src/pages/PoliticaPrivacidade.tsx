@@ -11,7 +11,7 @@ export function PoliticaPrivacidade() {
       <SEO
         title="Política de Privacidade e LGPD"
         description="Saiba como a Barreto Advocacia coleta, utiliza e protege seus dados pessoais em conformidade com a LGPD e demais normas de privacidade."
-        canonical="https://advocaciabarreto.com/politica-de-privacidade"
+        canonical="/politica-de-privacidade"
       />
       <div className="max-w-4xl mx-auto px-6 py-32 min-h-screen">
         <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-accent-primary to-emerald-400 bg-clip-text text-transparent mb-12">
