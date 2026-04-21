@@ -10,6 +10,8 @@ https://www.advocaciabarreto.com
 
 Requests to `https://advocaciabarreto.com/*` are redirected permanently to the same path on `https://www.advocaciabarreto.com/*` by `vercel.json`.
 
+Known React Router pages are emitted as static route HTML during `npm run build` so their initial canonical and `og:url` tags match the final `www` URL before client-side React runs.
+
 ## Security headers
 
 Security headers are configured centrally in `vercel.json`:
