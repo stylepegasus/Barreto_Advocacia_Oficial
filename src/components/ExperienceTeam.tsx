@@ -54,13 +54,14 @@ export function ExperienceTeam() {
       education: "Especialista em Direito e Processo do Trabalho e em Ciências Criminais, reúne formação que fortalece a atuação analítica, a estruturação de teses e a condução técnica das demandas.",
       cases: "Atuação em conflitos trabalhistas, análise de verbas, disputas decorrentes da relação de trabalho e casos que exigem organização probatória e acompanhamento processual cuidadoso."
     },
-    { 
-      name: "Dra. Renata Machado", 
-      role: "Advogada Especialista em Direito Cível e Processo Cível, Direito de Família e Sucessões.", 
-      img: "/assets/images/team/dra-renata-machado-team.jpg",
-      experience: "Atua em demandas cíveis, familiares e sucessórias com atenção aos detalhes, escuta qualificada e estratégia jurídica alinhada à realidade de cada cliente e de cada conflito.",
-      education: "Especialista em Direito Cível e Processo Cível, com atuação em Direito de Família e Sucessões, possui formação voltada à condução técnica e cuidadosa de casos que exigem precisão e sensibilidade.",
-      cases: "Atuação em disputas cíveis, questões familiares e demandas sucessórias que exigem clareza na orientação, organização processual e acompanhamento próximo em cada etapa."
+    {
+      name: "Dr. Antônio A. Romano",
+      role: "Partner Manager com atuação estratégica em negociação, gestão de relacionamentos e desenvolvimento de parcerias de alto valor.",
+      img: "/assets/images/team/dr-antonio-a-romano-team.jpg",
+      alt: "Dr. Antônio A. Romano - Barreto Advocacia",
+      experience: "Atua na construção e fortalecimento de relacionamentos estratégicos com visão executiva, conduzindo negociações relevantes, alinhando interesses institucionais e ampliando oportunidades com postura firme, consultiva e orientada a resultado.",
+      education: "Reúne competências associadas a funções de alta responsabilidade em gestão de contas, alianças estratégicas e expansão de mercado, com perfil próximo ao de Account Manager, Gerente de Alianças e Business Development Manager.",
+      cases: "Destaca-se na estruturação de parcerias estratégicas, retenção e evolução de relacionamentos corporativos, negociação com stakeholders de alto nível e abertura de novas frentes de negócio com autoridade, consistência e forte capacidade de articulação."
     },
     { 
       name: "Luis Gonçalves", 
