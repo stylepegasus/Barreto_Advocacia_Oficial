@@ -10,8 +10,8 @@ export function PracticeAreas() {
     },
     {
       icon: <Scale className="w-8 h-8 text-accent-primary" />,
-      title: "CÍVIL",
-      desc: "Contratos, família, consumidor e responsabilidade civil."
+      title: "CÍVEL",
+      desc: "Contratos, consumidor e responsabilidade civil."
     },
     {
       icon: <Users className="w-8 h-8 text-accent-primary" />,
@@ -20,8 +20,8 @@ export function PracticeAreas() {
     },
     {
       icon: <Briefcase className="w-8 h-8 text-accent-primary" />,
-      title: "TRABALHISTA",
-      desc: "Demissão, direitos trabalhistas e negociações."
+      title: "EMPRESARIAL",
+      desc: "Consultoria societária, contratos empresariais e atuação estratégica para empresas."
     }
   ];
 

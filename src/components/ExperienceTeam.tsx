@@ -24,10 +24,10 @@ export function ExperienceTeam() {
     },
     { 
       name: "Dr. Gilmar Freitas", 
-      role: "Advogado Especialista em Direito Cível e Processo Cível e Pós-Graduado em Direito Tributário.", 
+      role: "Advogado com atuação em Direito Cível e Processual Civil, com pós-graduação em Direito Civil e Processo Civil e em Direito Imobiliário e Condominial.", 
       img: "/assets/images/team/dr-gilmar-freitas-team.jpg",
       experience: "Atua em demandas cíveis com organização, estratégia e atenção aos detalhes, oferecendo condução jurídica segura em conflitos patrimoniais, obrigações, contratos e questões processuais.",
-      education: "Especialista em Direito Cível e Processo Cível, com pós-graduação em Direito Tributário, possui base técnica sólida para atuar em discussões jurídicas que exigem interpretação minuciosa e posicionamento estratégico.",
+      education: "Pós-Graduado em Direito Civil e Processo Civil – Lato Sensu e em Direito Imobiliário e Condominial – Lato Sensu, possui formação voltada à atuação estratégica em demandas patrimoniais, contratuais, civis e imobiliárias.",
       cases: "Atuação em demandas contratuais, disputas patrimoniais e conflitos cíveis que exigem planejamento processual, análise técnica e condução consistente ao longo do caso."
     },
     { 
