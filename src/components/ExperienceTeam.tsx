@@ -8,7 +8,7 @@ export function ExperienceTeam() {
     { 
       name: "Dr. Paulo Barreto", 
       role: "Fundador, Advogado Criminalista, Mestrando em Direito Processual Penal e Especialista em Lei de Drogas e Recursos.", 
-      img: "/assets/images/team/dr-paulo-barreto-team.jpg",
+      img: "/assets/images/team/dr-paulo-barreto-team.webp",
       experience: "Com 10 anos de atuação na advocacia criminal, conduz defesas estratégicas em investigações, processos penais e casos de maior sensibilidade, sempre com análise técnica, postura firme e leitura realista de cada cenário.",
       education: "Mestrando em Direito Processual Penal, com especialização em Lei de Drogas e Recursos, reúne formação direcionada à advocacia criminal e atualização constante para atuação precisa em casos complexos.",
       cases: "Atuação em investigações criminais, processos penais, medidas urgentes e recursos, com foco em estratégia defensiva, proteção de direitos e acompanhamento técnico em todas as fases do caso."
@@ -16,7 +16,7 @@ export function ExperienceTeam() {
     { 
       name: "Dra. Rebecca Castro", 
       role: "Advogada Criminalista, Especializada em Execução Penal e Tribunal do Júri, Pós-Graduada em Criminologia.", 
-      img: "/assets/images/team/dra-rebecca-castro-team.jpg",
+      img: "/assets/images/team/dra-rebecca-castro-team.webp",
       alt: "Dra. Rebecca Castro - Barreto Advocacia",
       experience: "Atua na advocacia criminal com atenção especial a execução penal e Tribunal do Júri, conduzindo casos com sensibilidade, firmeza técnica e cuidado estratégico em cada etapa da defesa.",
       education: "Especializada em Execução Penal e Tribunal do Júri, com pós-graduação em Criminologia, possui formação voltada à compreensão aprofundada da dinâmica criminal e da construção técnica da defesa.",
@@ -25,7 +25,7 @@ export function ExperienceTeam() {
     { 
       name: "Dr. Gilmar Freitas", 
       role: "Advogado com atuação em Direito Cível e Processual Civil, com pós-graduação em Direito Civil e Processo Civil e em Direito Imobiliário e Condominial.", 
-      img: "/assets/images/team/dr-gilmar-freitas-team.jpg",
+      img: "/assets/images/team/dr-gilmar-freitas-team.webp",
       experience: "Atua em demandas cíveis com organização, estratégia e atenção aos detalhes, oferecendo condução jurídica segura em conflitos patrimoniais, obrigações, contratos e questões processuais.",
       education: "Pós-Graduado em Direito Civil e Processo Civil – Lato Sensu e em Direito Imobiliário e Condominial – Lato Sensu, possui formação voltada à atuação estratégica em demandas patrimoniais, contratuais, civis e imobiliárias.",
       cases: "Atuação em demandas contratuais, disputas patrimoniais e conflitos cíveis que exigem planejamento processual, análise técnica e condução consistente ao longo do caso."
@@ -33,7 +33,7 @@ export function ExperienceTeam() {
     { 
       name: "Dra. Danielle Fernandes", 
       role: "Advogada Especialista em Direito de Família e Direito Administrativo.", 
-      img: "/assets/images/team/dra-danielle-fernandes-team.jpg",
+      img: "/assets/images/team/dra-danielle-fernandes-team.webp",
       experience: "Atua em demandas de família e administrativas com abordagem humana, técnica e cuidadosa, compreendendo que muitos casos exigem sensibilidade no atendimento e firmeza na orientação jurídica.",
       education: "Especialista em Direito de Família e Direito Administrativo, possui formação voltada à condução responsável de questões familiares, patrimoniais e demandas relacionadas à administração pública.",
       cases: "Atuação em conflitos familiares, reorganização de vínculos jurídicos e demandas administrativas que exigem análise precisa, postura estratégica e acompanhamento próximo do cliente."
@@ -41,7 +41,7 @@ export function ExperienceTeam() {
     { 
       name: "Dr. Itamar Silveira", 
       role: "Advogado Criminalista, Delegado de Polícia Aposentado e Professor Universitário.", 
-      img: "/assets/images/team/dr-itamar-silveira-team.jpg",
+      img: "/assets/images/team/dr-itamar-silveira-team.webp",
       experience: "Reúne experiência prática no sistema de persecução penal e atuação na advocacia criminal, oferecendo visão ampla sobre investigações, procedimentos policiais e definição estratégica da defesa.",
       education: "Sua trajetória combina atuação como advogado criminalista, Delegado de Polícia Aposentado e Professor Universitário, unindo prática, estudo e leitura aprofundada do Direito Penal.",
       cases: "Atuação em casos criminais que exigem compreensão detalhada da investigação, leitura técnica do procedimento policial e orientação estratégica desde as fases iniciais."
@@ -49,7 +49,7 @@ export function ExperienceTeam() {
     { 
       name: "Dr. Charleson Victor", 
       role: "Advogado Trabalhista, Especialista em Direito e Processo do Trabalho e Especialista em Ciências Criminais.", 
-      img: "/assets/images/team/dr-charleson-victor-team.jpg",
+      img: "/assets/images/team/dr-charleson-victor-team.webp",
       experience: "Atua em demandas trabalhistas com foco na defesa de direitos, análise documental e estratégia processual, sempre com objetividade, atenção aos fatos e clareza na orientação ao cliente.",
       education: "Especialista em Direito e Processo do Trabalho e em Ciências Criminais, reúne formação que fortalece a atuação analítica, a estruturação de teses e a condução técnica das demandas.",
       cases: "Atuação em conflitos trabalhistas, análise de verbas, disputas decorrentes da relação de trabalho e casos que exigem organização probatória e acompanhamento processual cuidadoso."
@@ -57,7 +57,7 @@ export function ExperienceTeam() {
     {
       name: "Dr. Antônio A. Romano",
       role: "Partner Manager com atuação estratégica em negociação, gestão de relacionamentos e desenvolvimento de parcerias de alto valor.",
-      img: "/assets/images/team/dr-antonio-a-romano-team.jpg",
+      img: "/assets/images/team/dr-antonio-a-romano-team.webp",
       alt: "Dr. Antônio A. Romano - Barreto Advocacia",
       experience: "Atua na construção e fortalecimento de relacionamentos estratégicos com visão executiva, conduzindo negociações relevantes, alinhando interesses institucionais e ampliando oportunidades com postura firme, consultiva e orientada a resultado.",
       education: "Reúne competências associadas a funções de alta responsabilidade em gestão de contas, alianças estratégicas e expansão de mercado, com perfil próximo ao de Account Manager, Gerente de Alianças e Business Development Manager.",
@@ -66,7 +66,7 @@ export function ExperienceTeam() {
     { 
       name: "Luis Gonçalves", 
       role: "Estagiário, Web Designer, Gestor de Tráfego e Estudante de Direito na UPIS.", 
-      img: "/assets/images/team/luis-goncalves-team.jpg",
+      img: "/assets/images/team/luis-goncalves-team.webp",
       experience: "Atua no suporte às frentes digitais e institucionais do escritório, contribuindo com organização da presença online, comunicação estratégica e melhoria da experiência de contato com os clientes.",
       education: "Estudante de Direito na UPIS, com atuação complementar em web design e gestão de tráfego, reúne visão prática sobre comunicação, posicionamento digital e experiência aplicada ao ambiente jurídico.",
       cases: "Participação no fortalecimento digital do escritório, estruturação de presença online, apoio à comunicação institucional e melhoria da jornada de contato do cliente com a Barreto Advocacia."
@@ -74,7 +74,7 @@ export function ExperienceTeam() {
     { 
       name: "Paulo Barreto Filho", 
       role: "Estagiário e Estudante de Direito no CEUB.", 
-      img: "/assets/images/team/paulo-barreto-filho-team.jpg",
+      img: "/assets/images/team/paulo-barreto-filho-team.webp",
       experience: "Atua no apoio às rotinas do escritório, contribuindo com organização interna, suporte operacional e acompanhamento das atividades jurídicas, sempre com atenção aos detalhes e dedicação ao aprendizado prático.",
       education: "Estudante de Direito no CEUB, em formação contínua para atuação jurídica responsável, desenvolvendo experiência prática dentro da dinâmica real do escritório.",
       cases: "Apoio às atividades internas, organização de demandas e participação nas rotinas que sustentam o funcionamento operacional e o atendimento da equipe jurídica."

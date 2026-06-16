@@ -9,6 +9,7 @@ const ROUTES = [
   'politica-de-privacidade',
   'politica-de-cookies',
   'aviso-legal',
+  'antonio-romano',
 ];
 
 const indexPath = path.join(DIST_DIR, 'index.html');

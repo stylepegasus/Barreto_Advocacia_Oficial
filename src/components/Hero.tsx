@@ -35,12 +35,17 @@ export function Hero() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const handleScroll = () => {
+      // Ignorar efeitos de scroll-parallax em telas mobile para economizar processamento e evitar jank
+      if (window.innerWidth < 768) {
+        return;
+      }
+
       const scrollY = window.scrollY;
       parallaxTitle.style.setProperty('--scroll-y', `${scrollY}px`);
 
       if (!reduceMotion && mediaRef.current && !ticking) {
         animationFrameId = requestAnimationFrame(() => {
-          const intensity = window.innerWidth < 768 ? 0.08 : 0.16;
+          const intensity = 0.16;
           const offset = scrollY * intensity;
           if (mediaRef.current) {
             mediaRef.current.style.transform = `translate3d(0, ${offset}px, 0) scale(1.1)`;

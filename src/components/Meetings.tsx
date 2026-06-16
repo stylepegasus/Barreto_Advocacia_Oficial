@@ -29,13 +29,13 @@ export function Meetings() {
         {/* Presencial */}
         <div 
           className="liquid-glass-card card-reuniao group rounded-[24px] min-h-[300px] sm:min-h-[350px] flex items-center p-0 hover:scale-[1.02] transition-transform duration-500"
-          style={{ backgroundImage: "url('/assets/images/contact-options/reuniao-presencial.png')" }}
+          style={{ backgroundImage: "url('/assets/images/contact-options/reuniao-presencial.webp')" }}
         >
           <div className="content relative z-[2] p-6 sm:p-8 md:p-12 w-full md:w-3/4 flex flex-col justify-center">
             <h4 className="title-highlight text-xl sm:text-2xl mb-2 sm:mb-3 text-white drop-shadow-sm">Reunião Presencial</h4>
             <p className="text-white/95 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed drop-shadow-sm font-medium">
               Atendimento direto e personalizado.<br />
-              Ideal para casos complexos que exigem análise detalhada.
+              Ideal para cases complexos que exigem análise detalhada.
             </p>
             <a 
               href="https://api.whatsapp.com/send/?phone=5561991591105&text=Ol%C3%A1%21+Vi+o+site+de+voc%C3%AAs+e+gostaria+de+agendar+uma+reuni%C3%A3o+presencial+com+um+advogado.&type=phone_number&app_absent=0"
@@ -53,7 +53,7 @@ export function Meetings() {
         {/* Online */}
         <div 
           className="liquid-glass-card card-reuniao group rounded-[24px] min-h-[300px] sm:min-h-[350px] flex items-center p-0 hover:scale-[1.02] transition-transform duration-500"
-          style={{ backgroundImage: "url('/assets/images/contact-options/reuniao-online.jpg')" }}
+          style={{ backgroundImage: "url('/assets/images/contact-options/reuniao-online.webp')" }}
         >
           <div className="content relative z-[2] p-6 sm:p-8 md:p-12 w-full md:w-3/4 flex flex-col justify-center">
             <h4 className="title-highlight text-xl sm:text-2xl mb-2 sm:mb-3 text-white drop-shadow-sm">Reunião Online</h4>
