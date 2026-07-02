@@ -2,6 +2,20 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function() {
+        try {
+          var savedTheme = localStorage.getItem('theme');
+          if (savedTheme === 'light' || savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+          } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
     <meta name="google-site-verification" content="Re9ZZXGWk0E-qtBpj66HnlpPupbDeAjXkGUeHJG7Cdk" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Barreto Advocacia | Advogado em Brasília - Criminal, Civil e Trabalhista</title>

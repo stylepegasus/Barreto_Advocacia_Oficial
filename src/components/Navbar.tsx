@@ -32,7 +32,8 @@ export function Navbar() {
             <button 
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-text-primary/10 text-text-primary transition-colors"
-              aria-label="Toggle theme"
+              aria-label={theme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'}
+              aria-pressed={theme === 'dark'}
             >
               {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </button>

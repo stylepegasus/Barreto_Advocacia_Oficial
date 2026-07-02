@@ -12,21 +12,39 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light' || savedTheme === 'dark') {
-      return savedTheme;
+    // O script injetado no head já setou data-theme
+    const docTheme = document.documentElement.getAttribute('data-theme');
+    if (docTheme === 'light' || docTheme === 'dark') {
+      return docTheme as Theme;
     }
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
+    
+    // Fallback seguro caso o script do head tenha falhado
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        return savedTheme;
+      }
+    } catch (e) {
+      // Ignore
     }
-    return 'light';
+    return 'dark'; // Padrão
   });
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(theme);
-    localStorage.setItem('theme', theme);
+    root.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch (e) {
+      // Ignore
+    }
+    
+    // Habilitar a transição CSS com segurança, garantindo que não ocorra no first paint
+    const timer = setTimeout(() => {
+      document.body.classList.add('theme-ready');
+    }, 50);
+
+    return () => clearTimeout(timer);
   }, [theme]);
 
   const toggleTheme = () => {

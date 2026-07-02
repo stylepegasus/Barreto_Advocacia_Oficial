@@ -40,7 +40,7 @@
   --title-highlight-gradient: linear-gradient(135deg, #8A6D3B 0%, #C5A880 40%, #A68A5B 100%);
 }
 
-.dark {
+:root[data-theme="dark"] {
   /* Dark Mode Variables */
   --bg-primary: #0a0a0a;
   --bg-secondary: #171717;
@@ -78,8 +78,11 @@ html {
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: clip;
+}
+
+.theme-ready body {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer utilities {
