@@ -129,12 +129,17 @@ export function ExperienceTeam() {
               >
                 <div className="card-content flex flex-col h-full w-full p-0 overflow-hidden">
                   <div className="team-photo-wrapper">
-                    <img 
-                      src={member.img} 
-                      alt={member.alt ?? `Advogado(a) ${member.name} - Equipe de advogados da Barreto Advocacia em Brasília`} 
-                      className="team-photo group-hover:scale-105"
-                      loading="lazy"
-                    />
+                    <picture>
+                      <source srcSet={member.img.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+                      <img
+                        src={member.img}
+                        alt={member.alt ?? `Advogado(a) ${member.name} - Equipe de advogados da Barreto Advocacia em Brasília`}
+                        className="team-photo group-hover:scale-105"
+                        loading="lazy"
+                        width="400"
+                        height="400"
+                      />
+                    </picture>
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <span className="text-white font-medium px-4 py-2 border border-white/30 rounded-full backdrop-blur-sm">Ver Perfil</span>
                     </div>
@@ -168,12 +173,17 @@ export function ExperienceTeam() {
             </button>
 
             <div className="w-full md:w-2/5 h-64 md:h-auto relative">
-              <img 
-                src={team[selectedMember].img} 
-                alt={`Foto de ${team[selectedMember].name} - Equipe de advogados da Barreto Advocacia`} 
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+              <picture>
+                <source srcSet={team[selectedMember].img.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+                <img
+                  src={team[selectedMember].img}
+                  alt={`Foto de ${team[selectedMember].name} - Equipe de advogados da Barreto Advocacia`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  width="400"
+                  height="400"
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:hidden"></div>
               <div className="absolute bottom-4 left-4 right-4 md:hidden">
                 <h3 className="text-2xl font-serif font-bold text-white mb-1">{team[selectedMember].name}</h3>

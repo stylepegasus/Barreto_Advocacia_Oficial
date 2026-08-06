@@ -75,7 +75,20 @@ export function Hero() {
 
   return (
     <section ref={heroRef} className="hero-section section-bg-fade-bottom relative pt-32 pb-20 px-6 min-h-[100vh] flex items-center justify-center overflow-hidden">
-      <div ref={mediaRef} className="hero-parallax-media" aria-hidden="true"></div>
+      <div ref={mediaRef} className="hero-parallax-media" aria-hidden="true">
+        <picture className="contents">
+          <source media="(max-width: 768px)" srcSet="/assets/images/hero/hero-background-mobile.webp" />
+          <img
+            src="/assets/images/hero/hero-background-desktop.webp"
+            alt=""
+            className="w-full h-full object-cover"
+            fetchPriority="high"
+            loading="eager"
+            width="1920"
+            height="1080"
+          />
+        </picture>
+      </div>
       <div className="hero-overlay"></div>
 
       {/* Floating Glass Elements (Decorative) */}

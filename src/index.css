@@ -223,20 +223,9 @@ body {
   .hero-parallax-media {
     position: absolute;
     inset: -10% 0;
-    background-image: url('/assets/images/hero/hero-background-desktop.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     transform: translate3d(0, 0, 0) scale(1.1);
     will-change: transform;
     z-index: 0;
-  }
-
-  @media (max-width: 768px) {
-    .hero-parallax-media {
-      background-image: url('/assets/images/hero/hero-background-mobile.webp');
-      background-position: center top;
-    }
   }
 
   .hero-overlay {

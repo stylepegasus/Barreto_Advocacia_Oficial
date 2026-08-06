@@ -23,12 +23,17 @@ export function Footer() {
           <div className="flex flex-col items-start lg:col-span-1">
             <div className="flex items-center gap-2 mb-6">
               <Link to="/">
-                <img 
-                  src="/assets/branding/logo/logo-footer.png"
-                  alt="Barreto Advocacia"
-                  className="h-8 md:h-12 w-auto object-contain"
-                  loading="lazy"
-                />
+                <picture>
+                  <source srcSet="/assets/branding/logo/logo-footer.webp" type="image/webp" />
+                  <img
+                    src="/assets/branding/logo/logo-footer.png"
+                    alt="Logotipo da Advocacia Barreto"
+                    className="h-8 md:h-12 w-auto object-contain"
+                    loading="lazy"
+                    width="210"
+                    height="48"
+                  />
+                </picture>
               </Link>
             </div>
             <p className="text-text-secondary text-sm">

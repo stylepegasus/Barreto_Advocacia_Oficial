@@ -27,7 +27,19 @@ export function Navbar() {
           {/* Left Side: Logo + Theme Toggle */}
           <div className="flex items-center gap-3 sm:gap-4">
             <Link to="/" onClick={closeMenu} className="flex items-center gap-2">
-              <img src="/assets/branding/logo/logo-barreto.png" alt="Barreto Advocacia" className="h-[28px] sm:h-8 w-auto object-contain" loading="eager" decoding="async" />
+              <picture>
+                <source srcSet="/assets/branding/logo/logo-barreto.webp" type="image/webp" />
+                <img
+                  src="/assets/branding/logo/logo-barreto.png"
+                  alt="Logotipo da Advocacia Barreto em Brasília"
+                  className="h-[28px] sm:h-8 w-auto object-contain"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                  width="140"
+                  height="32"
+                />
+              </picture>
             </Link>
             <button 
               onClick={toggleTheme}

@@ -14,8 +14,10 @@ const AvisoLegal = lazy(() => import('./pages/AvisoLegal').then(m => ({ default:
 const EstudoPage = lazy(() => import('./pages/EstudoPage').then(m => ({ default: m.EstudoPage })));
 const AntonioRomanoPage = lazy(() => import('./pages/AntonioRomanoPage').then(m => ({ default: m.AntonioRomanoPage })));
 
+import { useEffect } from 'react';
 import { MetaPixelRouterListener } from './components/MetaPixelRouterListener';
 import { GoogleAnalyticsRouterListener } from './components/GoogleAnalyticsRouterListener';
+import { initClarity } from './lib/clarity';
 
 // Loader leve para transições de rotas lazy
 const PageLoader = () => (
@@ -53,6 +55,15 @@ function CleanLayout() {
 }
 
 export default function App() {
+  useEffect(() => {
+    // VITE_CLARITY_ID env variable should be set in production/Vercel settings
+    // E.g., VITE_CLARITY_ID=your_id_here
+    const clarityId = import.meta.env.VITE_CLARITY_ID;
+    if (clarityId) {
+      initClarity(clarityId);
+    }
+  }, []);
+
   return (
     <Router>
       <MetaPixelRouterListener />
