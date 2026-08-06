@@ -134,7 +134,7 @@ export function Testimonials() {
     let highlightCharIndex = 0;
     
     return (
-      <h3 className="text-3xl md:text-5xl font-serif font-bold mb-6 tracking-tight reveal-title" ref={titleRef}>
+      <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 tracking-tight reveal-title" ref={titleRef}>
         <span className="inline-block whitespace-nowrap">
           {text.split('').map((char, cIdx) => {
             const hIndex = highlightCharIndex++;
@@ -153,7 +153,7 @@ export function Testimonials() {
             );
           })}
         </span>
-      </h3>
+      </h2>
     );
   };
 
@@ -182,7 +182,7 @@ export function Testimonials() {
                   ))}
                 </div>
                 <p className="card-text text-lg md:text-xl mb-6 relative z-10 italic">"{t.text}"</p>
-                <h5 className="title-highlight text-base relative z-10 font-bold">- {t.name}</h5>
+                <h3 className="title-highlight text-base relative z-10 font-bold">- {t.name}</h3>
               </div>
             </div>
           </div>

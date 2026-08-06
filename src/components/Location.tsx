@@ -4,9 +4,9 @@ export function Location() {
   return (
     <section className="cta-final-premium px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden">
       <div className="relative z-10 flex flex-col items-center text-center">
-        <h3 className="text-3xl md:text-4xl font-serif font-bold text-text-primary mb-4">
+        <h2 className="text-3xl md:text-4xl font-serif font-bold text-text-primary mb-4">
           Conheça o Nosso <span className="text-accent-primary">Escritório</span>
-        </h3>
+        </h2>
         <p className="text-text-secondary text-base sm:text-lg mb-2 px-4">
           Localizado no coração de Brasília
         </p>

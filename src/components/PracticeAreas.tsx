@@ -29,9 +29,9 @@ export function PracticeAreas() {
     <section className="premium-section-subtle px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden">
       <div className="relative z-10">
         <div className="text-center mb-10 sm:mb-12">
-          <h3 className="text-3xl md:text-4xl font-serif font-bold text-text-primary mb-4">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-text-primary mb-4">
             Áreas de <span className="text-accent-primary">Atuação</span>
-          </h3>
+          </h2>
           <p className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto px-4">
             Não abraçamos todas as causas. Somos especialistas em:
           </p>
@@ -44,7 +44,7 @@ export function PracticeAreas() {
                 <div className="liquid-glass-icon mb-6 group-hover:scale-110 transition-transform duration-500">
                   {area.icon}
                 </div>
-                <h4 className="title-highlight text-xl mb-4 relative z-10">{area.title}</h4>
+                <h3 className="title-highlight text-xl mb-4 relative z-10">{area.title}</h3>
                 <p className="card-text text-sm leading-relaxed relative z-10">{area.desc}</p>
               </div>
             </div>

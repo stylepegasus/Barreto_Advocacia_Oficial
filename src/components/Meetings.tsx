@@ -32,7 +32,7 @@ export function Meetings() {
           style={{ backgroundImage: "url('/assets/images/contact-options/reuniao-presencial.webp')" }}
         >
           <div className="content relative z-[2] p-6 sm:p-8 md:p-12 w-full md:w-3/4 flex flex-col justify-center">
-            <h4 className="title-highlight text-xl sm:text-2xl mb-2 sm:mb-3 text-white drop-shadow-sm">Reunião Presencial</h4>
+            <h3 className="title-highlight text-xl sm:text-2xl mb-2 sm:mb-3 text-white drop-shadow-sm">Reunião Presencial</h3>
             <p className="text-white/95 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed drop-shadow-sm font-medium">
               Atendimento direto e personalizado.<br />
               Ideal para cases complexos que exigem análise detalhada.
@@ -56,7 +56,7 @@ export function Meetings() {
           style={{ backgroundImage: "url('/assets/images/contact-options/reuniao-online.webp')" }}
         >
           <div className="content relative z-[2] p-6 sm:p-8 md:p-12 w-full md:w-3/4 flex flex-col justify-center">
-            <h4 className="title-highlight text-xl sm:text-2xl mb-2 sm:mb-3 text-white drop-shadow-sm">Reunião Online</h4>
+            <h3 className="title-highlight text-xl sm:text-2xl mb-2 sm:mb-3 text-white drop-shadow-sm">Reunião Online</h3>
             <p className="text-white/95 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed drop-shadow-sm font-medium">
               Consulta ágil pelo WhatsApp.<br />
               Resposta objetiva sobre seu caso em até 30 minutos.

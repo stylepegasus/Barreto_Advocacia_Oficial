@@ -32,6 +32,30 @@ export function SEO({ title, description, canonical }: SEOProps) {
       <meta property="og:site_name" content="Barreto Advocacia" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LegalService",
+          "name": "Barreto Advocacia",
+          "legalName": "PAULO BARRETO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+          "url": "https://www.advocaciabarreto.com/",
+          "telephone": "+5561991591105",
+          "email": "barretoadvocacia01@gmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Complexo Empresarial Liberty Mall, Torre B, Sala 715, Asa Norte",
+            "addressLocality": "Brasília",
+            "addressRegion": "DF",
+            "postalCode": "",
+            "addressCountry": "BR"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Brasília"
+          }
+        })}
+      </script>
     </Helmet>
   );
 }

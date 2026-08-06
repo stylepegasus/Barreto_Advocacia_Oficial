@@ -155,7 +155,7 @@ export function Features() {
     const totalHighlightChars = fullText.filter(s => s.highlight).reduce((acc, s) => acc + s.text.length, 0);
     
     return (
-      <h3 className="text-3xl md:text-5xl font-serif font-bold text-text-primary mb-6 tracking-tight reveal-title" ref={titleRef}>
+      <h2 className="text-3xl md:text-5xl font-serif font-bold text-text-primary mb-6 tracking-tight reveal-title" ref={titleRef}>
         {fullText.map((segment, sIdx) => (
           <span key={sIdx} className={segment.highlight ? "font-serif font-bold" : ""}>
             {segment.text.split(' ').map((word, wIdx, arr) => {
@@ -226,7 +226,7 @@ export function Features() {
             })}
           </span>
         ))}
-      </h3>
+      </h2>
     );
   };
 
@@ -259,7 +259,7 @@ export function Features() {
                     <Icon className="w-7 h-7 text-accent-primary drop-shadow-md" />
                   </div>
 
-                  <h4 className="title-highlight text-xl mb-4 tracking-wide relative z-10">{feat.title}</h4>
+                  <h3 className="title-highlight text-xl mb-4 tracking-wide relative z-10">{feat.title}</h3>
                   <p className="card-text text-sm leading-relaxed mb-8 flex-grow relative z-10">{feat.desc}</p>
                   
                   {/* Benefit Section */}

@@ -86,7 +86,7 @@ export function ExperienceTeam() {
       {/* SEÇÃO A: 10 ANOS DE EXPERIÊNCIA */}
       <section className="about-office-section section-bg-fade-bottom liquid-glass-section px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden">
         <div className="relative z-[2] flex flex-col items-center text-center">
-          <h3 className="text-3xl md:text-4xl font-serif font-bold text-accent-primary mb-4">10 Anos de Experiência</h3>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-accent-primary mb-4">10 Anos de Experiência</h2>
           <p className="text-text-secondary mb-10 sm:mb-12 font-light max-w-2xl text-base sm:text-lg px-4">
             Com trajetória consolidada em Brasília, oferecemos análise objetiva e defesa estratégica.
           </p>
@@ -117,9 +117,9 @@ export function ExperienceTeam() {
       {/* SEÇÃO B: CONHEÇA NOSSO TIME */}
       <section className="liquid-glass-section px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden">
         <div className="relative z-10">
-          <h3 className="text-3xl md:text-4xl text-center font-serif font-bold text-text-primary mb-10 sm:mb-12">
+          <h2 className="text-3xl md:text-4xl text-center font-serif font-bold text-text-primary mb-10 sm:mb-12">
             Conheça Nosso <span className="text-accent-primary">Time</span>
-          </h3>
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {team.map((member, idx) => (
               <div 
@@ -140,7 +140,7 @@ export function ExperienceTeam() {
                     </div>
                   </div>
                   <div className="p-6 text-center relative z-10 flex-1 flex flex-col justify-center">
-                    <h4 className="title-highlight text-lg font-bold relative z-10 mb-2">{member.name}</h4>
+                    <h3 className="title-highlight text-lg font-bold relative z-10 mb-2">{member.name}</h3>
                     <p className="card-text text-xs leading-relaxed opacity-90">{member.role}</p>
                   </div>
                 </div>
@@ -176,42 +176,42 @@ export function ExperienceTeam() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:hidden"></div>
               <div className="absolute bottom-4 left-4 right-4 md:hidden">
-                <h4 className="text-2xl font-serif font-bold text-white mb-1">{team[selectedMember].name}</h4>
+                <h3 className="text-2xl font-serif font-bold text-white mb-1">{team[selectedMember].name}</h3>
               </div>
             </div>
 
             <div className="w-full md:w-3/5 p-6 md:p-8 overflow-y-auto">
               <div className="hidden md:block mb-6">
-                <h4 className="text-3xl font-serif font-bold text-text-primary mb-2">{team[selectedMember].name}</h4>
+                <h3 className="text-3xl font-serif font-bold text-text-primary mb-2">{team[selectedMember].name}</h3>
                 <p className="text-accent-primary font-medium text-sm">{team[selectedMember].role}</p>
               </div>
 
               <div className="space-y-6">
                 <div>
-                  <h5 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2 flex items-center gap-2">
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2 flex items-center gap-2">
                     <span className="w-4 h-[1px] bg-accent-primary"></span>
                     Experiência
-                  </h5>
+                  </h4>
                   <p className="text-text-secondary text-sm leading-relaxed">
                     {team[selectedMember].experience}
                   </p>
                 </div>
 
                 <div>
-                  <h5 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2 flex items-center gap-2">
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2 flex items-center gap-2">
                     <span className="w-4 h-[1px] bg-accent-primary"></span>
                     Formação
-                  </h5>
+                  </h4>
                   <p className="text-text-secondary text-sm leading-relaxed">
                     {team[selectedMember].education}
                   </p>
                 </div>
 
                 <div>
-                  <h5 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2 flex items-center gap-2">
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2 flex items-center gap-2">
                     <span className="w-4 h-[1px] bg-accent-primary"></span>
                     Casos de Destaque
-                  </h5>
+                  </h4>
                   <p className="text-text-secondary text-sm leading-relaxed">
                     {team[selectedMember].cases}
                   </p>
