@@ -13,6 +13,7 @@ const PoliticaCookies = lazy(() => import('./pages/PoliticaCookies').then(m => (
 const AvisoLegal = lazy(() => import('./pages/AvisoLegal').then(m => ({ default: m.AvisoLegal })));
 const EstudoPage = lazy(() => import('./pages/EstudoPage').then(m => ({ default: m.EstudoPage })));
 const AntonioRomanoPage = lazy(() => import('./pages/AntonioRomanoPage').then(m => ({ default: m.AntonioRomanoPage })));
+const FamiliaPage = lazy(() => import('./pages/FamiliaPage').then(m => ({ default: m.FamiliaPage })));
 
 import { useEffect } from 'react';
 import { MetaPixelRouterListener } from './components/MetaPixelRouterListener';
@@ -79,6 +80,7 @@ export default function App() {
           {/* Rota com Layout Limpo */}
           <Route element={<CleanLayout />}>
             <Route path="/antonio-romano" element={<AntonioRomanoPage />} />
+            <Route path="/familia" element={<FamiliaPage />} />
           </Route>
 
           {/* Rotas com o Layout Principal do Site */}

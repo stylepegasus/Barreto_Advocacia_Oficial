@@ -49,7 +49,7 @@ export function Footer() {
               <li><a href={getHref('#areas')} className="hover:text-accent-primary transition-colors">Áreas de Atuação</a></li>
               <li><a href={getHref('#equipe')} className="hover:text-accent-primary transition-colors">Nossa Equipe</a></li>
               <li><a href={getHref('#localizacao')} className="hover:text-accent-primary transition-colors">Localização</a></li>
-              <li><Link to="/estudo" className="hover:text-accent-primary transition-colors font-medium text-accent-primary/80">Estudos e Mapas Mentais</Link></li>
+              <li><span className="text-text-muted/60 font-medium cursor-not-allowed">Estudos e Mapas Mentais (em breve)</span></li>
             </ul>
           </div>
 
