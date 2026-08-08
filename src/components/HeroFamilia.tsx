@@ -102,8 +102,8 @@ export function HeroFamilia() {
           <span className="flex items-center gap-1.5 px-3 py-1 bg-black/40 backdrop-blur-md rounded-full border border-accent-primary/30">
             <Scale className="w-3.5 h-3.5" /> +10 Anos de Experiência
           </span>
-          <span className="flex items-center gap-1.5 px-3 py-1 bg-black/40 backdrop-blur-md rounded-full border border-accent-primary/30 hidden sm:flex">
-            <HeartHandshake className="w-3.5 h-3.5" /> +900 Casos Resolvidos
+          <span className="flex items-center gap-1.5 px-3 py-1 bg-black/40 backdrop-blur-md rounded-full border border-accent-primary/30">
+            <HeartHandshake className="w-3.5 h-3.5" /> +1.200 Casos Resolvidos
           </span>
         </div>
 
@@ -156,7 +156,7 @@ export function HeroFamilia() {
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-2">
             <div className="flex items-center gap-2 text-zinc-300 text-xs sm:text-sm font-medium">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Sigilo absoluto garantido no Liberty Mall</span>
+              <span>Atendimento 100% sigiloso</span>
             </div>
           </div>
         </div>

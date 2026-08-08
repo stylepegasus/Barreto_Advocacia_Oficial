@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { HeroFamilia } from '../components/HeroFamilia';
+import { PracticeAreasFamilia } from '../components/PracticeAreasFamilia';
 import { WhatsAppIcon } from '../components/WhatsAppIcon';
 
 export function FamiliaPage() {
@@ -47,6 +48,9 @@ export function FamiliaPage() {
 
       {/* Hero Content */}
       <HeroFamilia />
+
+      {/* Áreas de Atuação Exclusivas de Família */}
+      <PracticeAreasFamilia />
     </main>
   );
 }
