@@ -1,12 +1,78 @@
-import { ShieldCheck, Scale, HeartHandshake, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Scale, HeartHandshake, FileText, Users, Coins, PieChart } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 
 export function HeroFamilia() {
-  return (
-    <section className="relative pt-32 pb-20 px-6 min-h-[100vh] flex items-center justify-center overflow-hidden bg-bg-primary">
+  const heroRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const mediaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const heroSection = heroRef.current;
+    const parallaxTitle = titleRef.current;
+
+    if (!heroSection || !parallaxTitle) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      // Executa apenas em telas desktop com mouse
+      if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
       
-      {/* Imagem de fundo com responsividade */}
-      <div className="absolute inset-0 z-0" aria-hidden="true">
+      const x = (e.clientX - window.innerWidth / 2) / 20;
+      const y = (e.clientY - window.innerHeight / 2) / 20;
+
+      parallaxTitle.style.setProperty('--mouse-x', `${x}px`);
+      parallaxTitle.style.setProperty('--mouse-y', `${y}px`);
+    };
+
+    const handleMouseLeave = () => {
+      parallaxTitle.style.setProperty('--mouse-x', '0px');
+      parallaxTitle.style.setProperty('--mouse-y', '0px');
+    };
+
+    let animationFrameId: number;
+    let ticking = false;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const handleScroll = () => {
+      if (window.innerWidth < 768) return;
+
+      const scrollY = window.scrollY;
+      parallaxTitle.style.setProperty('--scroll-y', `${scrollY}px`);
+
+      if (!reduceMotion && mediaRef.current && !ticking) {
+        animationFrameId = requestAnimationFrame(() => {
+          const intensity = 0.16;
+          const offset = scrollY * intensity;
+          if (mediaRef.current) {
+            mediaRef.current.style.transform = `translate3d(0, ${offset}px, 0) scale(1.1)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    heroSection.addEventListener('mousemove', handleMouseMove);
+    heroSection.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    handleScroll();
+
+    return () => {
+      heroSection.removeEventListener('mousemove', handleMouseMove);
+      heroSection.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('scroll', handleScroll);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, []);
+
+  return (
+    <section ref={heroRef} className="hero-section relative pt-32 pb-20 px-6 min-h-[100vh] flex items-center justify-center overflow-hidden bg-bg-primary">
+      
+      {/* Imagem de fundo com responsividade e efeito parallax */}
+      <div ref={mediaRef} className="hero-parallax-media absolute inset-0 z-0" aria-hidden="true">
         <picture className="contents">
           <source media="(max-width: 768px)" srcSet="/assets/images/hero/familia-hero-mobile.png" />
           <img
@@ -19,16 +85,17 @@ export function HeroFamilia() {
             height="1080"
           />
         </picture>
-        {/* Overlay escuro para garantir legibilidade */}
-        <div className="absolute inset-0 bg-black/60 sm:bg-black/50 bg-gradient-to-t from-bg-primary/80 to-transparent"></div>
       </div>
 
-      {/* Floating Glass Elements (Decorative) */}
+      {/* Overlay escuro gradiente suave para destacar o ambiente com luz quente */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/40 z-1 pointer-events-none"></div>
+
+      {/* Elementos decorativos flutuantes em vidro */}
       <div className="absolute top-1/4 left-[10%] w-32 h-40 bg-text-primary/10 backdrop-blur-3xl border border-white/10 rounded-3xl rotate-12 hidden lg:block shadow-2xl z-10"></div>
       <div className="absolute top-1/3 right-[10%] w-40 h-32 bg-text-primary/10 backdrop-blur-3xl border border-white/10 rounded-3xl -rotate-12 hidden lg:block shadow-2xl z-10"></div>
 
-      {/* Main Content Card - Reforço do Liquid Glass */}
-      <div className="relative z-20 max-w-4xl w-full bg-black/40 sm:bg-black/30 backdrop-blur-2xl border border-white/10 sm:border-white/20 rounded-[2rem] p-6 sm:p-10 md:p-14 text-center shadow-[0_20px_50px_-12px_rgba(0,0,0,0.8)] shadow-inner shadow-white/5">
+      {/* Card Principal - Liquid Glass Reforçado */}
+      <div className="hero-content relative z-20 max-w-4xl w-full bg-black/45 sm:bg-black/35 backdrop-blur-2xl border border-white/20 rounded-[2rem] p-6 sm:p-10 md:p-14 text-center shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] shadow-inner shadow-white/10">
         
         {/* Badges Focados em Família */}
         <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-accent-primary">
@@ -40,34 +107,38 @@ export function HeroFamilia() {
           </span>
         </div>
 
-        {/* H1 Curto da Marca */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight tracking-tight drop-shadow-md">
-          Barreto Advocacia <span className="text-accent-primary font-light">/ Família</span>
+        {/* H1 com Parallax e Efeito Glow de Mouse */}
+        <h1 
+          ref={titleRef} 
+          className="hero-title parallax-title text-text-primary text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 font-bold tracking-tight drop-shadow-lg" 
+          data-text="Barreto Advocacia / Família"
+        >
+          Barreto Advocacia <span className="title-highlight font-light">/ Família</span>
         </h1>
         
-        {/* Linha de Apoio (H2) */}
-        <h2 className="text-base sm:text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto mb-8 leading-relaxed font-light drop-shadow-sm">
-          Atendimento especializado e humanizado em Brasília/DF. 
-          Protegendo seus direitos e o seu futuro com total sigilo.
+        {/* Linha de Apoio (H2) Persuasiva */}
+        <h2 className="text-base sm:text-lg md:text-xl text-zinc-200 max-w-2xl mx-auto mb-8 leading-relaxed font-light drop-shadow-md">
+          Atendimento especializado e humanizado em Direito de Família em Brasília/DF. 
+          Cuidamos do seu divórcio, guarda, pensão e partilha com sigilo absoluto e defesa estratégica dos seus direitos.
         </h2>
 
-        {/* Lista de Atuações */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto mb-10 text-left">
-          <div className="flex items-center gap-2.5 text-zinc-200 text-sm sm:text-base font-medium">
-            <CheckCircle2 className="w-5 h-5 text-accent-primary shrink-0" />
-            Divórcio (Consensual e Litigioso)
+        {/* Lista de Atuações com Ícones Semânticos */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-xl mx-auto mb-10 text-left">
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 transition-colors">
+            <FileText className="w-5 h-5 text-accent-primary shrink-0" />
+            <span>Divórcio (Consensual e Litigioso)</span>
           </div>
-          <div className="flex items-center gap-2.5 text-zinc-200 text-sm sm:text-base font-medium">
-            <CheckCircle2 className="w-5 h-5 text-accent-primary shrink-0" />
-            Guarda e Regulamentação de Visitas
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 transition-colors">
+            <Users className="w-5 h-5 text-accent-primary shrink-0" />
+            <span>Guarda e Regulamentação de Visitas</span>
           </div>
-          <div className="flex items-center gap-2.5 text-zinc-200 text-sm sm:text-base font-medium">
-            <CheckCircle2 className="w-5 h-5 text-accent-primary shrink-0" />
-            Pensão Alimentícia (Fixação e Revisão)
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 transition-colors">
+            <Coins className="w-5 h-5 text-accent-primary shrink-0" />
+            <span>Pensão Alimentícia (Fixação e Revisão)</span>
           </div>
-          <div className="flex items-center gap-2.5 text-zinc-200 text-sm sm:text-base font-medium">
-            <CheckCircle2 className="w-5 h-5 text-accent-primary shrink-0" />
-            Partilha de Bens Justa
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 transition-colors">
+            <PieChart className="w-5 h-5 text-accent-primary shrink-0" />
+            <span>Partilha de Bens Justa</span>
           </div>
         </div>
         
