@@ -98,8 +98,8 @@ export function PracticeAreasFamilia() {
       {/* 4. Sequência com Visual de Cards Empilhados e Desempilhamento ao Arrastar */}
       <div className="relative max-w-6xl mx-auto mb-12 sm:mb-16">
         {/* Vinhetas laterais para dissolução contínua sem cortes secos */}
-        <div className="absolute top-0 right-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-bg-primary to-transparent z-30 pointer-events-none"></div>
-        <div className="absolute top-0 left-0 bottom-0 w-6 sm:w-12 bg-gradient-to-r from-bg-primary to-transparent z-30 pointer-events-none"></div>
+        <div className="absolute top-0 right-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-bg-primary to-transparent z-30 pointer-events-none"></div>
+        <div className="absolute top-0 left-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-bg-primary to-transparent z-30 pointer-events-none"></div>
 
         <div
           ref={scrollRef}
@@ -107,19 +107,21 @@ export function PracticeAreasFamilia() {
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
-          className={`flex -space-x-3 sm:-space-x-6 md:-space-x-8 overflow-x-auto pb-8 pt-4 px-4 sm:px-8 scroll-smooth snap-x snap-mandatory ${
+          className={`flex -space-x-3 sm:-space-x-4 md:-space-x-6 overflow-x-auto pb-8 pt-4 px-4 sm:px-6 md:px-8 scroll-smooth snap-x snap-mandatory touch-pan-x scroll-pl-4 sm:scroll-pl-6 md:scroll-pl-8 ${
             isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'
           }`}
           style={{
             scrollbarWidth: 'none',
-            msOverflowStyle: 'none'
+            msOverflowStyle: 'none',
+            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%)',
+            maskImage: 'linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%)'
           }}
         >
           {areas.map((area, idx) => (
             <div 
               key={idx} 
               style={{ zIndex: 10 + idx }}
-              className="w-[82vw] sm:w-[360px] md:w-[380px] shrink-0 snap-start transition-all duration-300 hover:-translate-y-3 hover:scale-[1.02] hover:z-40 focus-within:z-40 p-1"
+              className="w-[84vw] sm:w-[320px] md:w-[340px] lg:w-[380px] shrink-0 snap-start transition-all duration-300 hover:-translate-y-3 hover:scale-[1.02] hover:z-40 focus-within:z-40 p-1 will-change-transform transform-gpu"
             >
               <div className="liquid-glass-card flex flex-col items-center text-center h-full w-full p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/20">
                 <div className="liquid-glass-icon mb-6 transition-transform duration-500 group-hover:scale-110">
