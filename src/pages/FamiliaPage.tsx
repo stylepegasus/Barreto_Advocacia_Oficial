@@ -4,11 +4,17 @@ import { HeroFamilia } from '../components/HeroFamilia';
 import { PracticeAreasFamilia } from '../components/PracticeAreasFamilia';
 import { WhyChooseBarretoFamilia } from '../components/WhyChooseBarretoFamilia';
 import { MeetingsFamilia } from '../components/MeetingsFamilia';
+import { TeamFamilia } from '../components/TeamFamilia';
+import { Experience10YearsFamilia } from '../components/Experience10YearsFamilia';
+import { Testimonials } from '../components/Testimonials';
+import { Location } from '../components/Location';
+import { MapEmbed } from '../components/MapEmbed';
+import { Footer } from '../components/Footer';
 import { WhatsAppIcon } from '../components/WhatsAppIcon';
 
 export function FamiliaPage() {
   return (
-    <main className="flex flex-col relative bg-bg-primary min-h-screen pb-16">
+    <main className="flex flex-col relative bg-bg-primary min-h-screen">
       <SEO
         title="Advocacia de Família e Divórcio em Brasília"
         description="Barreto Advocacia é especializada em Direito de Família, Divórcio, Guarda, Pensão e Partilha em Brasília/DF. +10 anos de experiência com atendimento sigiloso e humanizado."
@@ -51,7 +57,7 @@ export function FamiliaPage() {
       {/* 1. Hero Content */}
       <HeroFamilia />
 
-      {/* 2. Áreas de Atuação Exclusivas de Família (Sequência Lateral com Cards Empilhados) */}
+      {/* 2. Áreas de Atuação Exclusivas de Família (Cards Empilhados com Desempilhamento Lateral) */}
       <PracticeAreasFamilia />
 
       {/* 3. Por que escolher a Barreto Advocacia */}
@@ -59,6 +65,24 @@ export function FamiliaPage() {
 
       {/* 4. Opções de Reunião: Presencial e Online */}
       <MeetingsFamilia />
+
+      {/* 5. Seção de Equipe (Dr. Gilmar e Dra. Danielle em destaque) */}
+      <TeamFamilia />
+
+      {/* 6. 10 Anos de Experiência */}
+      <Experience10YearsFamilia />
+
+      {/* 7. Testemunhos de Clientes */}
+      <Testimonials />
+
+      {/* 8. Conheça o Nosso Escritório / Localização */}
+      <Location />
+
+      {/* 9. Mapa Interativo do Google Maps */}
+      <MapEmbed />
+
+      {/* 10. Rodapé Institucional */}
+      <Footer />
     </main>
   );
 }

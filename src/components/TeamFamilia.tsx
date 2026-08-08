@@ -1,0 +1,202 @@
+import { useState } from 'react';
+import { X } from 'lucide-react';
+
+export function TeamFamilia() {
+  const [selectedMember, setSelectedMember] = useState<number | null>(null);
+
+  const team = [
+    { 
+      name: "Dr. Gilmar Freitas", 
+      role: "Advogado com atuação em Direito de Família, Sucessões e Cível, com pós-graduação em Direito Civil e Processo Civil e em Direito Imobiliário e Condominial.", 
+      img: "/assets/images/team/dr-gilmar-freitas-team.webp",
+      experience: "Atua em demandas de família, partilhas patrimoniais e conflitos civis com organização, estratégia e atenção aos detalhes, oferecendo condução jurídica segura em conflitos patrimoniais, acordos e questões processuais.",
+      education: "Pós-Graduado em Direito Civil e Processo Civil – Lato Sensu e em Direito Imobiliário e Condominial – Lato Sensu, possui formação voltada à atuação estratégica em demandas patrimoniais, contratuais, civis e de família.",
+      cases: "Atuação em divórcios, partilhas patrimoniais, contratos e conflitos que exigem planejamento processual, análise técnica e condução consistente ao longo do caso."
+    },
+    { 
+      name: "Dra. Danielle Fernandes", 
+      role: "Advogada Especialista em Direito de Família e Direito Administrativo.", 
+      img: "/assets/images/team/dra-danielle-fernandes-team.webp",
+      experience: "Atua em demandas de família e administrativas com abordagem humana, técnica e cuidadosa, compreendendo que muitos casos exigem sensibilidade no atendimento e firmeza na orientação jurídica.",
+      education: "Especialista em Direito de Família e Direito Administrativo, possui formação voltada à condução responsável de questões familiares, patrimoniais e demandas relacionadas à administração pública.",
+      cases: "Atuação em conflitos familiares, reorganização de vínculos jurídicos e demandas administrativas que exigem análise precisa, postura estratégica e acompanhamento próximo do cliente."
+    },
+    { 
+      name: "Dr. Paulo Barreto", 
+      role: "Fundador, Advogado Criminalista, Mestrando em Direito Processual Penal e Especialista em Lei de Drogas e Recursos.", 
+      img: "/assets/images/team/dr-paulo-barreto-team.webp",
+      experience: "Com 10 anos de atuação na advocacia criminal, conduz defesas estratégicas em investigações, processos penais e casos de maior sensibilidade, sempre com análise técnica, postura firme e leitura realista de cada cenário.",
+      education: "Mestrando em Direito Processual Penal, com especialização em Lei de Drogas e Recursos, reúne formação direcionada à advocacia criminal e atualização constante para atuação precisa em casos complexos.",
+      cases: "Atuação em investigações criminais, processos penais, medidas urgentes e recursos, com foco em estratégia defensiva, proteção de direitos e acompanhamento técnico em todas as fases do caso."
+    },
+    { 
+      name: "Dra. Rebecca Castro", 
+      role: "Advogada Criminalista, Especializada em Execução Penal e Tribunal do Júri, Pós-Graduada em Criminologia.", 
+      img: "/assets/images/team/dra-rebecca-castro-team.webp",
+      alt: "Dra. Rebecca Castro - Barreto Advocacia",
+      experience: "Atua na advocacia criminal com atenção especial a execução penal e Tribunal do Júri, conduzindo casos com sensibilidade, firmeza técnica e cuidado estratégico em cada etapa da defesa.",
+      education: "Especializada em Execução Penal e Tribunal do Júri, com pós-graduação em Criminologia, possui formação voltada à compreensão aprofundada da dinâmica criminal e da construção técnica da defesa.",
+      cases: "Atuação em pedidos e acompanhamentos na execução penal, procedimentos ligados ao Tribunal do Júri e casos que exigem leitura cuidadosa dos fatos, da prova e da estratégia processual."
+    },
+    { 
+      name: "Dr. Itamar Silveira", 
+      role: "Advogado Criminalista, Delegado de Polícia Aposentado e Professor Universitário.", 
+      img: "/assets/images/team/dr-itamar-silveira-team.webp",
+      experience: "Reúne experiência prática no sistema de persecução penal e atuação na advocacia criminal, oferecendo visão ampla sobre investigações, procedimentos policiais e definição estratégica da defesa.",
+      education: "Sua trajetória combina atuação como advogado criminalista, Delegado de Polícia Aposentado e Professor Universitário, unindo prática, estudo e leitura aprofundada do Direito Penal.",
+      cases: "Atuação em casos criminais que exigem compreensão detalhada da investigação, leitura técnica do procedimento policial e orientação estratégica desde as fases iniciais."
+    },
+    { 
+      name: "Dr. Charleson Victor", 
+      role: "Advogado Trabalhista, Especialista em Direito e Processo do Trabalho e Especialista em Ciências Criminais.", 
+      img: "/assets/images/team/dr-charleson-victor-team.webp",
+      experience: "Atua em demandas trabalhistas com foco na defesa de direitos, análise documental e estratégia processual, sempre com objetividade, atenção aos fatos e clareza na orientação ao cliente.",
+      education: "Especialista em Direito e Processo do Trabalho e em Ciências Criminais, reúne formação que fortalece a atuação analítica, a estruturação de teses e a condução técnica das demandas.",
+      cases: "Atuação em conflitos trabalhistas, análise de verbas, disputas decorrentes da relação de trabalho e casos que exigem organização probatória e acompanhamento processual cuidadoso."
+    },
+    {
+      name: "Dr. Antônio A. Romano",
+      role: "Partner Manager com atuação estratégica em negociação, gestão de relacionamentos e desenvolvimento de parcerias de alto valor.",
+      img: "/assets/images/team/dr-antonio-a-romano-team.webp",
+      alt: "Dr. Antônio A. Romano - Barreto Advocacia",
+      experience: "Atua na construção e fortalecimento de relacionamentos estratégicos com visão executiva, conduzindo negociações relevantes, alinhando interesses institucionais e ampliando oportunidades com postura firme, consultiva e orientada a resultado.",
+      education: "Reúne competências associadas a funções de alta responsabilidade em gestão de contas, alianças estratégicas e expansão de mercado, com perfil próximo ao de Account Manager, Gerente de Alianças e Business Development Manager.",
+      cases: "Destaca-se na estruturação de parcerias estratégicas, retenção e evolução de relacionamentos corporativos, negociação com stakeholders de alto nível e abertura de novas frentes de negócio com autoridade, consistência e forte capacidade de articulação."
+    },
+    { 
+      name: "Luis Gonçalves", 
+      role: "Estagiário, Web Designer, Gestor de Tráfego e Estudante de Direito na UPIS.", 
+      img: "/assets/images/team/luis-goncalves-team.webp",
+      experience: "Atua no suporte às frentes digitais e institucionais do escritório, contribuindo com organização da presença online, comunicação estratégica e melhoria da experiência de contato com os clientes.",
+      education: "Estudante de Direito na UPIS, com atuação complementar em web design e gestão de tráfego, reúne visão prática sobre comunicação, posicionamento digital e experiência aplicada ao ambiente jurídico.",
+      cases: "Participação no fortalecimento digital do escritório, estruturação de presença online, apoio à comunicação institucional e melhoria da jornada de contato do cliente com a Barreto Advocacia."
+    },
+    { 
+      name: "Paulo Barreto Filho", 
+      role: "Estagiário e Estudante de Direito no CEUB.", 
+      img: "/assets/images/team/paulo-barreto-filho-team.webp",
+      experience: "Atua no suporte às rotinas do escritório, contribuindo com organização interna, suporte operacional e acompanhamento das atividades jurídicas, sempre com atenção aos detalhes e dedicação ao aprendizado prático.",
+      education: "Estudante de Direito no CEUB, em formação contínua para atuação jurídica responsável, desenvolvendo experiência prática dentro da dinâmica real do escritório.",
+      cases: "Apoio às atividades internas, organização de demandas e participação nas rotinas que sustentam o funcionamento operacional e o atendimento da equipe jurídica."
+    },
+  ];
+
+  return (
+    <section className="liquid-glass-section px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden my-6">
+      <div className="relative z-10">
+        <h2 className="text-3xl md:text-4xl text-center font-serif font-bold text-text-primary mb-10 sm:mb-12">
+          Conheça Nosso <span className="text-accent-primary">Time</span>
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {team.map((member, idx) => (
+            <div 
+              key={idx} 
+              className="liquid-glass-card overflow-hidden group p-1 cursor-pointer hover:shadow-xl transition-all duration-300"
+              onClick={() => setSelectedMember(idx)}
+            >
+              <div className="card-content flex flex-col h-full w-full p-0 overflow-hidden">
+                <div className="team-photo-wrapper">
+                  <picture>
+                    <source srcSet={member.img.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+                    <img
+                      src={member.img}
+                      alt={member.alt ?? `Advogado(a) ${member.name} - Equipe de advogados da Barreto Advocacia em Brasília`}
+                      className="team-photo group-hover:scale-105"
+                      loading="lazy"
+                      width="400"
+                      height="400"
+                    />
+                  </picture>
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-white font-medium px-4 py-2 border border-white/30 rounded-full backdrop-blur-sm">Ver Perfil</span>
+                  </div>
+                </div>
+                <div className="p-6 text-center relative z-10 flex-1 flex flex-col justify-center">
+                  <h3 className="title-highlight text-lg font-bold relative z-10 mb-2">{member.name}</h3>
+                  <p className="card-text text-xs leading-relaxed opacity-90">{member.role}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* MODAL DO MEMBRO DA EQUIPE */}
+      {selectedMember !== null && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+            onClick={() => setSelectedMember(null)}
+          ></div>
+          
+          <div className="relative w-full max-w-3xl bg-bg-secondary border border-text-primary/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh] animate-in fade-in zoom-in-95 duration-300">
+            <button 
+              onClick={() => setSelectedMember(null)}
+              className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md transition-colors"
+              title="Fechar"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="w-full md:w-2/5 h-64 md:h-auto relative">
+              <picture>
+                <source srcSet={team[selectedMember].img.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+                <img
+                  src={team[selectedMember].img}
+                  alt={`Foto de ${team[selectedMember].name} - Equipe de advogados da Barreto Advocacia`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  width="400"
+                  height="400"
+                />
+              </picture>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:hidden"></div>
+              <div className="absolute bottom-4 left-4 right-4 md:hidden">
+                <h3 className="text-2xl font-serif font-bold text-white mb-1">{team[selectedMember].name}</h3>
+              </div>
+            </div>
+
+            <div className="w-full md:w-3/5 p-6 md:p-8 overflow-y-auto">
+              <div className="hidden md:block mb-6">
+                <h3 className="text-3xl font-serif font-bold text-text-primary mb-2">{team[selectedMember].name}</h3>
+                <p className="text-accent-primary font-medium text-sm">{team[selectedMember].role}</p>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2 flex items-center gap-2">
+                    <span className="w-4 h-[1px] bg-accent-primary"></span>
+                    Experiência
+                  </h4>
+                  <p className="text-text-secondary text-sm leading-relaxed">
+                    {team[selectedMember].experience}
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2 flex items-center gap-2">
+                    <span className="w-4 h-[1px] bg-accent-primary"></span>
+                    Formação
+                  </h4>
+                  <p className="text-text-secondary text-sm leading-relaxed">
+                    {team[selectedMember].education}
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2 flex items-center gap-2">
+                    <span className="w-4 h-[1px] bg-accent-primary"></span>
+                    Casos de Destaque
+                  </h4>
+                  <p className="text-text-secondary text-sm leading-relaxed">
+                    {team[selectedMember].cases}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
