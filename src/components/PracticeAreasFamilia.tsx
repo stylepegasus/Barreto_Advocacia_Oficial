@@ -1,7 +1,13 @@
 import { FileText, Coins, Users, PieChart, ScrollText } from 'lucide-react';
+import { useRef, useState } from 'react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 
 export function PracticeAreasFamilia() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
   const areas = [
     {
       icon: <FileText className="w-7 h-7 text-accent-primary" />,
@@ -30,8 +36,26 @@ export function PracticeAreasFamilia() {
     }
   ];
 
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => setIsDragging(false);
+  const handleMouseUp = () => setIsDragging(false);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   return (
-    <section className="relative px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-24 my-4">
+    <section className="relative px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-24 my-4 overflow-hidden">
       
       {/* 1 & 2. Cabeçalho da Seção (Título e Subtítulo) */}
       <div className="text-center mb-8 sm:mb-12">
@@ -43,12 +67,10 @@ export function PracticeAreasFamilia() {
         </p>
       </div>
 
-      {/* 3. Imagem em Destaque com Efeito Fade Out Contínuo (Entre Cabeçalho e Cards) */}
-      <div className="relative max-w-4xl mx-auto mb-14 sm:mb-18 px-2 sm:px-4">
-        {/* Glow de fundo ambiental suave */}
+      {/* 3. Imagem em Destaque com Fade Out Suave Integrado */}
+      <div className="relative max-w-4xl mx-auto mb-12 sm:mb-16 px-2 sm:px-4">
         <div className="absolute inset-0 bg-accent-primary/10 rounded-full blur-3xl -z-10 scale-95 pointer-events-none"></div>
 
-        {/* Container com máscara de dissolução periférica */}
         <div 
           className="relative overflow-hidden rounded-3xl"
           style={{
@@ -66,7 +88,6 @@ export function PracticeAreasFamilia() {
             height="720"
           />
 
-          {/* Overlays de Fusão Gradual (Topo, Base e Laterais) para garantir zero corte seco */}
           <div className="absolute inset-x-0 top-0 h-24 sm:h-32 bg-gradient-to-b from-bg-primary via-bg-primary/50 to-transparent pointer-events-none"></div>
           <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-gradient-to-t from-bg-primary via-bg-primary/50 to-transparent pointer-events-none"></div>
           <div className="absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-bg-primary via-bg-primary/40 to-transparent pointer-events-none"></div>
@@ -74,28 +95,45 @@ export function PracticeAreasFamilia() {
         </div>
       </div>
       
-      {/* 4. Grid dos 5 Cards de Atuação (Liquid Glass) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-12 sm:mb-16 max-w-6xl mx-auto relative z-10">
-        {areas.map((area, idx) => (
-          <div 
-            key={idx} 
-            className={`hover-lift group flex flex-col items-center text-center p-2 rounded-[24px] ${
-              idx === 4 ? 'md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none' : ''
-            }`}
-          >
-            <div className="liquid-glass-card flex flex-col items-center text-center h-full w-full p-6 sm:p-8">
-              <div className="liquid-glass-icon mb-6 group-hover:scale-110 transition-transform duration-500">
-                {area.icon}
+      {/* 4. Sequência Lateral de Cards (Stack Horizontal Arrastável com Peek Suave) */}
+      <div className="relative max-w-6xl mx-auto mb-12 sm:mb-16">
+        {/* Sombreamento suave na extremidade direita para sugerir continuidade sem corte seco */}
+        <div className="absolute top-0 right-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-bg-primary to-transparent z-20 pointer-events-none"></div>
+        <div className="absolute top-0 left-0 bottom-0 w-6 sm:w-12 bg-gradient-to-r from-bg-primary to-transparent z-20 pointer-events-none"></div>
+
+        <div
+          ref={scrollRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          className={`flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-4 sm:px-6 scroll-smooth snap-x snap-mandatory ${
+            isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'
+          }`}
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none'
+          }}
+        >
+          {areas.map((area, idx) => (
+            <div 
+              key={idx} 
+              className="w-[84vw] sm:w-[350px] md:w-[370px] shrink-0 snap-start hover-lift group flex flex-col items-center text-center p-1 rounded-[24px]"
+            >
+              <div className="liquid-glass-card flex flex-col items-center text-center h-full w-full p-6 sm:p-8">
+                <div className="liquid-glass-icon mb-6 group-hover:scale-110 transition-transform duration-500">
+                  {area.icon}
+                </div>
+                <h3 className="title-highlight text-xl sm:text-2xl mb-3 relative z-10 font-serif">
+                  {area.title}
+                </h3>
+                <p className="card-text text-xs sm:text-sm text-zinc-300 leading-relaxed relative z-10 font-normal">
+                  {area.desc}
+                </p>
               </div>
-              <h3 className="title-highlight text-xl sm:text-2xl mb-3 relative z-10 font-serif">
-                {area.title}
-              </h3>
-              <p className="card-text text-xs sm:text-sm text-zinc-300 leading-relaxed relative z-10 font-normal">
-                {area.desc}
-              </p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* 5. CTA Final da Seção */}

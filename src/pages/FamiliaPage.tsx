@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { HeroFamilia } from '../components/HeroFamilia';
 import { PracticeAreasFamilia } from '../components/PracticeAreasFamilia';
+import { WhyChooseBarretoFamilia } from '../components/WhyChooseBarretoFamilia';
 import { WhatsAppIcon } from '../components/WhatsAppIcon';
 
 export function FamiliaPage() {
   return (
-    <main className="flex flex-col relative bg-bg-primary min-h-screen">
+    <main className="flex flex-col relative bg-bg-primary min-h-screen pb-16">
       <SEO
         title="Advocacia de Família e Divórcio em Brasília"
         description="Barreto Advocacia é especializada em Direito de Família, Divórcio, Guarda, Pensão e Partilha em Brasília/DF. +10 anos de experiência com atendimento sigiloso e humanizado."
@@ -46,11 +47,14 @@ export function FamiliaPage() {
         </div>
       </header>
 
-      {/* Hero Content */}
+      {/* 1. Hero Content */}
       <HeroFamilia />
 
-      {/* Áreas de Atuação Exclusivas de Família */}
+      {/* 2. Áreas de Atuação Exclusivas de Família (Sequência Lateral com Drag/Peek) */}
       <PracticeAreasFamilia />
+
+      {/* 3. Por que escolher a Barreto Advocacia */}
+      <WhyChooseBarretoFamilia />
     </main>
   );
 }
