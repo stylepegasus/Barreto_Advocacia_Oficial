@@ -23,7 +23,7 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
       <div className="max-w-7xl mx-auto relative">
-        <div className="bg-bg-primary/80 backdrop-blur-md border border-text-primary/10 rounded-full px-4 sm:px-6 py-3 flex items-center justify-between shadow-lg transition-colors duration-300 relative z-20">
+        <div className="liquid-glass-nav rounded-full px-4 sm:px-6 py-3 flex items-center justify-between shadow-2xl transition-all duration-300 relative z-20">
           {/* Left Side: Logo + Theme Toggle */}
           <div className="flex items-center gap-3 sm:gap-4">
             <Link to="/" onClick={closeMenu} className="flex items-center gap-2">
@@ -85,7 +85,7 @@ export function Navbar() {
 
         {/* Mobile Dropdown Menu */}
         {isOpen && (
-          <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-bg-primary/95 backdrop-blur-xl border border-text-primary/10 rounded-2xl shadow-xl flex flex-col gap-2 z-10 lg:hidden shadow-black/20">
+          <div className="absolute top-full left-0 right-0 mt-2 p-4 liquid-glass-nav rounded-3xl shadow-2xl flex flex-col gap-2 z-10 lg:hidden">
             <a 
               href={getHref('#home')} 
               onClick={closeMenu}

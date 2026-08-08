@@ -16,7 +16,7 @@ export function FamiliaPage() {
       <header className="fixed top-0 left-0 right-0 z-50 p-4 sm:px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo linkando para Home */}
-          <Link to="/" className="flex items-center gap-2 bg-bg-primary/80 backdrop-blur-md p-2 rounded-xl shadow-sm border border-text-primary/10 hover:bg-bg-primary/90 transition-colors">
+          <Link to="/" className="flex items-center gap-2 liquid-glass-nav p-2 sm:px-3 rounded-2xl shadow-lg hover:border-accent-primary/40 transition-all">
             <picture>
               <source srcSet="/assets/branding/logo/logo-barreto.webp" type="image/webp" />
               <img

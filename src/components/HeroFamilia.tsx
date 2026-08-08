@@ -116,27 +116,26 @@ export function HeroFamilia() {
           Barreto Advocacia <span className="title-highlight font-light">/ Família</span>
         </h1>
         
-        {/* Linha de Apoio (H2) Persuasiva */}
+        {/* Linha de Apoio (H2) Persuasiva e Curta */}
         <h2 className="text-base sm:text-lg md:text-xl text-zinc-200 max-w-2xl mx-auto mb-8 leading-relaxed font-light drop-shadow-md">
-          Atendimento especializado e humanizado em Direito de Família em Brasília/DF. 
-          Cuidamos do seu divórcio, guarda, pensão e partilha com sigilo absoluto e defesa estratégica dos seus direitos.
+          Defesa estratégica e sigilosa em Direito de Família em Brasília/DF, resolvendo seu divórcio, guarda e pensão com o mínimo de desgaste possível.
         </h2>
 
-        {/* Lista de Atuações com Ícones Semânticos */}
+        {/* Lista de Atuações com Ícones Semânticos e Acabamento Liquid Glass */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-xl mx-auto mb-10 text-left">
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 transition-colors">
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 hover:bg-white/[0.09] transition-all">
             <FileText className="w-5 h-5 text-accent-primary shrink-0" />
             <span>Divórcio (Consensual e Litigioso)</span>
           </div>
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 transition-colors">
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 hover:bg-white/[0.09] transition-all">
             <Users className="w-5 h-5 text-accent-primary shrink-0" />
             <span>Guarda e Regulamentação de Visitas</span>
           </div>
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 transition-colors">
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 hover:bg-white/[0.09] transition-all">
             <Coins className="w-5 h-5 text-accent-primary shrink-0" />
             <span>Pensão Alimentícia (Fixação e Revisão)</span>
           </div>
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 transition-colors">
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 hover:bg-white/[0.09] transition-all">
             <PieChart className="w-5 h-5 text-accent-primary shrink-0" />
             <span>Partilha de Bens Justa</span>
           </div>

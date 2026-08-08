@@ -95,8 +95,8 @@ export function Hero() {
       <div className="absolute top-1/4 left-1/4 w-24 h-32 bg-text-primary/5 backdrop-blur-xl border border-text-primary/10 rounded-2xl rotate-12 hidden lg:block shadow-2xl z-10"></div>
       <div className="absolute top-1/3 right-1/4 w-32 h-24 bg-text-primary/5 backdrop-blur-xl border border-text-primary/10 rounded-2xl -rotate-12 hidden lg:block shadow-2xl z-10"></div>
 
-      {/* Main Content Card */}
-      <div className="hero-content relative z-20 max-w-4xl w-full bg-text-primary/5 backdrop-blur-xl border border-text-primary/10 rounded-3xl p-5 sm:p-8 md:p-16 text-center shadow-2xl">
+      {/* Main Content Card - Liquid Glass Refinado */}
+      <div className="hero-content relative z-20 max-w-4xl w-full liquid-glass-card rounded-[2rem] p-6 sm:p-10 md:p-16 text-center shadow-2xl">
         <h1 ref={titleRef} className="hero-title parallax-title text-text-primary" data-text="Barreto Advocacia">
           Barreto Advocacia
           <span className="sr-only"> - Advogado em Brasília</span>
