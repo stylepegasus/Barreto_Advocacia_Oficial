@@ -3,6 +3,7 @@ import { SEO } from '../components/SEO';
 import { HeroFamilia } from '../components/HeroFamilia';
 import { PracticeAreasFamilia } from '../components/PracticeAreasFamilia';
 import { WhyChooseBarretoFamilia } from '../components/WhyChooseBarretoFamilia';
+import { MeetingsFamilia } from '../components/MeetingsFamilia';
 import { WhatsAppIcon } from '../components/WhatsAppIcon';
 
 export function FamiliaPage() {
@@ -50,11 +51,14 @@ export function FamiliaPage() {
       {/* 1. Hero Content */}
       <HeroFamilia />
 
-      {/* 2. Áreas de Atuação Exclusivas de Família (Sequência Lateral com Drag/Peek) */}
+      {/* 2. Áreas de Atuação Exclusivas de Família (Sequência Lateral com Cards Empilhados) */}
       <PracticeAreasFamilia />
 
       {/* 3. Por que escolher a Barreto Advocacia */}
       <WhyChooseBarretoFamilia />
+
+      {/* 4. Opções de Reunião: Presencial e Online */}
+      <MeetingsFamilia />
     </main>
   );
 }

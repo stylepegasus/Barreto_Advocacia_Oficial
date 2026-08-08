@@ -95,11 +95,11 @@ export function PracticeAreasFamilia() {
         </div>
       </div>
       
-      {/* 4. Sequência Lateral de Cards (Stack Horizontal Arrastável com Peek Suave) */}
+      {/* 4. Sequência com Visual de Cards Empilhados e Desempilhamento ao Arrastar */}
       <div className="relative max-w-6xl mx-auto mb-12 sm:mb-16">
-        {/* Sombreamento suave na extremidade direita para sugerir continuidade sem corte seco */}
-        <div className="absolute top-0 right-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-bg-primary to-transparent z-20 pointer-events-none"></div>
-        <div className="absolute top-0 left-0 bottom-0 w-6 sm:w-12 bg-gradient-to-r from-bg-primary to-transparent z-20 pointer-events-none"></div>
+        {/* Vinhetas laterais para dissolução contínua sem cortes secos */}
+        <div className="absolute top-0 right-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-bg-primary to-transparent z-30 pointer-events-none"></div>
+        <div className="absolute top-0 left-0 bottom-0 w-6 sm:w-12 bg-gradient-to-r from-bg-primary to-transparent z-30 pointer-events-none"></div>
 
         <div
           ref={scrollRef}
@@ -107,7 +107,7 @@ export function PracticeAreasFamilia() {
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
-          className={`flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-4 sm:px-6 scroll-smooth snap-x snap-mandatory ${
+          className={`flex -space-x-3 sm:-space-x-6 md:-space-x-8 overflow-x-auto pb-8 pt-4 px-4 sm:px-8 scroll-smooth snap-x snap-mandatory ${
             isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'
           }`}
           style={{
@@ -118,10 +118,11 @@ export function PracticeAreasFamilia() {
           {areas.map((area, idx) => (
             <div 
               key={idx} 
-              className="w-[84vw] sm:w-[350px] md:w-[370px] shrink-0 snap-start hover-lift group flex flex-col items-center text-center p-1 rounded-[24px]"
+              style={{ zIndex: 10 + idx }}
+              className="w-[82vw] sm:w-[360px] md:w-[380px] shrink-0 snap-start transition-all duration-300 hover:-translate-y-3 hover:scale-[1.02] hover:z-40 focus-within:z-40 p-1"
             >
-              <div className="liquid-glass-card flex flex-col items-center text-center h-full w-full p-6 sm:p-8">
-                <div className="liquid-glass-icon mb-6 group-hover:scale-110 transition-transform duration-500">
+              <div className="liquid-glass-card flex flex-col items-center text-center h-full w-full p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/20">
+                <div className="liquid-glass-icon mb-6 transition-transform duration-500 group-hover:scale-110">
                   {area.icon}
                 </div>
                 <h3 className="title-highlight text-xl sm:text-2xl mb-3 relative z-10 font-serif">
