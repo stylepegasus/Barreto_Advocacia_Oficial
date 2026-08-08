@@ -146,24 +146,69 @@ export function WhyChooseBarretoFamilia() {
       <h2 className="text-3xl md:text-5xl font-serif font-bold text-text-primary mb-6 tracking-tight reveal-title" ref={titleRef}>
         {fullText.map((segment, sIdx) => (
           <span key={sIdx} className={segment.highlight ? "font-serif font-bold" : ""}>
-            {segment.text.split("").map((char, cIdx) => {
-              const isLast = cIdx === segment.text.length - 1;
-              const index = charIndex++;
-              let extraStyle: React.CSSProperties = {};
-              if (segment.highlight) {
-                const hIndex = highlightCharIndex++;
-                extraStyle = {
-                  background: 'var(--title-highlight-gradient)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  backgroundSize: `${totalHighlightChars * 100}% 100%`,
-                  backgroundPosition: `${(hIndex / Math.max(1, totalHighlightChars - 1)) * 100}% center`
-                };
+            {segment.text.split(' ').map((word, wIdx, arr) => {
+              const isLast = wIdx === arr.length - 1;
+              if (word === '') {
+                if (!isLast) {
+                  const index = charIndex++;
+                  let extraStyle: React.CSSProperties = {};
+                  if (segment.highlight) {
+                    const hIndex = highlightCharIndex++;
+                    extraStyle = {
+                      background: 'var(--title-highlight-gradient)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      backgroundSize: `${totalHighlightChars * 100}% 100%`,
+                      backgroundPosition: `${(hIndex / Math.max(1, totalHighlightChars - 1)) * 100}% center`
+                    };
+                  }
+                  return <span key={wIdx} className="reveal-char" style={extraStyle}>&nbsp;</span>;
+                }
+                return null;
               }
               return (
-                <span key={cIdx} className="reveal-char" style={extraStyle}>
-                  {char}
+                <span key={wIdx} className="inline-block whitespace-nowrap">
+                  {word.split('').map((char, cIdx) => {
+                    const index = charIndex++;
+                    let extraStyle: React.CSSProperties = {};
+                    if (segment.highlight) {
+                      const hIndex = highlightCharIndex++;
+                      extraStyle = {
+                        background: 'var(--title-highlight-gradient)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        backgroundSize: `${totalHighlightChars * 100}% 100%`,
+                        backgroundPosition: `${(hIndex / Math.max(1, totalHighlightChars - 1)) * 100}% center`
+                      };
+                    }
+                    return (
+                      <span key={cIdx} className="reveal-char" style={extraStyle}>
+                        {char}
+                      </span>
+                    );
+                  })}
+                  {!isLast && (() => {
+                    const index = charIndex++;
+                    let extraStyle: React.CSSProperties = {};
+                    if (segment.highlight) {
+                      const hIndex = highlightCharIndex++;
+                      extraStyle = {
+                        background: 'var(--title-highlight-gradient)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        backgroundSize: `${totalHighlightChars * 100}% 100%`,
+                        backgroundPosition: `${(hIndex / Math.max(1, totalHighlightChars - 1)) * 100}% center`
+                      };
+                    }
+                    return (
+                      <span className="reveal-char" style={extraStyle}>
+                        &nbsp;
+                      </span>
+                    );
+                  })()}
                 </span>
               );
             })}
