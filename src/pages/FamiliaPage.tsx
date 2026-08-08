@@ -12,13 +12,60 @@ import { MapEmbed } from '../components/MapEmbed';
 import { Footer } from '../components/Footer';
 import { WhatsAppIcon } from '../components/WhatsAppIcon';
 
+const familiaSchema = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Barreto Advocacia — Direito de Família",
+  "description": "Escritório especializado em Direito de Família em Brasília/DF: divórcio consensual e litigioso, guarda de filhos, partilha de bens, inventário e pensão alimentícia.",
+  "url": "https://www.advocaciabarreto.com/familia",
+  "telephone": "+5561991591105",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Complexo Empresarial Liberty Mall, Torre B, Sala 715, Asa Norte",
+    "addressLocality": "Brasília",
+    "addressRegion": "DF",
+    "postalCode": "70712-903",
+    "addressCountry": "BR"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Brasília"
+  },
+  "serviceType": [
+    "Divórcio Consensual",
+    "Divórcio Litigioso",
+    "Guarda de Filhos",
+    "Partilha de Bens",
+    "Inventário",
+    "Pensão Alimentícia",
+    "União Estável"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Áreas de Atuação em Direito de Família",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Divórcio" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Guarda de Filhos" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Inventário e Herança" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Partilha de Bens" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pensão Alimentícia" } }
+    ]
+  },
+  "parentOrganization": {
+    "@type": "LegalService",
+    "name": "Barreto Advocacia",
+    "url": "https://www.advocaciabarreto.com"
+  }
+};
+
 export function FamiliaPage() {
   return (
     <main className="flex flex-col relative bg-bg-primary min-h-screen">
       <SEO
-        title="Advocacia de Família e Divórcio em Brasília"
-        description="Barreto Advocacia é especializada em Direito de Família, Divórcio, Guarda, Pensão e Partilha em Brasília/DF. +10 anos de experiência com atendimento sigiloso e humanizado."
+        title="Advocacia Familiar | Divórcio, Guarda e Herança"
+        description="Especialistas em Direito de Família em Brasília/DF. Divórcio consensual ou litigioso, guarda de filhos, partilha de bens e inventário. Consulta humanizada. Ligue agora."
         canonical="/familia"
+        schema={familiaSchema}
       />
 
       {/* Header Fixo Minimalista */}

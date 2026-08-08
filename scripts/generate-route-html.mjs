@@ -4,6 +4,7 @@ import path from 'node:path';
 const SITE_URL = 'https://www.advocaciabarreto.com';
 const DIST_DIR = path.resolve('dist');
 const ROUTES = [
+  'familia',
   'estudo',
   'termos-de-uso',
   'politica-de-privacidade',
