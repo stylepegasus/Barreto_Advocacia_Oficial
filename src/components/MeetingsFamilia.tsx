@@ -28,7 +28,7 @@ export function MeetingsFamilia() {
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {/* Presencial */}
         <div 
-          className="liquid-glass-card card-reuniao group rounded-[24px] min-h-[300px] sm:min-h-[350px] flex items-center p-0 hover:scale-[1.02] transition-transform duration-500"
+          className="liquid-glass-card card-reuniao group rounded-[24px] min-h-[300px] sm:min-h-[350px] flex items-center p-0 hover:scale-[1.01] transition-transform duration-500"
           style={{ backgroundImage: "url('/assets/images/contact-options/reuniao-presencial.webp')" }}
         >
           <div className="content relative z-[2] p-6 sm:p-8 md:p-12 w-full md:w-3/4 flex flex-col justify-center">
@@ -42,9 +42,9 @@ export function MeetingsFamilia() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleLeadClick('Reunião Presencial')}
-              className="self-start px-5 sm:px-6 py-2 rounded-full border border-white/30 text-white text-xs sm:text-sm hover:bg-white/10 transition-colors backdrop-blur-sm inline-flex items-center gap-2.5"
+              className="apple-glass self-start px-5 sm:px-6 py-2.5 min-h-[44px] rounded-full text-white text-xs sm:text-sm font-medium inline-flex items-center gap-2.5"
             >
-              <WhatsAppIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px] shrink-0" />
+              <WhatsAppIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px] shrink-0 text-emerald-300" />
               <span>Clique aqui</span>
             </a>
           </div>
@@ -52,7 +52,7 @@ export function MeetingsFamilia() {
 
         {/* Online */}
         <div 
-          className="liquid-glass-card card-reuniao group rounded-[24px] min-h-[300px] sm:min-h-[350px] flex items-center p-0 hover:scale-[1.02] transition-transform duration-500"
+          className="liquid-glass-card card-reuniao group rounded-[24px] min-h-[300px] sm:min-h-[350px] flex items-center p-0 hover:scale-[1.01] transition-transform duration-500"
           style={{ backgroundImage: "url('/assets/images/contact-options/reuniao-online.webp')" }}
         >
           <div className="content relative z-[2] p-6 sm:p-8 md:p-12 w-full md:w-3/4 flex flex-col justify-center">
@@ -66,9 +66,9 @@ export function MeetingsFamilia() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleLeadClick('Reunião Online')}
-              className="self-start px-5 sm:px-6 py-2 rounded-full border border-white/30 text-white text-xs sm:text-sm hover:bg-white/10 transition-colors backdrop-blur-sm inline-flex items-center gap-2.5"
+              className="apple-glass self-start px-5 sm:px-6 py-2.5 min-h-[44px] rounded-full text-white text-xs sm:text-sm font-medium inline-flex items-center gap-2.5"
             >
-              <WhatsAppIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px] shrink-0" />
+              <WhatsAppIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px] shrink-0 text-emerald-300" />
               <span>Clique aqui</span>
             </a>
           </div>

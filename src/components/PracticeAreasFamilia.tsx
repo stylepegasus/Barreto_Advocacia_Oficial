@@ -1,4 +1,4 @@
-import { FileText, Coins, Users, PieChart, ScrollText } from 'lucide-react';
+import { FileText, Coins, Users, PieChart, ScrollText, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 
@@ -7,6 +7,7 @@ export function PracticeAreasFamilia() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const areas = [
     {
@@ -35,6 +36,40 @@ export function PracticeAreasFamilia() {
       desc: "Abertura e condução de inventário judicial e extrajudicial em cartório, partilha de herança e planejamento sucessório."
     }
   ];
+
+  const scrollToCard = (index: number) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const clampedIndex = Math.max(0, Math.min(areas.length - 1, index));
+    const cards = container.children;
+    const targetCard = cards[clampedIndex] as HTMLElement | undefined;
+    if (targetCard) {
+      container.scrollTo({
+        left: targetCard.offsetLeft - 24,
+        behavior: 'smooth',
+      });
+    }
+    setActiveIndex(clampedIndex);
+  };
+
+  const handleScrollUpdate = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const scrollPos = container.scrollLeft + container.clientWidth * 0.25;
+    let closest = 0;
+    let minDiff = Infinity;
+    Array.from(container.children).forEach((child, idx) => {
+      const el = child as HTMLElement;
+      const diff = Math.abs(el.offsetLeft - scrollPos);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closest = idx;
+      }
+    });
+    if (closest !== activeIndex) {
+      setActiveIndex(closest);
+    }
+  };
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollRef.current) return;
@@ -68,7 +103,7 @@ export function PracticeAreasFamilia() {
       </div>
 
       {/* 3. Imagem em Destaque com Fade Out Suave Integrado */}
-      <div className="relative max-w-4xl mx-auto mb-12 sm:mb-16 px-2 sm:px-4">
+      <div className="relative max-w-4xl mx-auto mb-10 sm:mb-14 px-2 sm:px-4">
         <div className="absolute inset-0 bg-accent-primary/10 rounded-full blur-3xl -z-10 scale-95 pointer-events-none"></div>
 
         <div 
@@ -94,8 +129,50 @@ export function PracticeAreasFamilia() {
           <div className="absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-bg-primary via-bg-primary/40 to-transparent pointer-events-none"></div>
         </div>
       </div>
+
+      {/* Pills de navegação e setas discretas com Apple Liquid Glass */}
+      <div className="max-w-6xl mx-auto mb-6 px-2 sm:px-6 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2 overflow-x-auto py-1 no-scrollbar" style={{ scrollbarWidth: 'none' }}>
+          {areas.map((area, idx) => (
+            <button
+              key={area.title}
+              type="button"
+              onClick={() => scrollToCard(idx)}
+              aria-pressed={activeIndex === idx}
+              className={`apple-glass apple-glass-adaptive px-3.5 sm:px-4 py-2 min-h-[44px] rounded-full text-xs sm:text-sm font-medium whitespace-nowrap cursor-pointer ${
+                activeIndex === idx
+                  ? 'border-accent-primary/60 text-accent-primary bg-white/15'
+                  : 'text-text-primary/80 hover:text-text-primary'
+              }`}
+            >
+              {area.title}
+            </button>
+          ))}
+        </div>
+
+        <div className="hidden sm:flex items-center gap-2 shrink-0">
+          <button
+            type="button"
+            onClick={() => scrollToCard(activeIndex - 1)}
+            disabled={activeIndex === 0}
+            aria-label="Área anterior"
+            className="apple-glass apple-glass-adaptive w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center text-text-primary/85 hover:text-text-primary disabled:opacity-35 disabled:pointer-events-none cursor-pointer"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollToCard(activeIndex + 1)}
+            disabled={activeIndex === areas.length - 1}
+            aria-label="Próxima área"
+            className="apple-glass apple-glass-adaptive w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center text-text-primary/85 hover:text-text-primary disabled:opacity-35 disabled:pointer-events-none cursor-pointer"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
       
-      {/* 4. Sequência com Visual de Cards Empilhados e Desempilhamento ao Arrastar */}
+      {/* 4. Sequência com Visual de Cards Empilhados e Desempilhamento ao Arrastar (Vidro Secundário) */}
       <div className="relative max-w-6xl mx-auto mb-12 sm:mb-16">
         {/* Vinhetas laterais para dissolução contínua sem cortes secos */}
         <div className="absolute top-0 right-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-bg-primary to-transparent z-30 pointer-events-none"></div>
@@ -103,6 +180,7 @@ export function PracticeAreasFamilia() {
 
         <div
           ref={scrollRef}
+          onScroll={handleScrollUpdate}
           onMouseDown={handleMouseDown}
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
@@ -124,14 +202,14 @@ export function PracticeAreasFamilia() {
               style={{ zIndex: 10 + idx }}
               className="w-[82vw] max-w-[340px] sm:w-[320px] md:w-[340px] lg:w-[380px] shrink-0 snap-start transition-all duration-300 hover:-translate-y-3 hover:scale-[1.02] hover:z-40 focus-within:z-40 p-1 will-change-transform transform-gpu"
             >
-              <div className="liquid-glass-card flex flex-col items-center text-center h-full w-full p-5 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/20">
+              <div className="liquid-glass-card flex flex-col items-center text-center h-full w-full p-5 sm:p-8">
                 <div className="liquid-glass-icon mb-6 transition-transform duration-500 group-hover:scale-110">
                   {area.icon}
                 </div>
                 <h3 className="title-highlight text-xl sm:text-2xl mb-3 relative z-10 font-serif">
                   {area.title}
                 </h3>
-                <p className="card-text text-xs sm:text-sm text-zinc-300 leading-relaxed relative z-10 font-normal">
+                <p className="card-text text-xs sm:text-sm leading-relaxed relative z-10 font-normal">
                   {area.desc}
                 </p>
               </div>
@@ -146,9 +224,9 @@ export function PracticeAreasFamilia() {
           href="https://api.whatsapp.com/send/?phone=5561991591105&text=Ol%C3%A1%21+Gostaria+de+falar+com+um+advogado+especialista+em+Direito+de+Fam%C3%ADlia.&type=phone_number&app_absent=0"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-4 sm:px-10 py-3.5 sm:py-4 min-h-[48px] rounded-full font-bold flex items-center justify-center gap-2.5 sm:gap-3 hover:scale-105 transition-transform shadow-[0_0_25px_rgba(52,211,153,0.45)] text-xs sm:text-sm md:text-base w-full sm:w-auto sm:whitespace-nowrap text-center leading-snug"
+          className="apple-glass apple-glass-whatsapp px-5 sm:px-10 py-3.5 sm:py-4 min-h-[48px] rounded-full font-bold flex items-center justify-center gap-2.5 sm:gap-3 text-xs sm:text-sm md:text-base w-full sm:w-auto sm:whitespace-nowrap text-center leading-snug"
         >
-          <WhatsAppIcon className="w-5 h-5 shrink-0" />
+          <WhatsAppIcon className="w-5 h-5 shrink-0 text-emerald-300" />
           <span>Falar com um advogado da área pelo WhatsApp</span>
         </a>
       </div>

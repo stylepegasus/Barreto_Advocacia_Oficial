@@ -1,7 +1,8 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { LiquidGlassDefs } from './components/LiquidGlassDefs';
 
 // Pages - Home permanece estática para carregamento instantâneo
 import { Home } from './pages/Home';
@@ -15,7 +16,6 @@ const EstudoPage = lazy(() => import('./pages/EstudoPage').then(m => ({ default:
 const AntonioRomanoPage = lazy(() => import('./pages/AntonioRomanoPage').then(m => ({ default: m.AntonioRomanoPage })));
 const FamiliaPage = lazy(() => import('./pages/FamiliaPage').then(m => ({ default: m.FamiliaPage })));
 
-import { useEffect } from 'react';
 import { MetaPixelRouterListener } from './components/MetaPixelRouterListener';
 import { GoogleAnalyticsRouterListener } from './components/GoogleAnalyticsRouterListener';
 import { initClarity } from './lib/clarity';
@@ -57,8 +57,6 @@ function CleanLayout() {
 
 export default function App() {
   useEffect(() => {
-    // VITE_CLARITY_ID env variable should be set in production/Vercel settings
-    // E.g., VITE_CLARITY_ID=your_id_here
     const clarityId = import.meta.env.VITE_CLARITY_ID;
     if (clarityId) {
       initClarity(clarityId);
@@ -67,6 +65,7 @@ export default function App() {
 
   return (
     <Router>
+      <LiquidGlassDefs />
       <MetaPixelRouterListener />
       <GoogleAnalyticsRouterListener />
       <div className="min-h-screen bg-bg-primary text-text-primary font-sans transition-colors duration-300">

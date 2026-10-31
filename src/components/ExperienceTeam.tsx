@@ -164,7 +164,7 @@ export function ExperienceTeam() {
                 tabIndex={0}
                 aria-haspopup="dialog"
                 aria-label={`Ver perfil completo de ${member.name}`}
-                className="liquid-glass-card overflow-hidden group p-1 cursor-pointer hover:shadow-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-accent-primary"
+                className="liquid-glass-card hover-lift overflow-hidden group p-1 cursor-pointer focus-visible:outline-2 focus-visible:outline-accent-primary"
                 onClick={() => setSelectedMember(idx)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -187,8 +187,10 @@ export function ExperienceTeam() {
                         height="400"
                       />
                     </picture>
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span className="text-white font-medium px-4 py-2 border border-white/30 rounded-full backdrop-blur-sm">Ver Perfil</span>
+                    <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="apple-glass px-5 py-2.5 min-h-[44px] inline-flex items-center justify-center text-white text-sm font-medium rounded-full">
+                        Ver Perfil
+                      </span>
                     </div>
                   </div>
                   <div className="p-5 sm:p-6 text-center relative z-10 flex-1 flex flex-col justify-center">
@@ -202,7 +204,7 @@ export function ExperienceTeam() {
         </div>
       </section>
 
-      {/* MODAL DO MEMBRO DA EQUIPE */}
+      {/* MODAL DO MEMBRO DA EQUIPE COM APPLE LIQUID GLASS */}
       {selectedMember !== null && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6"
@@ -211,22 +213,23 @@ export function ExperienceTeam() {
           aria-labelledby="team-modal-title"
         >
           <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+            className="absolute inset-0 bg-black/65 backdrop-blur-md transition-opacity"
             onClick={() => setSelectedMember(null)}
             aria-hidden="true"
           ></div>
           
-          <div className="relative w-full max-w-3xl bg-bg-secondary border border-text-primary/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[88vh] sm:max-h-[90vh]">
+          <div className="relative w-full max-w-3xl apple-glass apple-glass-modal apple-glass-static overflow-hidden flex flex-col md:flex-row max-h-[88vh] sm:max-h-[90vh]">
             <button 
               type="button"
               onClick={() => setSelectedMember(null)}
-              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-black/70 text-white backdrop-blur-md transition-colors cursor-pointer"
+              className="apple-glass absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-white cursor-pointer"
               aria-label="Fechar perfil"
               title="Fechar"
             >
               <X className="w-5 h-5" />
             </button>
 
+            {/* Foto sem vidro sobreposto */}
             <div className="w-full md:w-2/5 h-56 sm:h-64 md:h-auto relative shrink-0">
               <picture>
                 <source srcSet={team[selectedMember].img.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />

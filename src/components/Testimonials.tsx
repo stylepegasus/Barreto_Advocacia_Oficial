@@ -20,7 +20,7 @@ export function Testimonials() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const timeoutsRef = useRef<{[key: number]: NodeJS.Timeout}>({});
+  const timeoutsRef = useRef<{[key: number]: ReturnType<typeof setTimeout>}>({});
 
   // Title Reveal Effect (Scroll Scrubbing)
   useEffect(() => {
@@ -63,7 +63,7 @@ export function Testimonials() {
         const scale = 0.95 + 0.05 * easeOut;
 
         spanElement.style.opacity = opacity.toString();
-        spanElement.style.transform = `translateY(${translateY}px) scale(${scale})`;
+        spanElement.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`;
         spanElement.style.transition = 'none';
       });
     };
@@ -174,7 +174,7 @@ export function Testimonials() {
             data-index={idx}
             className="reveal-card"
           >
-            <div className="card-premium-glow testimonial-quote-bg p-2 md:p-3 text-center transition-all duration-500 hover:-translate-y-2 rounded-[24px]">
+            <div className="liquid-glass-card hover-lift testimonial-quote-bg p-2 md:p-3 text-center rounded-[24px]">
               <div className="card-content flex flex-col h-full w-full p-6 md:p-8">
                 <div className="flex justify-center gap-1 mb-4 relative z-10">
                   {[...Array(5)].map((_, i) => (
@@ -195,10 +195,10 @@ export function Testimonials() {
           href="https://search.google.com/local/writereview?placeid=ChIJORpFOFk7WpMR17lKbaOXouk"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white/10 border border-white/20 text-text-primary px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:bg-white/20 transition-colors backdrop-blur-sm inline-flex"
+          className="apple-glass apple-glass-adaptive text-text-primary px-6 py-3 min-h-[44px] rounded-full font-medium inline-flex items-center gap-2"
         >
-          <MapPin className="w-5 h-5 text-accent-primary" />
-          Avaliar no Google Maps
+          <MapPin className="w-5 h-5 text-accent-primary shrink-0" />
+          <span>Avaliar no Google Maps</span>
         </a>
       </div>
     </section>

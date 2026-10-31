@@ -37,9 +37,10 @@ export function PracticeAreas() {
           </p>
         </div>
         
+        {/* Vidro secundário sutil para leitura clara */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12">
           {areas.map((area, idx) => (
-            <div key={idx} className="card-premium-glow hover-lift group flex flex-col items-center text-center p-2 md:p-3 rounded-[24px]">
+            <div key={idx} className="liquid-glass-card hover-lift group flex flex-col items-center text-center p-2 md:p-3 rounded-[24px]">
               <div className="card-content flex flex-col items-center text-center h-full w-full p-6">
                 <div className="liquid-glass-icon mb-6 group-hover:scale-110 transition-transform duration-500">
                   {area.icon}
@@ -56,9 +57,9 @@ export function PracticeAreas() {
             href="https://api.whatsapp.com/send/?phone=5561991591105&text=Ol%C3%A1%21+Vi+as+%C3%A1reas+de+atua%C3%A7%C3%A3o+no+site+e+gostaria+de+falar+com+um+advogado+especialista.&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-4 py-3.5 sm:px-8 sm:py-4 min-h-[48px] rounded-full font-bold flex items-center justify-center gap-2.5 hover:scale-105 transition-transform shadow-[0_0_20px_rgba(52,211,153,0.4)] text-xs sm:text-sm md:text-base w-full sm:w-auto sm:whitespace-nowrap text-center leading-snug"
+            className="apple-glass apple-glass-whatsapp px-5 py-3.5 sm:px-8 sm:py-4 min-h-[48px] rounded-full font-bold flex items-center justify-center gap-2.5 text-xs sm:text-sm md:text-base w-full sm:w-auto sm:whitespace-nowrap text-center leading-snug"
           >
-            <WhatsAppIcon className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] shrink-0" />
+            <WhatsAppIcon className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] shrink-0 text-emerald-300" />
             <span>Falar com um advogado da área pelo WhatsApp</span>
           </a>
         </div>

@@ -22,7 +22,7 @@ export function Footer() {
           {/* Logo & About */}
           <div className="flex flex-col items-start lg:col-span-1">
             <div className="flex items-center gap-2 mb-6">
-              <Link to="/">
+              <Link to="/" className="min-h-[44px] flex items-center">
                 <picture>
                   <source srcSet="/assets/branding/logo/logo-footer.webp" type="image/webp" />
                   <img
@@ -74,7 +74,7 @@ export function Footer() {
                   onClick={() => trackMetaEvent('Contact', { contact_method: 'Phone', content_name: 'Link Telefone Footer' })}
                   className="group relative flex items-center gap-2 hover:text-accent-primary transition-colors"
                 >
-                  <Phone className="w-4 h-4 text-accent-primary" />
+                  <Phone className="w-4 h-4 text-accent-primary shrink-0" />
                   <span>+55 61 99159-1105</span>
                 </a>
               </li>
@@ -82,21 +82,39 @@ export function Footer() {
                 <a 
                   href="mailto:barretoadvocacia01@gmail.com" 
                   onClick={() => trackMetaEvent('Contact', { contact_method: 'Email', content_name: 'Link Email Footer' })}
-                  className="group relative flex items-center gap-2 hover:text-accent-primary transition-colors"
+                  className="group relative flex items-center gap-2 hover:text-accent-primary transition-colors break-all"
                 >
-                  <Mail className="w-4 h-4 text-accent-primary" />
+                  <Mail className="w-4 h-4 text-accent-primary shrink-0" />
                   <span>barretoadvocacia01@gmail.com</span>
                 </a>
               </li>
             </ul>
-            <div className="flex items-center gap-4 mt-6">
-              <a href="https://www.facebook.com/people/Barreto-Advocacia/61567819823685/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-text-primary/10 flex items-center justify-center text-text-primary hover:bg-accent-primary hover:text-white transition-colors">
+            <div className="flex items-center gap-3 mt-6">
+              <a
+                href="https://www.facebook.com/people/Barreto-Advocacia/61567819823685/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook da Barreto Advocacia"
+                className="apple-glass apple-glass-adaptive w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center text-text-primary hover:text-accent-primary"
+              >
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href="https://instagram.com/barretoadv.esp/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-text-primary/10 flex items-center justify-center text-text-primary hover:bg-accent-primary hover:text-white transition-colors">
+              <a
+                href="https://instagram.com/barretoadv.esp/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram da Barreto Advocacia"
+                className="apple-glass apple-glass-adaptive w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center text-text-primary hover:text-accent-primary"
+              >
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="https://www.linkedin.com/in/luis-goncalves336/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-text-primary/10 flex items-center justify-center text-text-primary hover:bg-accent-primary hover:text-white transition-colors">
+              <a
+                href="https://www.linkedin.com/in/luis-goncalves336/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn de Luis Gonçalves"
+                className="apple-glass apple-glass-adaptive w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center text-text-primary hover:text-accent-primary"
+              >
                 <Linkedin className="w-4 h-4" />
               </a>
             </div>

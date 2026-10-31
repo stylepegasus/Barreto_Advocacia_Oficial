@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { HeroFamilia } from '../components/HeroFamilia';
@@ -59,6 +60,17 @@ const familiaSchema = {
 };
 
 export function FamiliaPage() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <main className="flex flex-col relative bg-bg-primary min-h-screen">
       <SEO
@@ -72,11 +84,21 @@ export function FamiliaPage() {
         schema={familiaSchema}
       />
 
-      {/* Header Fixo Minimalista */}
+      {/* Header Fixo Minimalista com Apple Liquid Glass */}
       <header className="fixed top-0 left-0 right-0 z-50 p-3 sm:p-4 sm:px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
           {/* Logo linkando para Home */}
-          <Link to="/" className="flex items-center gap-2 liquid-glass-nav p-2 sm:px-3 min-h-[42px] rounded-2xl shadow-lg hover:border-accent-primary/40 transition-all">
+          <Link
+            to="/"
+            aria-label="Voltar para a página inicial da Barreto Advocacia"
+            className={`apple-glass apple-glass-nav apple-glass-refractive flex items-center gap-2 px-3.5 py-2 min-h-[44px] rounded-full ${
+              isScrolled ? 'is-scrolled' : ''
+            }`}
+          >
+            <div
+              className="pointer-events-none absolute inset-x-3 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent"
+              aria-hidden="true"
+            />
             <picture>
               <source srcSet="/assets/branding/logo/logo-barreto.webp" type="image/webp" />
               <img
@@ -96,9 +118,9 @@ export function FamiliaPage() {
             href="https://api.whatsapp.com/send/?phone=5561991591105&text=Vi+o+site+de+voc%C3%AAs+pelo+Google+e+gostaria+de+falar+sobre+um+caso+de+fam%C3%ADlia.&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-3.5 py-2.5 sm:px-4 sm:py-2.5 min-h-[42px] rounded-full font-bold text-xs sm:text-sm flex items-center gap-2 hover:scale-105 transition-transform shadow-[0_0_15px_rgba(52,211,153,0.3)]"
+            className="apple-glass apple-glass-whatsapp px-4 py-2.5 sm:px-5 sm:py-2.5 min-h-[44px] rounded-full font-semibold text-xs sm:text-sm flex items-center gap-2"
           >
-            <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+            <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-emerald-300" />
             <span className="hidden sm:inline">Falar com Advogado</span>
             <span className="sm:hidden">WhatsApp</span>
           </a>
@@ -108,7 +130,7 @@ export function FamiliaPage() {
       {/* 1. Hero Content */}
       <HeroFamilia />
 
-      {/* 2. Áreas de Atuação Exclusivas de Família (Cards Empilhados com Desempilhamento Lateral) */}
+      {/* 2. Áreas de Atuação Exclusivas de Família (Carrossel com Navegação Apple Glass) */}
       <PracticeAreasFamilia />
 
       {/* 3. Por que escolher a Barreto Advocacia */}

@@ -21,10 +21,10 @@ export function Location() {
           href="https://maps.app.goo.gl/4rF6fr6WMpUeTttx6"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold flex items-center gap-2 hover:scale-105 transition-transform shadow-[0_0_20px_rgba(52,211,153,0.4)] text-sm sm:text-base inline-flex"
+          className="apple-glass apple-glass-whatsapp px-6 sm:px-8 py-3.5 sm:py-4 min-h-[48px] rounded-full font-bold inline-flex items-center gap-2.5 text-sm sm:text-base"
         >
-          <MapPin className="w-5 h-5" />
-          Ver Localização no Google Maps
+          <MapPin className="w-5 h-5 shrink-0 text-emerald-300" />
+          <span>Ver Localização no Google Maps</span>
         </a>
       </div>
     </section>
