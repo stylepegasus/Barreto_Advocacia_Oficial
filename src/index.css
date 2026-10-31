@@ -73,12 +73,19 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px; /* Account for fixed navbar */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  overflow-x: hidden;
   overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .theme-ready body {
@@ -100,20 +107,20 @@ body {
 
   .liquid-glass-card {
     background: var(--lg-card-bg);
-    backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: blur(16px) saturate(180%);
     border: 1px solid var(--lg-card-border);
     border-radius: 24px;
     box-shadow: var(--lg-card-shadow);
     isolation: isolate;
     position: relative;
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .liquid-glass-nav {
     background: rgba(10, 10, 10, 0.65);
-    backdrop-filter: blur(20px) saturate(190%);
     -webkit-backdrop-filter: blur(20px) saturate(190%);
+    backdrop-filter: blur(20px) saturate(190%);
     border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
   }
@@ -127,14 +134,14 @@ body {
 
   .liquid-glass-pill {
     background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(12px) saturate(160%);
     -webkit-backdrop-filter: blur(12px) saturate(160%);
+    backdrop-filter: blur(12px) saturate(160%);
     border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.1);
   }
 
   .hover-lift {
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
   .hover-lift:hover {
@@ -146,14 +153,14 @@ body {
   /* Responsive adjustments */
   @media (min-width: 768px) {
     .liquid-glass-card {
-      backdrop-filter: blur(16px) saturate(180%);
       -webkit-backdrop-filter: blur(16px) saturate(180%);
+      backdrop-filter: blur(16px) saturate(180%);
     }
   }
   @media (max-width: 767px) {
     .liquid-glass-card {
-      backdrop-filter: blur(10px) saturate(160%);
       -webkit-backdrop-filter: blur(10px) saturate(160%);
+      backdrop-filter: blur(10px) saturate(160%);
       box-shadow: var(--lg-card-shadow-mobile);
     }
   }
@@ -165,12 +172,9 @@ body {
     z-index: 0;
     border-radius: 24px;
     background: var(--lg-card-before-bg);
-    backdrop-filter: blur(8px);
     box-shadow: var(--lg-card-before-shadow);
     opacity: 0.4;
-    filter: brightness(1.05) contrast(1.05);
     pointer-events: none;
-    transition: all 0.3s ease;
   }
 
   .liquid-glass-card::after {
@@ -179,18 +183,16 @@ body {
     inset: 0;
     z-index: -1;
     border-radius: 28px;
-    backdrop-filter: blur(16px);
     background: var(--lg-card-after-bg);
     box-shadow: var(--lg-card-after-shadow);
     opacity: 0.4;
-    filter: brightness(1.05) contrast(1.05);
     pointer-events: none;
-    transition: all 0.3s ease;
   }
 
   .liquid-glass-icon {
     border-radius: 50%;
     background: var(--lg-icon-bg);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid var(--lg-icon-border);
     box-shadow: var(--lg-icon-shadow);
@@ -201,7 +203,7 @@ body {
     justify-content: center;
     position: relative;
     z-index: 10;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
   }
 
   .card-text {
@@ -216,6 +218,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: var(--accent-primary);
     font-family: var(--font-serif);
     font-weight: 700;
   }
@@ -224,8 +227,6 @@ body {
     background: var(--lg-content-bg);
     border-radius: 20px;
     padding: 16px;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
     width: 100%;
     position: relative;
     z-index: 10;
@@ -237,6 +238,7 @@ body {
     position: relative;
     overflow: hidden;
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -266,7 +268,7 @@ body {
   }
 
   .parallax-title {
-    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-size: clamp(2.1rem, 7vw, 5rem);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.03em;
@@ -277,7 +279,8 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    padding: 0 0.5rem;
+    color: var(--accent-primary);
+    padding: 0 0.25rem;
     display: inline-block;
     white-space: normal;
     word-break: break-word;
@@ -326,26 +329,27 @@ body {
   }
 
   .hero-subtitle {
-    font-size: clamp(1rem, 3vw, 1.8rem);
+    font-size: clamp(0.95rem, 3vw, 1.8rem);
     font-weight: 400;
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
     opacity: 0.9;
     line-height: 1.4;
-    padding: 0 0.5rem;
+    padding: 0 0.25rem;
   }
 
   .hero-areas {
-    font-size: clamp(0.75rem, 2vw, 1.1rem);
+    font-size: clamp(0.7rem, 2vw, 1.1rem);
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     background: var(--title-highlight-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: var(--accent-primary);
     line-height: 1.5;
-    padding: 0 0.5rem;
+    padding: 0 0.25rem;
     display: inline-block;
   }
 
@@ -388,15 +392,15 @@ body {
 
   .reveal-title span.reveal-char {
     opacity: 0;
-    transform: translateY(24px) scale(0.95);
+    transform: translate3d(0, 24px, 0) scale(0.95);
     display: inline-block;
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: opacity, transform;
   }
 
   .reveal-title.is-visible span.reveal-char {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
   .reveal-title:not(.is-visible) span.reveal-char {
@@ -405,10 +409,12 @@ body {
   }
 
   .sticky-title-container {
+    position: -webkit-sticky;
     position: sticky;
-    top: 120px; /* Abaixo do header fixo */
+    top: 100px; /* Abaixo do header fixo */
     z-index: 30;
     background: var(--lg-card-bg);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     border: 1px solid var(--lg-card-border);
     border-radius: 24px;
@@ -425,15 +431,15 @@ body {
 
   .reveal-card {
     opacity: 0;
-    transform: translateY(32px);
-    transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translate3d(0, 32px, 0);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transition-delay: 0s;
     will-change: opacity, transform;
   }
 
   .reveal-card.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -578,7 +584,7 @@ body {
     object-fit: cover;
     object-position: center;
     display: block;
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -659,7 +665,7 @@ body {
     color: rgba(197, 168, 128, 0.07);
     z-index: 0;
     pointer-events: none;
-    }
+  }
 
   /* --- Antonio Romano Page Animations --- */
   @keyframes fadeInUpRomano {

@@ -1,58 +1,70 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
+
+interface TeamMember {
+  name: string;
+  role: string;
+  img: string;
+  alt: string;
+  description?: string;
+  experience: string;
+  education: string;
+  areas?: string;
+  cases: string;
+}
 
 export function TeamFamilia() {
   const [selectedMember, setSelectedMember] = useState<number | null>(null);
 
-  const team = [
+  useEffect(() => {
+    if (selectedMember === null) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedMember(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedMember]);
+
+  const team: TeamMember[] = [
     { 
       name: "Dr. Gilmar Freitas", 
       role: "Advogado com atuação em Direito de Família, Sucessões e Cível, com pós-graduação em Direito Civil e Processo Civil e em Direito Imobiliário e Condominial.", 
       img: "/assets/images/team/dr-gilmar-freitas-team.webp",
+      alt: "Dr. Gilmar Freitas, advogado com atuação em Direito de Família, Sucessões e Cível",
       experience: "Atua em demandas de família, partilhas patrimoniais e conflitos civis com organização, estratégia e atenção aos detalhes, oferecendo condução jurídica segura em conflitos patrimoniais, acordos e questões processuais.",
       education: "Pós-Graduado em Direito Civil e Processo Civil – Lato Sensu e em Direito Imobiliário e Condominial – Lato Sensu, possui formação voltada à atuação estratégica em demandas patrimoniais, contratuais, civis e de família.",
       cases: "Atuação em divórcios, partilhas patrimoniais, contratos e conflitos que exigem planejamento processual, análise técnica e condução consistente ao longo do caso."
     },
     { 
-      name: "Dra. Danielle Fernandes", 
-      role: "Advogada Especialista em Direito de Família e Direito Administrativo.", 
-      img: "/assets/images/team/dra-danielle-fernandes-team.webp",
-      experience: "Atua em demandas de família e administrativas com abordagem humana, técnica e cuidadosa, compreendendo que muitos casos exigem sensibilidade no atendimento e firmeza na orientação jurídica.",
-      education: "Especialista em Direito de Família e Direito Administrativo, possui formação voltada à condução responsável de questões familiares, patrimoniais e demandas relacionadas à administração pública.",
-      cases: "Atuação em conflitos familiares, reorganização de vínculos jurídicos e demandas administrativas que exigem análise precisa, postura estratégica e acompanhamento próximo do cliente."
-    },
-    { 
       name: "Dr. Paulo Barreto", 
       role: "Fundador, Advogado Criminalista, Mestrando em Direito Processual Penal e Especialista em Lei de Drogas e Recursos.", 
       img: "/assets/images/team/dr-paulo-barreto-team.webp",
+      alt: "Dr. Paulo Barreto, fundador e advogado criminalista da Barreto Advocacia em Brasília",
       experience: "Com 10 anos de atuação na advocacia criminal, conduz defesas estratégicas em investigações, processos penais e casos de maior sensibilidade, sempre com análise técnica, postura firme e leitura realista de cada cenário.",
       education: "Mestrando em Direito Processual Penal, com especialização em Lei de Drogas e Recursos, reúne formação direcionada à advocacia criminal e atualização constante para atuação precisa em casos complexos.",
       cases: "Atuação em investigações criminais, processos penais, medidas urgentes e recursos, com foco em estratégia defensiva, proteção de direitos e acompanhamento técnico em todas as fases do caso."
     },
     { 
-      name: "Dra. Rebecca Castro", 
-      role: "Advogada Criminalista, Especializada em Execução Penal e Tribunal do Júri, Pós-Graduada em Criminologia.", 
-      img: "/assets/images/team/dra-rebecca-castro-team.webp",
-      alt: "Dra. Rebecca Castro - Barreto Advocacia",
-      experience: "Atua na advocacia criminal com atenção especial a execução penal e Tribunal do Júri, conduzindo casos com sensibilidade, firmeza técnica e cuidado estratégico em cada etapa da defesa.",
-      education: "Especializada em Execução Penal e Tribunal do Júri, com pós-graduação em Criminologia, possui formação voltada à compreensão aprofundada da dinâmica criminal e da construção técnica da defesa.",
-      cases: "Atuação em pedidos e acompanhamentos na execução penal, procedimentos ligados ao Tribunal do Júri e casos que exigem leitura cuidadosa dos fatos, da prova e da estratégia processual."
+      name: "Dra. Cleide Alves", 
+      role: "Advogada Criminalista e Especialista em Tribunal do Júri.", 
+      img: "/assets/images/team/cleide-alves.jpg",
+      alt: "Dra. Cleide Alves, advogada criminalista e especialista em Tribunal do Júri",
+      description: "Advogada Criminalista com atuação dedicada à defesa técnica em processos criminais e especialização em Tribunal do Júri. Sua atuação conecta-se diretamente à vertente Criminal do escritório, com foco na análise rigorosa dos autos, na construção de teses defensivas e na condução estratégica de demandas que exigem preparo técnico, clareza e atenção aos detalhes.",
+      experience: "Atuação em defesa criminal com foco na análise de provas, estruturação de teses e acompanhamento estratégico de processos criminais.",
+      education: "Advogada Criminalista e Especialista em Tribunal do Júri.",
+      areas: "Direito Criminal e Tribunal do Júri.",
+      cases: "Defesa em processos criminais, análise técnica dos autos e atuação em demandas relacionadas ao Tribunal do Júri."
     },
     { 
       name: "Dr. Itamar Silveira", 
       role: "Advogado Criminalista, Delegado de Polícia Aposentado e Professor Universitário.", 
       img: "/assets/images/team/dr-itamar-silveira-team.webp",
+      alt: "Dr. Itamar Silveira, advogado criminalista da Barreto Advocacia em Brasília",
       experience: "Reúne experiência prática no sistema de persecução penal e atuação na advocacia criminal, oferecendo visão ampla sobre investigações, procedimentos policiais e definição estratégica da defesa.",
       education: "Sua trajetória combina atuação como advogado criminalista, Delegado de Polícia Aposentado e Professor Universitário, unindo prática, estudo e leitura aprofundada do Direito Penal.",
       cases: "Atuação em casos criminais que exigem compreensão detalhada da investigação, leitura técnica do procedimento policial e orientação estratégica desde as fases iniciais."
-    },
-    { 
-      name: "Dr. Charleson Victor", 
-      role: "Advogado Trabalhista, Especialista em Direito e Processo do Trabalho e Especialista em Ciências Criminais.", 
-      img: "/assets/images/team/dr-charleson-victor-team.webp",
-      experience: "Atua em demandas trabalhistas com foco na defesa de direitos, análise documental e estratégia processual, sempre com objetividade, atenção aos fatos e clareza na orientação ao cliente.",
-      education: "Especialista em Direito e Processo do Trabalho e em Ciências Criminais, reúne formação que fortalece a atuação analítica, a estruturação de teses e a condução técnica das demandas.",
-      cases: "Atuação em conflitos trabalhistas, análise de verbas, disputas decorrentes da relação de trabalho e casos que exigem organização probatória e acompanhamento processual cuidadoso."
     },
     {
       name: "Dr. Antônio A. Romano",
@@ -67,6 +79,7 @@ export function TeamFamilia() {
       name: "Luis Gonçalves", 
       role: "Estagiário, Web Designer, Gestor de Tráfego e Estudante de Direito na UPIS.", 
       img: "/assets/images/team/luis-goncalves-team.webp",
+      alt: "Luis Gonçalves, estagiário e estudante de Direito na UPIS",
       experience: "Atua no suporte às frentes digitais e institucionais do escritório, contribuindo com organização da presença online, comunicação estratégica e melhoria da experiência de contato com os clientes.",
       education: "Estudante de Direito na UPIS, com atuação complementar em web design e gestão de tráfego, reúne visão prática sobre comunicação, posicionamento digital e experiência aplicada ao ambiente jurídico.",
       cases: "Participação no fortalecimento digital do escritório, estruturação de presença online, apoio à comunicação institucional e melhoria da jornada de contato do cliente com a Barreto Advocacia."
@@ -75,9 +88,32 @@ export function TeamFamilia() {
       name: "Paulo Barreto Filho", 
       role: "Estagiário e Estudante de Direito no CEUB.", 
       img: "/assets/images/team/paulo-barreto-filho-team.webp",
+      alt: "Paulo Barreto Filho, estagiário e estudante de Direito no CEUB",
       experience: "Atua no suporte às rotinas do escritório, contribuindo com organização interna, suporte operacional e acompanhamento das atividades jurídicas, sempre com atenção aos detalhes e dedicação ao aprendizado prático.",
       education: "Estudante de Direito no CEUB, em formação contínua para atuação jurídica responsável, desenvolvendo experiência prática dentro da dinâmica real do escritório.",
       cases: "Apoio às atividades internas, organização de demandas e participação nas rotinas que sustentam o funcionamento operacional e o atendimento da equipe jurídica."
+    },
+    { 
+      name: "Carlos Eduardo", 
+      role: "Estagiário e Estudante de Direito na Anhanguera.", 
+      img: "/assets/images/team/carlos-eduardo.jpg",
+      alt: "Carlos Eduardo, estagiário e estudante de Direito na Anhanguera",
+      description: "Estagiário e estudante de Direito na Anhanguera, com atuação de apoio na área de Direito de Família. Colabora na organização de documentos, estruturação de peças e preparo técnico de demandas relacionadas a divórcio, pensão alimentícia, guarda, convivência e partilha de bens. Também contribui com apoio em tecnologia da informação, fortalecendo a organização interna e os processos digitais do escritório.",
+      experience: "Apoio na estruturação de peças e documentos de Direito de Família, com foco em pensão alimentícia, guarda, convivência e partilha de bens.",
+      education: "Estudante de Direito na Anhanguera.",
+      areas: "Direito de Família e apoio em tecnologia da informação.",
+      cases: "Organização documental, estruturação de peças e apoio operacional em demandas de Direito de Família."
+    },
+    { 
+      name: "Laura Luna Mendeiros", 
+      role: "Estagiária e Estudante de Direito no CEUB.", 
+      img: "/assets/images/team/laura-luna-mendeiros.jpg",
+      alt: "Laura Luna Mendeiros, estagiária e estudante de Direito no CEUB",
+      description: "Estagiária e estudante de Direito no CEUB, com atuação de apoio nas áreas Criminal e de Família. Contribui com a organização interna de documentos, acompanhamento de rotinas processuais e preparo de materiais que sustentam a atuação técnica do escritório. Sua atuação reforça a estrutura operacional das demandas de defesa criminal e das questões familiares conduzidas pela equipe.",
+      experience: "Apoio na organização interna de documentos e rotinas das áreas Criminal e de Família.",
+      education: "Estudante de Direito no CEUB.",
+      areas: "Apoio em Direito Criminal e Direito de Família.",
+      cases: "Organização documental, acompanhamento de rotinas e apoio operacional em demandas criminais e familiares."
     },
   ];
 
@@ -90,9 +126,19 @@ export function TeamFamilia() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {team.map((member, idx) => (
             <div 
-              key={idx} 
-              className="liquid-glass-card overflow-hidden group p-1 cursor-pointer hover:shadow-xl transition-all duration-300"
+              key={member.name} 
+              role="button"
+              tabIndex={0}
+              aria-haspopup="dialog"
+              aria-label={`Ver perfil completo de ${member.name}`}
+              className="liquid-glass-card overflow-hidden group p-1 cursor-pointer hover:shadow-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-accent-primary"
               onClick={() => setSelectedMember(idx)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedMember(idx);
+                }
+              }}
             >
               <div className="card-content flex flex-col h-full w-full p-0 overflow-hidden">
                 <div className="team-photo-wrapper">
@@ -100,9 +146,10 @@ export function TeamFamilia() {
                     <source srcSet={member.img.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
                     <img
                       src={member.img}
-                      alt={member.alt ?? `Advogado(a) ${member.name} - Equipe de advogados da Barreto Advocacia em Brasília`}
+                      alt={member.alt}
                       className="team-photo group-hover:scale-105"
                       loading="lazy"
+                      decoding="async"
                       width="400"
                       height="400"
                     />
@@ -111,7 +158,7 @@ export function TeamFamilia() {
                     <span className="text-white font-medium px-4 py-2 border border-white/30 rounded-full backdrop-blur-sm">Ver Perfil</span>
                   </div>
                 </div>
-                <div className="p-6 text-center relative z-10 flex-1 flex flex-col justify-center">
+                <div className="p-5 sm:p-6 text-center relative z-10 flex-1 flex flex-col justify-center">
                   <h3 className="title-highlight text-lg font-bold relative z-10 mb-2">{member.name}</h3>
                   <p className="card-text text-xs leading-relaxed opacity-90">{member.role}</p>
                 </div>
@@ -123,48 +170,66 @@ export function TeamFamilia() {
 
       {/* MODAL DO MEMBRO DA EQUIPE */}
       {selectedMember !== null && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="team-familia-modal-title"
+        >
           <div 
             className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
             onClick={() => setSelectedMember(null)}
+            aria-hidden="true"
           ></div>
           
-          <div className="relative w-full max-w-3xl bg-bg-secondary border border-text-primary/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh] animate-in fade-in zoom-in-95 duration-300">
+          <div className="relative w-full max-w-3xl bg-bg-secondary border border-text-primary/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[88vh] sm:max-h-[90vh]">
             <button 
+              type="button"
               onClick={() => setSelectedMember(null)}
-              className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md transition-colors"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-black/70 text-white backdrop-blur-md transition-colors cursor-pointer"
+              aria-label="Fechar perfil"
               title="Fechar"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="w-full md:w-2/5 h-64 md:h-auto relative">
+            <div className="w-full md:w-2/5 h-56 sm:h-64 md:h-auto relative shrink-0">
               <picture>
                 <source srcSet={team[selectedMember].img.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
                 <img
                   src={team[selectedMember].img}
-                  alt={`Foto de ${team[selectedMember].name} - Equipe de advogados da Barreto Advocacia`}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
+                  alt={team[selectedMember].alt}
+                  className="w-full h-full object-cover object-top md:object-center"
+                  loading="eager"
+                  decoding="async"
                   width="400"
                   height="400"
                 />
               </picture>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:hidden"></div>
-              <div className="absolute bottom-4 left-4 right-4 md:hidden">
-                <h3 className="text-2xl font-serif font-bold text-white mb-1">{team[selectedMember].name}</h3>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent md:hidden pointer-events-none"></div>
+              <div className="absolute bottom-3 left-4 right-4 md:hidden">
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">{team[selectedMember].name}</h3>
               </div>
             </div>
 
-            <div className="w-full md:w-3/5 p-6 md:p-8 overflow-y-auto">
-              <div className="hidden md:block mb-6">
-                <h3 className="text-3xl font-serif font-bold text-text-primary mb-2">{team[selectedMember].name}</h3>
+            <div className="w-full md:w-3/5 p-5 sm:p-6 md:p-8 overflow-y-auto min-h-0 flex-1 overscroll-contain">
+              <div className="hidden md:block mb-5">
+                <h3 id="team-familia-modal-title" className="text-3xl font-serif font-bold text-text-primary mb-2">{team[selectedMember].name}</h3>
                 <p className="text-accent-primary font-medium text-sm">{team[selectedMember].role}</p>
               </div>
+              <div className="md:hidden mb-4">
+                <p className="text-accent-primary font-medium text-xs sm:text-sm">{team[selectedMember].role}</p>
+              </div>
 
-              <div className="space-y-6">
+              {team[selectedMember].description && (
+                <p className="text-text-secondary text-sm leading-relaxed mb-6 pb-5 border-b border-text-primary/10">
+                  {team[selectedMember].description}
+                </p>
+              )}
+
+              <div className="space-y-5">
                 <div>
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2 flex items-center gap-2">
+                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-text-muted mb-1.5 flex items-center gap-2">
                     <span className="w-4 h-[1px] bg-accent-primary"></span>
                     Experiência
                   </h4>
@@ -174,7 +239,7 @@ export function TeamFamilia() {
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2 flex items-center gap-2">
+                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-text-muted mb-1.5 flex items-center gap-2">
                     <span className="w-4 h-[1px] bg-accent-primary"></span>
                     Formação
                   </h4>
@@ -183,8 +248,20 @@ export function TeamFamilia() {
                   </p>
                 </div>
 
+                {team[selectedMember].areas && (
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-text-muted mb-1.5 flex items-center gap-2">
+                      <span className="w-4 h-[1px] bg-accent-primary"></span>
+                      Áreas de Atuação
+                    </h4>
+                    <p className="text-text-secondary text-sm leading-relaxed">
+                      {team[selectedMember].areas}
+                    </p>
+                  </div>
+                )}
+
                 <div>
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2 flex items-center gap-2">
+                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-text-muted mb-1.5 flex items-center gap-2">
                     <span className="w-4 h-[1px] bg-accent-primary"></span>
                     Casos de Destaque
                   </h4>

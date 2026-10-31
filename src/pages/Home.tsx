@@ -12,8 +12,12 @@ export function Home() {
   return (
     <main className="flex flex-col gap-24 pb-24">
       <SEO
-        title="Advogado em Brasília - Criminal, Cível e Trabalhista"
-        description="Barreto Advocacia é um escritório em Brasília especializado em Direito Criminal, Cível e Trabalhista. Atendimento ágil, sigiloso e estratégico para defender seus direitos."
+        title="Barreto Advocacia | Advogado em Brasília - Criminal, Cível e Família"
+        description="Escritório em Brasília com atuação em Direito Criminal, Cível, Família e Empresarial. Atendimento ágil, estratégico e sigiloso."
+        ogTitle="Barreto Advocacia | Advogado em Brasília - Criminal, Cível e Família"
+        ogDescription="Defesa estratégica e atendimento sigiloso em Direito Criminal, Cível, Família e Empresarial em Brasília/DF."
+        twitterTitle="Barreto Advocacia | Advogado em Brasília - Criminal, Cível e Família"
+        twitterDescription="Atendimento jurídico estratégico e sigiloso em Direito Criminal, Cível, Família e Empresarial em Brasília/DF."
         canonical="/"
       />
       <div id="home"><Hero /></div>

@@ -16,7 +16,7 @@ export function PracticeAreas() {
     {
       icon: <Users className="w-8 h-8 text-accent-primary" />,
       title: "FAMÍLIA",
-      desc: "Divórcio, guarda, pensão e inventário."
+      desc: "Divórcio, guarda, pensão alimentícia, partilha e inventário."
     },
     {
       icon: <Briefcase className="w-8 h-8 text-accent-primary" />,
@@ -51,12 +51,12 @@ export function PracticeAreas() {
           ))}
         </div>
 
-        <div className="flex justify-center w-full px-4">
+        <div className="flex justify-center w-full px-2 sm:px-4">
           <a 
             href="https://api.whatsapp.com/send/?phone=5561991591105&text=Ol%C3%A1%21+Vi+as+%C3%A1reas+de+atua%C3%A7%C3%A3o+no+site+e+gostaria+de+falar+com+um+advogado+especialista.&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-4 py-3 sm:px-8 sm:py-4 rounded-full font-bold flex items-center justify-center gap-2.5 hover:scale-105 transition-transform shadow-[0_0_20px_rgba(52,211,153,0.4)] text-[11px] sm:text-sm md:text-base w-full sm:w-auto whitespace-nowrap"
+            className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-4 py-3.5 sm:px-8 sm:py-4 min-h-[48px] rounded-full font-bold flex items-center justify-center gap-2.5 hover:scale-105 transition-transform shadow-[0_0_20px_rgba(52,211,153,0.4)] text-xs sm:text-sm md:text-base w-full sm:w-auto sm:whitespace-nowrap text-center leading-snug"
           >
             <WhatsAppIcon className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] shrink-0" />
             <span>Falar com um advogado da área pelo WhatsApp</span>

@@ -18,7 +18,7 @@ export function Features() {
     {
       icon: Target,
       title: "Defesa Estratégica",
-      desc: "Seja com um advogado criminal, cível ou trabalhista, montamos um plano de ação inteligente e focado na melhor solução prática.",
+      desc: "Seja em Direito Criminal, Cível, Família ou Empresarial, montamos um plano de ação inteligente e focado na melhor solução prática.",
       benefit: "Menos desgaste emocional e mais eficiência na resolução."
     },
     {
@@ -32,7 +32,7 @@ export function Features() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const timeoutsRef = useRef<{[key: number]: NodeJS.Timeout}>({});
+  const timeoutsRef = useRef<{[key: number]: ReturnType<typeof setTimeout>}>({});
 
   // Title Reveal Effect (Scroll Scrubbing)
   useEffect(() => {
@@ -78,7 +78,7 @@ export function Features() {
         const scale = 0.95 + 0.05 * easeOut;
 
         spanElement.style.opacity = opacity.toString();
-        spanElement.style.transform = `translateY(${translateY}px) scale(${scale})`;
+        spanElement.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`;
         spanElement.style.transition = 'none'; // Disable CSS transitions for scrubbing
       });
     };
@@ -150,19 +150,17 @@ export function Features() {
       { text: "Barreto Advocacia?", highlight: true }
     ];
     
-    let charIndex = 0;
     let highlightCharIndex = 0;
     const totalHighlightChars = fullText.filter(s => s.highlight).reduce((acc, s) => acc + s.text.length, 0);
     
     return (
-      <h2 className="text-3xl md:text-5xl font-serif font-bold text-text-primary mb-6 tracking-tight reveal-title" ref={titleRef}>
+      <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-text-primary mb-6 tracking-tight reveal-title" ref={titleRef}>
         {fullText.map((segment, sIdx) => (
           <span key={sIdx} className={segment.highlight ? "font-serif font-bold" : ""}>
             {segment.text.split(' ').map((word, wIdx, arr) => {
               const isLast = wIdx === arr.length - 1;
               if (word === '') {
                 if (!isLast) {
-                  const index = charIndex++;
                   let extraStyle: React.CSSProperties = {};
                   if (segment.highlight) {
                     const hIndex = highlightCharIndex++;
@@ -182,7 +180,6 @@ export function Features() {
               return (
                 <span key={wIdx} className="inline-block whitespace-nowrap">
                   {word.split('').map((char, cIdx) => {
-                    const index = charIndex++;
                     let extraStyle: React.CSSProperties = {};
                     if (segment.highlight) {
                       const hIndex = highlightCharIndex++;
@@ -202,7 +199,6 @@ export function Features() {
                     );
                   })}
                   {!isLast && (() => {
-                    const index = charIndex++;
                     let extraStyle: React.CSSProperties = {};
                     if (segment.highlight) {
                       const hIndex = highlightCharIndex++;
@@ -232,7 +228,7 @@ export function Features() {
 
   return (
     <section ref={sectionRef} className="section-with-depth letter-reveal-section relative px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-20 rounded-[24px] sm:rounded-[40px]">
-      <div className="text-center sticky-title-container reveal-container p-6 sm:p-8">
+      <div className="text-center sticky-title-container reveal-container p-5 sm:p-8">
         {renderRevealedText()}
         <p className="text-text-secondary max-w-2xl mx-auto text-base sm:text-lg md:text-xl font-light section-desc px-4">
           Entenda por que nosso atendimento jurídico é a escolha certa para quem busca resultados e não tem tempo a perder.

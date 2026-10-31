@@ -16,7 +16,7 @@ const familiaSchema = {
   "@context": "https://schema.org",
   "@type": "LegalService",
   "name": "Barreto Advocacia — Direito de Família",
-  "description": "Escritório especializado em Direito de Família em Brasília/DF: divórcio consensual e litigioso, guarda de filhos, partilha de bens, inventário e pensão alimentícia.",
+  "description": "Atuação em divórcio, guarda, pensão alimentícia, partilha de bens e inventário em Brasília/DF. Atendimento humanizado, técnico e sigiloso.",
   "url": "https://www.advocaciabarreto.com/familia",
   "telephone": "+5561991591105",
   "address": {
@@ -35,9 +35,9 @@ const familiaSchema = {
     "Divórcio Consensual",
     "Divórcio Litigioso",
     "Guarda de Filhos",
+    "Pensão Alimentícia",
     "Partilha de Bens",
     "Inventário",
-    "Pensão Alimentícia",
     "União Estável"
   ],
   "hasOfferCatalog": {
@@ -45,10 +45,10 @@ const familiaSchema = {
     "name": "Áreas de Atuação em Direito de Família",
     "itemListElement": [
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Divórcio" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Guarda de Filhos" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Inventário e Herança" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Guarda e Visitas" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pensão Alimentícia" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Partilha de Bens" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pensão Alimentícia" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Inventário e Herança" } }
     ]
   },
   "parentOrganization": {
@@ -62,17 +62,21 @@ export function FamiliaPage() {
   return (
     <main className="flex flex-col relative bg-bg-primary min-h-screen">
       <SEO
-        title="Advocacia Familiar | Divórcio, Guarda e Herança"
-        description="Especialistas em Direito de Família em Brasília/DF. Divórcio consensual ou litigioso, guarda de filhos, partilha de bens e inventário. Consulta humanizada. Ligue agora."
+        title="Advogado de Família em Brasília | Divórcio, Guarda e Pensão | Barreto Advocacia"
+        description="Atuação em divórcio, guarda, pensão alimentícia, partilha de bens e inventário em Brasília/DF. Atendimento humanizado, técnico e sigiloso."
+        ogTitle="Advogado de Família em Brasília | Divórcio, Guarda e Pensão | Barreto Advocacia"
+        ogDescription="Defesa estratégica em Direito de Família em Brasília/DF: divórcio, guarda, pensão alimentícia, partilha e inventário."
+        twitterTitle="Advogado de Família em Brasília | Divórcio, Guarda e Pensão | Barreto Advocacia"
+        twitterDescription="Atuação técnica e sigilosa em Direito de Família em Brasília/DF: divórcio, guarda, pensão alimentícia, partilha e inventário."
         canonical="/familia"
         schema={familiaSchema}
       />
 
       {/* Header Fixo Minimalista */}
-      <header className="fixed top-0 left-0 right-0 z-50 p-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <header className="fixed top-0 left-0 right-0 z-50 p-3 sm:p-4 sm:px-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
           {/* Logo linkando para Home */}
-          <Link to="/" className="flex items-center gap-2 liquid-glass-nav p-2 sm:px-3 rounded-2xl shadow-lg hover:border-accent-primary/40 transition-all">
+          <Link to="/" className="flex items-center gap-2 liquid-glass-nav p-2 sm:px-3 min-h-[42px] rounded-2xl shadow-lg hover:border-accent-primary/40 transition-all">
             <picture>
               <source srcSet="/assets/branding/logo/logo-barreto.webp" type="image/webp" />
               <img
@@ -92,7 +96,7 @@ export function FamiliaPage() {
             href="https://api.whatsapp.com/send/?phone=5561991591105&text=Vi+o+site+de+voc%C3%AAs+pelo+Google+e+gostaria+de+falar+sobre+um+caso+de+fam%C3%ADlia.&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full font-bold text-[11px] sm:text-sm flex items-center gap-2 hover:scale-105 transition-transform shadow-[0_0_15px_rgba(52,211,153,0.3)]"
+            className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-3.5 py-2.5 sm:px-4 sm:py-2.5 min-h-[42px] rounded-full font-bold text-xs sm:text-sm flex items-center gap-2 hover:scale-105 transition-transform shadow-[0_0_15px_rgba(52,211,153,0.3)]"
           >
             <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
             <span className="hidden sm:inline">Falar com Advogado</span>
@@ -113,7 +117,7 @@ export function FamiliaPage() {
       {/* 4. Opções de Reunião: Presencial e Online */}
       <MeetingsFamilia />
 
-      {/* 5. Seção de Equipe (Dr. Gilmar e Dra. Danielle em destaque) */}
+      {/* 5. Seção de Equipe */}
       <TeamFamilia />
 
       {/* 6. 10 Anos de Experiência */}

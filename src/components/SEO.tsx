@@ -7,6 +7,10 @@ interface SEOProps {
   description: string;
   canonical?: string;
   ogImage?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
   schema?: object;
 }
 
@@ -19,8 +23,22 @@ function getCanonicalUrl(canonical?: string) {
   return url.toString();
 }
 
-export function SEO({ title, description, canonical, ogImage, schema }: SEOProps) {
-  const fullTitle = `${title} | Barreto Advocacia`;
+export function SEO({
+  title,
+  description,
+  canonical,
+  ogImage,
+  ogTitle,
+  ogDescription,
+  twitterTitle,
+  twitterDescription,
+  schema,
+}: SEOProps) {
+  const fullTitle = title.includes('Barreto Advocacia') ? title : `${title} | Barreto Advocacia`;
+  const finalOgTitle = ogTitle || fullTitle;
+  const finalOgDescription = ogDescription || description;
+  const finalTwitterTitle = twitterTitle || finalOgTitle;
+  const finalTwitterDescription = twitterDescription || finalOgDescription;
   const url = getCanonicalUrl(canonical);
   const image = ogImage || `${SITE_URL}/assets/branding/logo/logo-barreto.png`;
 
@@ -29,6 +47,7 @@ export function SEO({ title, description, canonical, ogImage, schema }: SEOProps
     "@type": "LegalService",
     "name": "Barreto Advocacia",
     "legalName": "PAULO BARRETO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+    "description": "Escritório em Brasília com atuação em Direito Criminal, Cível, Família e Empresarial. Atendimento ágil, estratégico e sigiloso.",
     "url": "https://www.advocaciabarreto.com/",
     "telephone": "+5561991591105",
     "email": "barretoadvocacia01@gmail.com",
@@ -43,7 +62,13 @@ export function SEO({ title, description, canonical, ogImage, schema }: SEOProps
     "areaServed": {
       "@type": "City",
       "name": "Brasília"
-    }
+    },
+    "serviceType": [
+      "Direito Criminal",
+      "Direito Cível",
+      "Direito de Família",
+      "Direito Empresarial"
+    ]
   };
 
   const finalSchema = schema || defaultSchema;
@@ -55,8 +80,8 @@ export function SEO({ title, description, canonical, ogImage, schema }: SEOProps
       <link rel="canonical" href={url} />
       
       {/* Open Graph */}
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={finalOgTitle} />
+      <meta property="og:description" content={finalOgDescription} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content="website" />
       <meta property="og:image" content={image} />
@@ -64,8 +89,8 @@ export function SEO({ title, description, canonical, ogImage, schema }: SEOProps
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:title" content={finalTwitterTitle} />
+      <meta name="twitter:description" content={finalTwitterDescription} />
       <meta name="twitter:image" content={image} />
 
       <script type="application/ld+json">

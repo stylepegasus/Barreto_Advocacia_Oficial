@@ -69,11 +69,11 @@ export function HeroFamilia() {
   }, []);
 
   return (
-    <section ref={heroRef} className="hero-section relative pt-32 pb-20 px-6 min-h-[100vh] flex items-center justify-center overflow-hidden bg-bg-primary">
+    <section ref={heroRef} className="hero-section relative pt-28 sm:pt-32 pb-20 px-4 sm:px-6 min-h-[100vh] flex items-center justify-center overflow-hidden bg-bg-primary">
       
       {/* Imagem de fundo com responsividade e efeito parallax */}
       <div ref={mediaRef} className="hero-parallax-media absolute inset-0 z-0" aria-hidden="true">
-        <picture className="contents">
+        <picture>
           <source media="(max-width: 768px)" srcSet="/assets/images/hero/familia-hero-mobile.png" />
           <img
             src="/assets/images/hero/familia-hero-desktop.png"
@@ -81,6 +81,7 @@ export function HeroFamilia() {
             className="w-full h-full object-cover"
             fetchPriority="high"
             loading="eager"
+            decoding="async"
             width="1920"
             height="1080"
           />
@@ -95,15 +96,15 @@ export function HeroFamilia() {
       <div className="absolute top-1/3 right-[10%] w-40 h-32 bg-text-primary/10 backdrop-blur-3xl border border-white/10 rounded-3xl -rotate-12 hidden lg:block shadow-2xl z-10"></div>
 
       {/* Card Principal - Liquid Glass Reforçado */}
-      <div className="hero-content relative z-20 max-w-4xl w-full bg-black/45 sm:bg-black/35 backdrop-blur-2xl border border-white/20 rounded-[2rem] p-6 sm:p-10 md:p-14 text-center shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] shadow-inner shadow-white/10">
+      <div className="hero-content relative z-20 max-w-4xl w-full bg-black/45 sm:bg-black/35 backdrop-blur-2xl border border-white/20 rounded-[2rem] p-5 sm:p-10 md:p-14 text-center shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] shadow-inner shadow-white/10">
         
         {/* Badges Focados em Família */}
         <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-accent-primary">
           <span className="flex items-center gap-1.5 px-3 py-1 bg-black/40 backdrop-blur-md rounded-full border border-accent-primary/30">
-            <Scale className="w-3.5 h-3.5" /> +10 Anos de Experiência
+            <Scale className="w-3.5 h-3.5 shrink-0" /> +10 Anos de Experiência
           </span>
           <span className="flex items-center gap-1.5 px-3 py-1 bg-black/40 backdrop-blur-md rounded-full border border-accent-primary/30">
-            <HeartHandshake className="w-3.5 h-3.5" /> +1.200 Casos Resolvidos
+            <HeartHandshake className="w-3.5 h-3.5 shrink-0" /> +1.200 Casos Resolvidos
           </span>
         </div>
 
@@ -117,25 +118,25 @@ export function HeroFamilia() {
         </h1>
         
         {/* Linha de Apoio (H2) Persuasiva e Curta */}
-        <h2 className="text-base sm:text-lg md:text-xl text-zinc-200 max-w-2xl mx-auto mb-8 leading-relaxed font-light drop-shadow-md">
-          Defesa estratégica e sigilosa em Direito de Família em Brasília/DF, resolvendo seu divórcio, guarda e pensão com o mínimo de desgaste possível.
+        <h2 className="text-sm sm:text-base md:text-xl text-zinc-200 max-w-3xl mx-auto mb-8 leading-relaxed font-light drop-shadow-md">
+          Defesa estratégica e sigilosa em Direito de Família em Brasília/DF, com atuação em divórcio, guarda, pensão alimentícia, partilha de bens e inventário, buscando conduzir cada etapa com clareza, técnica e menor desgaste possível.
         </h2>
 
         {/* Lista de Atuações com Ícones Semânticos e Acabamento Liquid Glass */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-xl mx-auto mb-10 text-left">
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 hover:bg-white/[0.09] transition-all">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 max-w-xl mx-auto mb-10 text-left">
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md text-zinc-100 text-xs sm:text-sm md:text-base font-medium hover:border-accent-primary/40 hover:bg-white/[0.09] transition-all">
             <FileText className="w-5 h-5 text-accent-primary shrink-0" />
             <span>Divórcio (Consensual e Litigioso)</span>
           </div>
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 hover:bg-white/[0.09] transition-all">
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md text-zinc-100 text-xs sm:text-sm md:text-base font-medium hover:border-accent-primary/40 hover:bg-white/[0.09] transition-all">
             <Users className="w-5 h-5 text-accent-primary shrink-0" />
             <span>Guarda e Regulamentação de Visitas</span>
           </div>
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 hover:bg-white/[0.09] transition-all">
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md text-zinc-100 text-xs sm:text-sm md:text-base font-medium hover:border-accent-primary/40 hover:bg-white/[0.09] transition-all">
             <Coins className="w-5 h-5 text-accent-primary shrink-0" />
             <span>Pensão Alimentícia (Fixação e Revisão)</span>
           </div>
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md text-zinc-100 text-sm sm:text-base font-medium hover:border-accent-primary/40 hover:bg-white/[0.09] transition-all">
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md text-zinc-100 text-xs sm:text-sm md:text-base font-medium hover:border-accent-primary/40 hover:bg-white/[0.09] transition-all">
             <PieChart className="w-5 h-5 text-accent-primary shrink-0" />
             <span>Partilha de Bens Justa</span>
           </div>
@@ -147,7 +148,7 @@ export function HeroFamilia() {
             href="https://api.whatsapp.com/send/?phone=5561991591105&text=Vi+a+p%C3%A1gina+de+voc%C3%AAs+no+Google+e+preciso+de+um+advogado+de+fam%C3%ADlia.&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-6 py-3.5 sm:px-10 sm:py-5 rounded-full font-bold flex items-center justify-center gap-3 mx-auto hover:scale-105 transition-transform shadow-[0_0_25px_rgba(52,211,153,0.5)] text-sm sm:text-base w-full sm:w-auto"
+            className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-5 py-3.5 sm:px-10 sm:py-5 min-h-[48px] rounded-full font-bold flex items-center justify-center gap-2.5 sm:gap-3 mx-auto hover:scale-105 transition-transform shadow-[0_0_25px_rgba(52,211,153,0.5)] text-xs sm:text-base w-full sm:w-auto text-center leading-snug"
           >
             <WhatsAppIcon className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
             <span>FALAR COM UM ESPECIALISTA AGORA</span>

@@ -113,6 +113,7 @@ export function PracticeAreasFamilia() {
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
+            WebkitOverflowScrolling: 'touch',
             WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%)',
             maskImage: 'linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%)'
           }}
@@ -121,9 +122,9 @@ export function PracticeAreasFamilia() {
             <div 
               key={idx} 
               style={{ zIndex: 10 + idx }}
-              className="w-[84vw] sm:w-[320px] md:w-[340px] lg:w-[380px] shrink-0 snap-start transition-all duration-300 hover:-translate-y-3 hover:scale-[1.02] hover:z-40 focus-within:z-40 p-1 will-change-transform transform-gpu"
+              className="w-[82vw] max-w-[340px] sm:w-[320px] md:w-[340px] lg:w-[380px] shrink-0 snap-start transition-all duration-300 hover:-translate-y-3 hover:scale-[1.02] hover:z-40 focus-within:z-40 p-1 will-change-transform transform-gpu"
             >
-              <div className="liquid-glass-card flex flex-col items-center text-center h-full w-full p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/20">
+              <div className="liquid-glass-card flex flex-col items-center text-center h-full w-full p-5 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/20">
                 <div className="liquid-glass-icon mb-6 transition-transform duration-500 group-hover:scale-110">
                   {area.icon}
                 </div>
@@ -140,12 +141,12 @@ export function PracticeAreasFamilia() {
       </div>
 
       {/* 5. CTA Final da Seção */}
-      <div className="flex justify-center w-full px-4 relative z-10">
+      <div className="flex justify-center w-full px-2 sm:px-4 relative z-10">
         <a 
           href="https://api.whatsapp.com/send/?phone=5561991591105&text=Ol%C3%A1%21+Gostaria+de+falar+com+um+advogado+especialista+em+Direito+de+Fam%C3%ADlia.&type=phone_number&app_absent=0"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-6 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold flex items-center justify-center gap-3 hover:scale-105 transition-transform shadow-[0_0_25px_rgba(52,211,153,0.45)] text-xs sm:text-sm md:text-base w-full sm:w-auto whitespace-nowrap"
+          className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-neutral-900 px-4 sm:px-10 py-3.5 sm:py-4 min-h-[48px] rounded-full font-bold flex items-center justify-center gap-2.5 sm:gap-3 hover:scale-105 transition-transform shadow-[0_0_25px_rgba(52,211,153,0.45)] text-xs sm:text-sm md:text-base w-full sm:w-auto sm:whitespace-nowrap text-center leading-snug"
         >
           <WhatsAppIcon className="w-5 h-5 shrink-0" />
           <span>Falar com um advogado da área pelo WhatsApp</span>

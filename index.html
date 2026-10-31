@@ -18,20 +18,20 @@
     </script>
     <meta name="google-site-verification" content="Re9ZZXGWk0E-qtBpj66HnlpPupbDeAjXkGUeHJG7Cdk" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Barreto Advocacia | Advogado em Brasília - Criminal, Civil e Trabalhista</title>
+    <title>Barreto Advocacia | Advogado em Brasília - Criminal, Cível e Família</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <meta name="description" content="Barreto Advocacia, escritório em Brasília especializado em Direito Criminal, Civil e Trabalhista. Defesa estratégica, atendimento ágil e sigiloso. Fale com um advogado." />
+    <meta name="description" content="Escritório em Brasília com atuação em Direito Criminal, Cível, Família e Empresarial. Atendimento ágil, estratégico e sigiloso." />
     <link rel="canonical" href="https://www.advocaciabarreto.com/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Barreto Advocacia | Advogado em Brasília - Criminal, Civil e Trabalhista" />
-    <meta property="og:description" content="Escritório de advocacia em Brasília especializado em Direito Criminal, Civil e Trabalhista. Atendimento ágil, estratégico e sigiloso. Fale com um advogado." />
+    <meta property="og:title" content="Barreto Advocacia | Advogado em Brasília - Criminal, Cível e Família" />
+    <meta property="og:description" content="Defesa estratégica e atendimento sigiloso em Direito Criminal, Cível, Família e Empresarial em Brasília/DF." />
     <meta property="og:url" content="https://www.advocaciabarreto.com/" />
     <meta property="og:site_name" content="Barreto Advocacia" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Barreto Advocacia | Advogado em Brasília - Criminal, Civil e Trabalhista" />
-    <meta name="twitter:description" content="Escritório de advocacia em Brasília com atuação em Direito Criminal, Civil e Trabalhista. Consultas com defesa estratégica e sigilosa." />
+    <meta name="twitter:title" content="Barreto Advocacia | Advogado em Brasília - Criminal, Cível e Família" />
+    <meta name="twitter:description" content="Atendimento jurídico estratégico e sigiloso em Direito Criminal, Cível, Família e Empresarial em Brasília/DF." />
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/branding/favicon/favicon.png" />
@@ -41,6 +41,10 @@
     <style>
       #global-loader {
         position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         inset: 0;
         background-color: #0a0a0a;
         z-index: 999999;
@@ -48,12 +52,15 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        -webkit-transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       }
       .loader-logo { 
         width: 140px; 
+        height: auto;
         margin-bottom: 40px; 
         animation: pulse 2.5s infinite ease-in-out;
+        -webkit-animation: pulse 2.5s infinite ease-in-out;
       }
       .loader-bar-container { 
         width: 220px; 
@@ -66,17 +73,20 @@
         width: 0%; 
         height: 100%; 
         background: #C5A880; 
-        animation: loadAnim 1.8s ease-out forwards; 
+        animation: loadAnim 1.5s ease-out forwards; 
+        -webkit-animation: loadAnim 1.5s ease-out forwards;
       }
       @keyframes loadAnim { 0% { width: 0%; opacity: 0.5; } 100% { width: 100%; opacity: 1; } }
-      @keyframes pulse { 0%, 100% { opacity: 0.85; transform: scale(1); filter: drop-shadow(0 0 10px rgba(197, 168, 128, 0.1)); } 50% { opacity: 1; transform: scale(1.02); filter: drop-shadow(0 0 20px rgba(197, 168, 128, 0.25)); } }
+      @-webkit-keyframes loadAnim { 0% { width: 0%; opacity: 0.5; } 100% { width: 100%; opacity: 1; } }
+      @keyframes pulse { 0%, 100% { opacity: 0.85; transform: scale(1); } 50% { opacity: 1; transform: scale(1.02); } }
+      @-webkit-keyframes pulse { 0%, 100% { opacity: 0.85; -webkit-transform: scale(1); transform: scale(1); } 50% { opacity: 1; -webkit-transform: scale(1.02); transform: scale(1.02); } }
       #global-loader.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
     </style>
   </head>
   <body>
     <!-- Loading Screen (Vanilla, Zero Overhead) -->
     <div id="global-loader" aria-hidden="false" role="alert" aria-live="assertive" aria-busy="true">
-      <img src="/assets/branding/logo/logo-barreto.png" alt="Barreto Advocacia - Carregando..." class="loader-logo" loading="eager" />
+      <img src="/assets/branding/logo/logo-barreto.png" alt="Barreto Advocacia - Carregando..." class="loader-logo" loading="eager" width="140" height="32" />
       <div class="loader-bar-container"><div class="loader-bar"></div></div>
     </div>
 
@@ -86,7 +96,7 @@
 
     <script>
       (function() {
-        // Função de desarme
+        // Função de desarme compatível com Safari (incluindo bfcache e carregamento assíncrono)
         function dismissLoader() {
           var loader = document.getElementById('global-loader');
           if (loader && !loader.classList.contains('fade-out')) {
@@ -94,18 +104,28 @@
             loader.setAttribute('aria-hidden', 'true');
             loader.setAttribute('aria-busy', 'false');
             setTimeout(function() {
-              if(loader.parentNode) loader.parentNode.removeChild(loader);
-            }, 800);
+              if (loader.parentNode) loader.parentNode.removeChild(loader);
+            }, 650);
           }
         }
 
-        // 1) Quando o sistema estiver construído e pintado
-        window.addEventListener('load', function() {
-          setTimeout(dismissLoader, 700); // 700ms de smooth para hidratação pesada do React/Assets
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+          setTimeout(dismissLoader, 500);
+        } else {
+          document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(dismissLoader, 600);
+          });
+          window.addEventListener('load', function() {
+            setTimeout(dismissLoader, 500);
+          });
+        }
+
+        window.addEventListener('pageshow', function() {
+          dismissLoader();
         });
 
-        // 2) Safety Timeout de 5 Segundos (Fallback máximo)
-        setTimeout(dismissLoader, 5000);
+        // Safety Timeout (Fallback máximo)
+        setTimeout(dismissLoader, 3000);
       })();
     </script>
   </body>
