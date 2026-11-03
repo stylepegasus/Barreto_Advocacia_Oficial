@@ -32,7 +32,7 @@ export function WhyChooseBarretoFamilia() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const timeoutsRef = useRef<{[key: number]: ReturnType<typeof setTimeout>}>({});
+  const timeoutsRef = useRef<{ [key: number]: ReturnType<typeof setTimeout> }>({});
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -40,21 +40,39 @@ export function WhyChooseBarretoFamilia() {
     if (!section || !title) return;
 
     const spans = title.querySelectorAll('span.reveal-char');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+      spans.forEach((span) => {
+        const el = span as HTMLElement;
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
+
     let ticking = false;
-    let raf: number;
+    let raf = 0;
+    let lastProgress = -1;
 
     const updateReveal = () => {
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      
-      const startReveal = windowHeight * 0.85;
-      const endReveal = windowHeight * 0.25;
-      
+
+      const startReveal = windowHeight * 0.88;
+      const endReveal = windowHeight * 0.35;
+
       let progress = 0;
       if (rect.top <= startReveal) {
         progress = (startReveal - rect.top) / (startReveal - endReveal);
       }
       progress = Math.max(0, Math.min(1, progress));
+
+      if (Math.abs(progress - lastProgress) < 0.002) {
+        ticking = false;
+        return;
+      }
+      lastProgress = progress;
 
       const totalSpans = spans.length;
       const stagger = 0.8 / Math.max(1, totalSpans);
@@ -63,10 +81,10 @@ export function WhyChooseBarretoFamilia() {
         const spanElement = span as HTMLElement;
         const letterStart = index * stagger;
         const letterEnd = letterStart + 0.2;
-        
+
         let letterProgress = (progress - letterStart) / (letterEnd - letterStart);
         letterProgress = Math.max(0, Math.min(1, letterProgress));
-        
+
         const easeOut = 1 - Math.pow(1 - letterProgress, 3);
 
         spanElement.style.opacity = `${easeOut}`;
@@ -88,46 +106,38 @@ export function WhyChooseBarretoFamilia() {
 
     return () => {
       window.removeEventListener('scroll', onScroll);
-      cancelAnimationFrame(raf);
+      if (raf) cancelAnimationFrame(raf);
     };
   }, []);
 
   useEffect(() => {
     const observerOptions = {
       root: null,
-      threshold: 0.15,
-      rootMargin: '0px 0px -20% 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -5% 0px'
     };
 
-    const revealCards = (entries: IntersectionObserverEntry[]) => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
         const target = entry.target as HTMLElement;
-        const delay = parseInt(target.dataset.delay || '0');
-        const index = parseInt(target.dataset.index || '0');
+        const delay = parseInt(target.dataset.delay || '0', 10);
+        const index = parseInt(target.dataset.index || '0', 10);
 
-        if (entry.isIntersecting) {
-          timeoutsRef.current[index] = setTimeout(() => {
-            target.classList.add('is-visible');
-          }, delay);
-        } else {
-          if (timeoutsRef.current[index]) {
-            clearTimeout(timeoutsRef.current[index]);
-          }
-          target.classList.remove('is-visible');
-        }
+        timeoutsRef.current[index] = setTimeout(() => {
+          target.classList.add('is-visible');
+        }, delay);
+
+        observer.unobserve(target);
       });
-    };
+    }, observerOptions);
 
-    const observer = new IntersectionObserver(revealCards, observerOptions);
-    
-    cardsRef.current.forEach(card => {
+    cardsRef.current.forEach((card) => {
       if (card) observer.observe(card);
     });
 
     return () => {
-      cardsRef.current.forEach(card => {
-        if (card) observer.unobserve(card);
-      });
+      observer.disconnect();
       Object.values(timeoutsRef.current).forEach(clearTimeout);
     };
   }, []);
@@ -137,12 +147,12 @@ export function WhyChooseBarretoFamilia() {
       { text: "Por que devo escolher a ", highlight: false },
       { text: "Barreto Advocacia?", highlight: true }
     ];
-    
+
     let highlightCharIndex = 0;
-    const totalHighlightChars = fullText.filter(s => s.highlight).reduce((acc, s) => acc + s.text.length, 0);
-    
+    const totalHighlightChars = fullText.filter((s) => s.highlight).reduce((acc, s) => acc + s.text.length, 0);
+
     return (
-      <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-text-primary mb-6 tracking-tight reveal-title" ref={titleRef}>
+      <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-text-primary mb-4 sm:mb-6 tracking-tight reveal-title" ref={titleRef}>
         {fullText.map((segment, sIdx) => (
           <span key={sIdx} className={segment.highlight ? "font-serif font-bold" : ""}>
             {segment.text.split(' ').map((word, wIdx, arr) => {
@@ -215,41 +225,44 @@ export function WhyChooseBarretoFamilia() {
   };
 
   return (
-    <section ref={sectionRef} className="section-with-depth letter-reveal-section relative px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-20 rounded-[24px] sm:rounded-[40px] my-6">
+    <section
+      ref={sectionRef}
+      className="section-with-depth letter-reveal-section relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 sm:py-16 rounded-[24px] sm:rounded-[40px]"
+    >
       <div className="text-center sticky-title-container reveal-container p-5 sm:p-8">
         {renderRevealedText()}
-        <p className="text-text-secondary max-w-2xl mx-auto text-base sm:text-lg md:text-xl font-light section-desc px-4">
+        <p className="text-text-secondary max-w-2xl mx-auto text-sm sm:text-base md:text-lg font-light section-desc px-2 sm:px-4">
           Entenda por que nosso atendimento em Direito de Família é a escolha certa para quem busca segurança, sigilo e defesa estratégica.
         </p>
       </div>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 relative z-10 cards-container">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 relative z-10 cards-container">
         {features.map((feat, idx) => {
           const Icon = feat.icon;
           return (
-            <div 
-              key={idx} 
-              ref={el => {
+            <div
+              key={idx}
+              ref={(el) => {
                 cardsRef.current[idx] = el;
               }}
-              data-delay={idx * 150 + 200}
+              data-delay={idx * 90}
               data-index={idx}
-              className="reveal-card"
+              className="reveal-card h-full"
             >
-              <div className="liquid-glass-card hover-lift group flex flex-col items-start text-left p-2 md:p-3 h-full">
-                <div className="card-content flex flex-col h-full w-full items-start text-left">
-                  {/* Liquid Glass Icon Container */}
-                  <div className="liquid-glass-icon mb-8 transition-transform duration-500 group-hover:scale-110">
+              <div className="liquid-glass-card hover-lift group flex flex-col p-2 md:p-3 h-full">
+                <div className="card-content flex flex-col h-full w-full p-5 sm:p-6">
+                  {/* Centered Icon inside flex container */}
+                  <div className="liquid-glass-icon mx-auto mb-6 transition-transform duration-500 group-hover:scale-110">
                     <Icon className="w-7 h-7 text-accent-primary drop-shadow-md" />
                   </div>
 
-                  <h3 className="title-highlight text-xl mb-4 tracking-wide relative z-10 font-serif">{feat.title}</h3>
-                  <p className="card-text text-sm leading-relaxed mb-8 flex-grow relative z-10 text-zinc-300">{feat.desc}</p>
-                  
+                  <h3 className="title-highlight text-lg sm:text-xl mb-3 tracking-wide relative z-10 font-serif text-center">{feat.title}</h3>
+                  <p className="card-text text-sm leading-relaxed mb-6 flex-grow relative z-10 text-zinc-300 text-left">{feat.desc}</p>
+
                   {/* Benefit Section */}
-                  <div className="pt-6 w-full mt-auto relative z-10">
+                  <div className="pt-5 w-full mt-auto relative z-10 text-left">
                     <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-text-primary/30 via-text-primary/10 to-transparent"></div>
-                    <span className="text-accent-primary text-[10px] font-bold uppercase tracking-widest block mb-2 opacity-90">O que você ganha:</span>
+                    <span className="text-accent-primary text-[10px] font-bold uppercase tracking-widest block mb-1.5 opacity-90">O que você ganha:</span>
                     <span className="card-text text-sm block text-zinc-200">{feat.benefit}</span>
                   </div>
                 </div>

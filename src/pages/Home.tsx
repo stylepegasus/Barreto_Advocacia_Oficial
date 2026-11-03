@@ -10,7 +10,7 @@ import { SEO } from '../components/SEO';
 
 export function Home() {
   return (
-    <main className="flex flex-col gap-24 pb-24">
+    <main className="flex flex-col gap-16 sm:gap-20 lg:gap-24 pb-16 sm:pb-24">
       <SEO
         title="Barreto Advocacia | Advogado em Brasília - Criminal, Cível e Família"
         description="Escritório em Brasília com atuação em Direito Criminal, Cível, Família e Empresarial. Atendimento ágil, estratégico e sigiloso."

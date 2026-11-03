@@ -21,7 +21,11 @@
     <title>Barreto Advocacia | Advogado em Brasília - Criminal, Cível e Família</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Preload Hero LCP Images -->
+    <link rel="preload" as="image" href="/assets/images/hero/hero-background-mobile.webp" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/assets/images/hero/hero-background-desktop.webp" media="(min-width: 769px)" fetchpriority="high" />
     <meta name="description" content="Escritório em Brasília com atuação em Direito Criminal, Cível, Família e Empresarial. Atendimento ágil, estratégico e sigiloso." />
     <link rel="canonical" href="https://www.advocaciabarreto.com/" />
     <meta property="og:type" content="website" />
@@ -52,20 +56,22 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        -webkit-transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        -webkit-transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       }
       .loader-logo { 
-        width: 140px; 
-        height: auto;
-        margin-bottom: 40px; 
-        animation: pulse 2.5s infinite ease-in-out;
-        -webkit-animation: pulse 2.5s infinite ease-in-out;
+        width: 96px; 
+        height: 96px;
+        aspect-ratio: 1 / 1;
+        object-fit: contain;
+        margin-bottom: 32px; 
+        animation: pulse 2s infinite ease-in-out;
+        -webkit-animation: pulse 2s infinite ease-in-out;
       }
       .loader-bar-container { 
-        width: 220px; 
+        width: 200px; 
         height: 2px; 
-        background: rgba(255,255,255,0.05); 
+        background: rgba(255,255,255,0.06); 
         overflow: hidden; 
         border-radius: 2px; 
       }
@@ -73,8 +79,8 @@
         width: 0%; 
         height: 100%; 
         background: #C5A880; 
-        animation: loadAnim 1.5s ease-out forwards; 
-        -webkit-animation: loadAnim 1.5s ease-out forwards;
+        animation: loadAnim 0.6s ease-out forwards; 
+        -webkit-animation: loadAnim 0.6s ease-out forwards;
       }
       @keyframes loadAnim { 0% { width: 0%; opacity: 0.5; } 100% { width: 100%; opacity: 1; } }
       @-webkit-keyframes loadAnim { 0% { width: 0%; opacity: 0.5; } 100% { width: 100%; opacity: 1; } }
@@ -85,8 +91,8 @@
   </head>
   <body>
     <!-- Loading Screen (Vanilla, Zero Overhead) -->
-    <div id="global-loader" aria-hidden="false" role="alert" aria-live="assertive" aria-busy="true">
-      <img src="/assets/branding/logo/logo-barreto.png" alt="Barreto Advocacia - Carregando..." class="loader-logo" loading="eager" width="140" height="32" />
+    <div id="global-loader" aria-hidden="false" role="status" aria-live="polite" aria-busy="true">
+      <img src="/assets/branding/logo/logo-barreto.webp" alt="Barreto Advocacia - Carregando..." class="loader-logo" loading="eager" width="96" height="96" />
       <div class="loader-bar-container"><div class="loader-bar"></div></div>
     </div>
 
@@ -105,18 +111,18 @@
             loader.setAttribute('aria-busy', 'false');
             setTimeout(function() {
               if (loader.parentNode) loader.parentNode.removeChild(loader);
-            }, 650);
+            }, 280);
           }
         }
 
         if (document.readyState === 'complete' || document.readyState === 'interactive') {
-          setTimeout(dismissLoader, 500);
+          setTimeout(dismissLoader, 80);
         } else {
           document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(dismissLoader, 600);
+            setTimeout(dismissLoader, 80);
           });
           window.addEventListener('load', function() {
-            setTimeout(dismissLoader, 500);
+            setTimeout(dismissLoader, 80);
           });
         }
 
@@ -125,7 +131,7 @@
         });
 
         // Safety Timeout (Fallback máximo)
-        setTimeout(dismissLoader, 3000);
+        setTimeout(dismissLoader, 1500);
       })();
     </script>
   </body>

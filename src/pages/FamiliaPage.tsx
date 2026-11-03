@@ -63,12 +63,28 @@ export function FamiliaPage() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    let ticking = false;
+    let rafId = 0;
+
+    const updateScroll = () => {
+      const next = window.scrollY > 20;
+      setIsScrolled((prev) => (prev !== next ? next : prev));
+      ticking = false;
     };
-    handleScroll();
+
+    const handleScroll = () => {
+      if (!ticking) {
+        rafId = requestAnimationFrame(updateScroll);
+        ticking = true;
+      }
+    };
+
+    updateScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
@@ -85,13 +101,13 @@ export function FamiliaPage() {
       />
 
       {/* Header Fixo Minimalista com Apple Liquid Glass */}
-      <header className="fixed top-0 left-0 right-0 z-50 p-3 sm:p-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+      <header className="fixed top-0 left-0 right-0 z-50 py-3 sm:py-4">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
           {/* Logo linkando para Home */}
           <Link
             to="/"
             aria-label="Voltar para a página inicial da Barreto Advocacia"
-            className={`apple-glass apple-glass-nav apple-glass-refractive flex items-center gap-2 px-3.5 py-2 min-h-[44px] rounded-full ${
+            className={`apple-glass apple-glass-nav apple-glass-refractive flex items-center justify-center gap-2 px-3.5 py-2 min-h-[44px] min-w-[44px] rounded-full shrink-0 ${
               isScrolled ? 'is-scrolled' : ''
             }`}
           >
@@ -104,11 +120,11 @@ export function FamiliaPage() {
               <img
                 src="/assets/branding/logo/logo-barreto.png"
                 alt="Logotipo da Advocacia Barreto"
-                className="h-[24px] sm:h-[30px] w-auto object-contain"
+                className="h-[26px] w-[26px] sm:h-[30px] sm:w-[30px] aspect-square object-contain shrink-0 block"
                 loading="eager"
                 decoding="async"
-                width="140"
-                height="32"
+                width="30"
+                height="30"
               />
             </picture>
           </Link>
@@ -118,7 +134,7 @@ export function FamiliaPage() {
             href="https://api.whatsapp.com/send/?phone=5561991591105&text=Vi+o+site+de+voc%C3%AAs+pelo+Google+e+gostaria+de+falar+sobre+um+caso+de+fam%C3%ADlia.&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
-            className="apple-glass apple-glass-whatsapp px-4 py-2.5 sm:px-5 sm:py-2.5 min-h-[44px] rounded-full font-semibold text-xs sm:text-sm flex items-center gap-2"
+            className="apple-glass apple-glass-whatsapp px-4 py-2.5 sm:px-5 sm:py-2.5 min-h-[44px] rounded-full font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shrink-0"
           >
             <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-emerald-300" />
             <span className="hidden sm:inline">Falar com Advogado</span>
@@ -127,32 +143,34 @@ export function FamiliaPage() {
         </div>
       </header>
 
-      {/* 1. Hero Content */}
-      <HeroFamilia />
+      <div className="flex flex-col gap-16 sm:gap-20 lg:gap-24 pb-16 sm:pb-24">
+        {/* 1. Hero Content */}
+        <HeroFamilia />
 
-      {/* 2. Áreas de Atuação Exclusivas de Família (Carrossel com Navegação Apple Glass) */}
-      <PracticeAreasFamilia />
+        {/* 2. Áreas de Atuação Exclusivas de Família (Carrossel com Navegação Apple Glass) */}
+        <PracticeAreasFamilia />
 
-      {/* 3. Por que escolher a Barreto Advocacia */}
-      <WhyChooseBarretoFamilia />
+        {/* 3. Por que escolher a Barreto Advocacia */}
+        <WhyChooseBarretoFamilia />
 
-      {/* 4. Opções de Reunião: Presencial e Online */}
-      <MeetingsFamilia />
+        {/* 4. Opções de Reunião: Presencial e Online */}
+        <MeetingsFamilia />
 
-      {/* 5. Seção de Equipe */}
-      <TeamFamilia />
+        {/* 5. Seção de Equipe */}
+        <TeamFamilia />
 
-      {/* 6. 10 Anos de Experiência */}
-      <Experience10YearsFamilia />
+        {/* 6. 10 Anos de Experiência */}
+        <Experience10YearsFamilia />
 
-      {/* 7. Testemunhos de Clientes */}
-      <Testimonials />
+        {/* 7. Testemunhos de Clientes */}
+        <Testimonials />
 
-      {/* 8. Conheça o Nosso Escritório / Localização */}
-      <Location />
+        {/* 8. Conheça o Nosso Escritório / Localização */}
+        <Location />
 
-      {/* 9. Mapa Interativo do Google Maps */}
-      <MapEmbed />
+        {/* 9. Mapa Interativo do Google Maps */}
+        <MapEmbed />
+      </div>
 
       {/* 10. Rodapé Institucional */}
       <Footer />

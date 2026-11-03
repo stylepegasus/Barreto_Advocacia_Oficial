@@ -4,14 +4,12 @@ import { trackMetaEvent } from '../lib/metaPixel';
 export function Meetings() {
   const handleLeadClick = (meetingType: string) => {
     const eventId = `lead-${Date.now()}`;
-    
-    // Pixel Event
+
     trackMetaEvent('Lead', {
       content_name: `Agendamento ${meetingType}`,
       content_category: 'lead',
     }, eventId);
 
-    // CAPI Event
     fetch('/api/meta-conversions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -24,25 +22,25 @@ export function Meetings() {
   };
 
   return (
-    <section className="liquid-glass-section px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden">
+    <section className="liquid-glass-section max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 sm:py-16 rounded-[24px] sm:rounded-[40px] overflow-hidden">
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {/* Presencial */}
-        <div 
-          className="liquid-glass-card card-reuniao group rounded-[24px] min-h-[300px] sm:min-h-[350px] flex items-center p-0 hover:scale-[1.01] transition-transform duration-500"
+        <div
+          className="liquid-glass-card card-reuniao group rounded-[24px] min-h-[280px] sm:min-h-[340px] flex items-center p-0 hover:scale-[1.01] transition-transform duration-500"
           style={{ backgroundImage: "url('/assets/images/contact-options/reuniao-presencial.webp')" }}
         >
-          <div className="content relative z-[2] p-6 sm:p-8 md:p-12 w-full md:w-3/4 flex flex-col justify-center">
+          <div className="content relative z-[2] p-6 sm:p-8 md:p-10 w-full md:w-4/5 flex flex-col justify-center items-start text-left">
             <h3 className="title-highlight text-xl sm:text-2xl mb-2 sm:mb-3 text-white drop-shadow-sm">Reunião Presencial</h3>
-            <p className="text-white/95 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed drop-shadow-sm font-medium">
+            <p className="text-white/95 text-xs sm:text-sm mb-5 sm:mb-6 leading-relaxed drop-shadow-sm font-medium">
               Atendimento direto e personalizado.<br />
               Ideal para cases complexos que exigem análise detalhada.
             </p>
-            <a 
+            <a
               href="https://api.whatsapp.com/send/?phone=5561991591105&text=Ol%C3%A1%21+Vi+o+site+de+voc%C3%AAs+e+gostaria+de+agendar+uma+reuni%C3%A3o+presencial+com+um+advogado.&type=phone_number&app_absent=0"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleLeadClick('Reunião Presencial')}
-              className="apple-glass self-start px-5 sm:px-6 py-2.5 min-h-[44px] rounded-full text-white text-xs sm:text-sm font-medium inline-flex items-center gap-2.5"
+              className="apple-glass self-start px-5 sm:px-6 py-2.5 min-h-[44px] rounded-full text-white text-xs sm:text-sm font-medium inline-flex items-center justify-center gap-2.5"
             >
               <WhatsAppIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px] shrink-0 text-emerald-300" />
               <span>Clique aqui</span>
@@ -51,22 +49,22 @@ export function Meetings() {
         </div>
 
         {/* Online */}
-        <div 
-          className="liquid-glass-card card-reuniao group rounded-[24px] min-h-[300px] sm:min-h-[350px] flex items-center p-0 hover:scale-[1.01] transition-transform duration-500"
+        <div
+          className="liquid-glass-card card-reuniao group rounded-[24px] min-h-[280px] sm:min-h-[340px] flex items-center p-0 hover:scale-[1.01] transition-transform duration-500"
           style={{ backgroundImage: "url('/assets/images/contact-options/reuniao-online.webp')" }}
         >
-          <div className="content relative z-[2] p-6 sm:p-8 md:p-12 w-full md:w-3/4 flex flex-col justify-center">
+          <div className="content relative z-[2] p-6 sm:p-8 md:p-10 w-full md:w-4/5 flex flex-col justify-center items-start text-left">
             <h3 className="title-highlight text-xl sm:text-2xl mb-2 sm:mb-3 text-white drop-shadow-sm">Reunião Online</h3>
-            <p className="text-white/95 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed drop-shadow-sm font-medium">
+            <p className="text-white/95 text-xs sm:text-sm mb-5 sm:mb-6 leading-relaxed drop-shadow-sm font-medium">
               Consulta ágil pelo WhatsApp.<br />
               Resposta objetiva sobre seu caso em até 30 minutos.
             </p>
-            <a 
+            <a
               href="https://api.whatsapp.com/send/?phone=5561991591105&text=Vi+o+site+de+voc%C3%AAs+e+gostaria+de+marcar+uma+reuni%C3%A3o+online.&type=phone_number&app_absent=0"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleLeadClick('Reunião Online')}
-              className="apple-glass self-start px-5 sm:px-6 py-2.5 min-h-[44px] rounded-full text-white text-xs sm:text-sm font-medium inline-flex items-center gap-2.5"
+              className="apple-glass self-start px-5 sm:px-6 py-2.5 min-h-[44px] rounded-full text-white text-xs sm:text-sm font-medium inline-flex items-center justify-center gap-2.5"
             >
               <WhatsAppIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px] shrink-0 text-emerald-300" />
               <span>Clique aqui</span>

@@ -18,28 +18,35 @@ export function ExperienceTeam() {
 
   useEffect(() => {
     if (selectedMember === null) return;
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setSelectedMember(null);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, [selectedMember]);
 
   const team: TeamMember[] = [
-    { 
-      name: "Dr. Paulo Barreto", 
-      role: "Fundador, Advogado Criminalista, Mestrando em Direito Processual Penal e Especialista em Lei de Drogas e Recursos.", 
+    {
+      name: "Dr. Paulo Barreto",
+      role: "Fundador, Advogado Criminalista, Mestrando em Direito Processual Penal e Especialista em Lei de Drogas e Recursos.",
       img: "/assets/images/team/dr-paulo-barreto-team.webp",
       alt: "Dr. Paulo Barreto, fundador e advogado criminalista da Barreto Advocacia em Brasília",
       experience: "Com 10 anos de atuação na advocacia criminal, conduz defesas estratégicas em investigações, processos penais e casos de maior sensibilidade, sempre com análise técnica, postura firme e leitura realista de cada cenário.",
       education: "Mestrando em Direito Processual Penal, com especialização em Lei de Drogas e Recursos, reúne formação direcionada à advocacia criminal e atualização constante para atuação precisa em casos complexos.",
       cases: "Atuação em investigações criminais, processos penais, medidas urgentes e recursos, com foco em estratégia defensiva, proteção de direitos e acompanhamento técnico em todas as fases do caso."
     },
-    { 
-      name: "Dra. Cleide Alves", 
-      role: "Advogada Criminalista e Especialista em Tribunal do Júri.", 
+    {
+      name: "Dra. Cleide Alves",
+      role: "Advogada Criminalista e Especialista em Tribunal do Júri.",
       img: "/assets/images/team/cleide-alves.jpg",
       alt: "Dra. Cleide Alves, advogada criminalista e especialista em Tribunal do Júri",
       description: "Advogada Criminalista com atuação dedicada à defesa técnica em processos criminais e especialização em Tribunal do Júri. Sua atuação conecta-se diretamente à vertente Criminal do escritório, com foco na análise rigorosa dos autos, na construção de teses defensivas e na condução estratégica de demandas que exigem preparo técnico, clareza e atenção aos detalhes.",
@@ -48,18 +55,18 @@ export function ExperienceTeam() {
       areas: "Direito Criminal e Tribunal do Júri.",
       cases: "Defesa em processos criminais, análise técnica dos autos e atuação em demandas relacionadas ao Tribunal do Júri."
     },
-    { 
-      name: "Dr. Gilmar Freitas", 
-      role: "Advogado com atuação em Direito Cível e Processual Civil, com pós-graduação em Direito Civil e Processo Civil e em Direito Imobiliário e Condominial.", 
+    {
+      name: "Dr. Gilmar Freitas",
+      role: "Advogado com atuação em Direito Cível e Processual Civil, com pós-graduação em Direito Civil e Processo Civil e em Direito Imobiliário e Condominial.",
       img: "/assets/images/team/dr-gilmar-freitas-team.webp",
       alt: "Dr. Gilmar Freitas, advogado da Barreto Advocacia em Brasília",
       experience: "Atua em demandas cíveis com organização, estratégia e atenção aos detalhes, oferecendo condução jurídica segura em conflitos patrimoniais, obrigações, contratos e questões processuais.",
       education: "Pós-Graduado em Direito Civil e Processo Civil – Lato Sensu e em Direito Imobiliário e Condominial – Lato Sensu, possui formação voltada à atuação estratégica em demandas patrimoniais, contratuais, civis e imobiliárias.",
       cases: "Atuação em demandas contratuais, disputas patrimoniais e conflitos cíveis que exigem planejamento processual, análise técnica e condução consistente ao longo do caso."
     },
-    { 
-      name: "Dr. Itamar Silveira", 
-      role: "Advogado Criminalista, Delegado de Polícia Aposentado e Professor Universitário.", 
+    {
+      name: "Dr. Itamar Silveira",
+      role: "Advogado Criminalista, Delegado de Polícia Aposentado e Professor Universitário.",
       img: "/assets/images/team/dr-itamar-silveira-team.webp",
       alt: "Dr. Itamar Silveira, advogado criminalista da Barreto Advocacia em Brasília",
       experience: "Reúne experiência prática no sistema de persecução penal e atuação na advocacia criminal, oferecendo visão ampla sobre investigações, procedimentos policiais e definição estratégica da defesa.",
@@ -75,27 +82,27 @@ export function ExperienceTeam() {
       education: "Reúne competências associadas a funções de alta responsabilidade em gestão de contas, alianças estratégicas e expansão de mercado, com perfil próximo ao de Account Manager, Gerente de Alianças e Business Development Manager.",
       cases: "Destaca-se na estruturação de parcerias estratégicas, retenção e evolução de relacionamentos corporativos, negociação com stakeholders de alto nível e abertura de novas frentes de negócio com autoridade, consistência e forte capacidade de articulação."
     },
-    { 
-      name: "Luis Gonçalves", 
-      role: "Estagiário, Web Designer, Gestor de Tráfego e Estudante de Direito na UPIS.", 
+    {
+      name: "Luis Gonçalves",
+      role: "Estagiário, Web Designer, Gestor de Tráfego e Estudante de Direito na UPIS.",
       img: "/assets/images/team/luis-goncalves-team.webp",
       alt: "Luis Gonçalves, estagiário e estudante de Direito na UPIS",
       experience: "Atua no suporte às frentes digitais e institucionais do escritório, contribuindo com organização da presença online, comunicação estratégica e melhoria da experiência de contato com os clientes.",
       education: "Estudante de Direito na UPIS, com atuação complementar em web design e gestão de tráfego, reúne visão prática sobre comunicação, posicionamento digital e experiência aplicada ao ambiente jurídico.",
       cases: "Participação no fortalecimento digital do escritório, estruturação de presença online, apoio à comunicação institucional e melhoria da jornada de contato do cliente com a Barreto Advocacia."
     },
-    { 
-      name: "Paulo Barreto Filho", 
-      role: "Estagiário e Estudante de Direito no CEUB.", 
+    {
+      name: "Paulo Barreto Filho",
+      role: "Estagiário e Estudante de Direito no CEUB.",
       img: "/assets/images/team/paulo-barreto-filho-team.webp",
       alt: "Paulo Barreto Filho, estagiário e estudante de Direito no CEUB",
       experience: "Atua no apoio às rotinas do escritório, contribuindo com organização interna, suporte operacional e acompanhamento das atividades jurídicas, sempre com atenção aos detalhes e dedicação ao aprendizado prático.",
       education: "Estudante de Direito no CEUB, em formação contínua para atuação jurídica responsável, desenvolvendo experiência prática dentro da dinâmica real do escritório.",
       cases: "Apoio às atividades internas, organização de demandas e participação nas rotinas que sustentam o funcionamento operacional e o atendimento da equipe jurídica."
     },
-    { 
-      name: "Carlos Eduardo", 
-      role: "Estagiário e Estudante de Direito na Anhanguera.", 
+    {
+      name: "Carlos Eduardo",
+      role: "Estagiário e Estudante de Direito na Anhanguera.",
       img: "/assets/images/team/carlos-eduardo.jpg",
       alt: "Carlos Eduardo, estagiário e estudante de Direito na Anhanguera",
       description: "Estagiário e estudante de Direito na Anhanguera, com atuação de apoio na área de Direito de Família. Colabora na organização de documentos, estruturação de peças e preparo técnico de demandas relacionadas a divórcio, pensão alimentícia, guarda, convivência e partilha de bens. Também contribui com apoio em tecnologia da informação, fortalecendo a organização interna e os processos digitais do escritório.",
@@ -104,9 +111,9 @@ export function ExperienceTeam() {
       areas: "Direito de Família e apoio em tecnologia da informação.",
       cases: "Organização documental, estruturação de peças e apoio operacional em demandas de Direito de Família."
     },
-    { 
-      name: "Laura Luna Mendeiros", 
-      role: "Estagiária e Estudante de Direito no CEUB.", 
+    {
+      name: "Laura Luna Mendeiros",
+      role: "Estagiária e Estudante de Direito no CEUB.",
       img: "/assets/images/team/laura-luna-mendeiros.jpg",
       alt: "Laura Luna Mendeiros, estagiária e estudante de Direito no CEUB",
       description: "Estagiária e estudante de Direito no CEUB, com atuação de apoio nas áreas Criminal e de Família. Contribui com a organização interna de documentos, acompanhamento de rotinas processuais e preparo de materiais que sustentam a atuação técnica do escritório. Sua atuação reforça a estrutura operacional das demandas de defesa criminal e das questões familiares conduzidas pela equipe.",
@@ -118,16 +125,16 @@ export function ExperienceTeam() {
   ];
 
   return (
-    <div className="flex flex-col gap-24">
+    <div className="flex flex-col gap-16 sm:gap-20 lg:gap-24">
       {/* SEÇÃO A: 10 ANOS DE EXPERIÊNCIA */}
-      <section className="about-office-section section-bg-fade-bottom liquid-glass-section px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden">
+      <section className="about-office-section section-bg-fade-bottom liquid-glass-section max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 w-full py-14 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden">
         <div className="relative z-[2] flex flex-col items-center text-center">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-accent-primary mb-4">10 Anos de Experiência</h2>
-          <p className="text-text-secondary mb-10 sm:mb-12 font-light max-w-2xl text-base sm:text-lg px-4">
+          <p className="text-text-secondary mb-10 sm:mb-12 font-light max-w-2xl mx-auto text-base sm:text-lg px-4">
             Com trajetória consolidada em Brasília, oferecemos análise objetiva e defesa estratégica.
           </p>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 w-full max-w-5xl">
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 w-full max-w-5xl mx-auto">
             <div className="liquid-glass-card p-1 text-center">
               <div className="card-content flex flex-col items-center justify-center h-full w-full p-4 sm:p-6">
                 <div className="title-highlight text-3xl md:text-4xl mb-2 relative z-10">1.180+</div>
@@ -151,15 +158,15 @@ export function ExperienceTeam() {
       </section>
 
       {/* SEÇÃO B: CONHEÇA NOSSO TIME */}
-      <section className="liquid-glass-section px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden">
+      <section className="liquid-glass-section max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 w-full py-14 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden">
         <div className="relative z-10">
           <h2 className="text-3xl md:text-4xl text-center font-serif font-bold text-text-primary mb-10 sm:mb-12">
             Conheça Nosso <span className="text-accent-primary">Time</span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {team.map((member, idx) => (
-              <div 
-                key={member.name} 
+              <div
+                key={member.name}
                 role="button"
                 tabIndex={0}
                 aria-haspopup="dialog"
@@ -183,8 +190,8 @@ export function ExperienceTeam() {
                         className="team-photo group-hover:scale-105"
                         loading="lazy"
                         decoding="async"
-                        width="400"
-                        height="400"
+                        width="600"
+                        height="800"
                       />
                     </picture>
                     <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -212,17 +219,17 @@ export function ExperienceTeam() {
           aria-modal="true"
           aria-labelledby="team-modal-title"
         >
-          <div 
-            className="absolute inset-0 bg-black/65 backdrop-blur-md transition-opacity"
+          <div
+            className="absolute inset-0 bg-black/75 transition-opacity"
             onClick={() => setSelectedMember(null)}
             aria-hidden="true"
           ></div>
-          
-          <div className="relative w-full max-w-3xl apple-glass apple-glass-modal apple-glass-static overflow-hidden flex flex-col md:flex-row max-h-[88vh] sm:max-h-[90vh]">
-            <button 
+
+          <div className="relative w-full max-w-3xl mx-auto apple-glass apple-glass-modal apple-glass-static overflow-hidden flex flex-col md:flex-row max-h-[88vh] sm:max-h-[90vh]">
+            <button
               type="button"
               onClick={() => setSelectedMember(null)}
-              className="apple-glass absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-white cursor-pointer"
+              className="apple-glass absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-white bg-black/40 cursor-pointer"
               aria-label="Fechar perfil"
               title="Fechar"
             >
@@ -239,18 +246,18 @@ export function ExperienceTeam() {
                   className="w-full h-full object-cover object-top md:object-center"
                   loading="eager"
                   decoding="async"
-                  width="400"
-                  height="400"
+                  width="600"
+                  height="800"
                 />
               </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent md:hidden pointer-events-none"></div>
-              <div className="absolute bottom-3 left-4 right-4 md:hidden">
+              <div className="absolute bottom-3 left-4 right-14 md:hidden text-left">
                 <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">{team[selectedMember].name}</h3>
               </div>
             </div>
 
-            <div className="w-full md:w-3/5 p-5 sm:p-6 md:p-8 overflow-y-auto min-h-0 flex-1 overscroll-contain">
-              <div className="hidden md:block mb-5">
+            <div className="w-full md:w-3/5 p-5 sm:p-6 md:p-8 overflow-y-auto min-h-0 flex-1 overscroll-contain text-left" style={{ WebkitOverflowScrolling: 'touch' }}>
+              <div className="hidden md:block mb-5 pr-10">
                 <h3 id="team-modal-title" className="text-3xl font-serif font-bold text-text-primary mb-2">{team[selectedMember].name}</h3>
                 <p className="text-accent-primary font-medium text-sm">{team[selectedMember].role}</p>
               </div>

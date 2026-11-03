@@ -42,6 +42,12 @@ function routeHtml(route) {
       `<meta property="og:url" content="${canonicalUrl}" />`,
     );
 
+  if (route === 'familia') {
+    html = html
+      .replace('/assets/images/hero/hero-background-mobile.webp', '/assets/images/hero/familia-hero-mobile.webp')
+      .replace('/assets/images/hero/hero-background-desktop.webp', '/assets/images/hero/familia-hero-desktop.webp');
+  }
+
   const meta = ROUTE_META[route];
   if (meta) {
     html = html

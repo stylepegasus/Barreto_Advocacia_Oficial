@@ -28,27 +28,27 @@ export function TeamFamilia() {
   }, [selectedMember]);
 
   const team: TeamMember[] = [
-    { 
-      name: "Dr. Gilmar Freitas", 
-      role: "Advogado com atuação em Direito de Família, Sucessões e Cível, com pós-graduação em Direito Civil e Processo Civil e em Direito Imobiliário e Condominial.", 
+    {
+      name: "Dr. Gilmar Freitas",
+      role: "Advogado com atuação em Direito de Família, Sucessões e Cível, com pós-graduação em Direito Civil e Processo Civil e em Direito Imobiliário e Condominial.",
       img: "/assets/images/team/dr-gilmar-freitas-team.webp",
       alt: "Dr. Gilmar Freitas, advogado com atuação em Direito de Família, Sucessões e Cível",
       experience: "Atua em demandas de família, partilhas patrimoniais e conflitos civis com organização, estratégia e atenção aos detalhes, oferecendo condução jurídica segura em conflitos patrimoniais, acordos e questões processuais.",
       education: "Pós-Graduado em Direito Civil e Processo Civil – Lato Sensu e em Direito Imobiliário e Condominial – Lato Sensu, possui formação voltada à atuação estratégica em demandas patrimoniais, contratuais, civis e de família.",
       cases: "Atuação em divórcios, partilhas patrimoniais, contratos e conflitos que exigem planejamento processual, análise técnica e condução consistente ao longo do caso."
     },
-    { 
-      name: "Dr. Paulo Barreto", 
-      role: "Fundador, Advogado Criminalista, Mestrando em Direito Processual Penal e Especialista em Lei de Drogas e Recursos.", 
+    {
+      name: "Dr. Paulo Barreto",
+      role: "Fundador, Advogado Criminalista, Mestrando em Direito Processual Penal e Especialista em Lei de Drogas e Recursos.",
       img: "/assets/images/team/dr-paulo-barreto-team.webp",
       alt: "Dr. Paulo Barreto, fundador e advogado criminalista da Barreto Advocacia em Brasília",
       experience: "Com 10 anos de atuação na advocacia criminal, conduz defesas estratégicas em investigações, processos penais e casos de maior sensibilidade, sempre com análise técnica, postura firme e leitura realista de cada cenário.",
       education: "Mestrando em Direito Processual Penal, com especialização em Lei de Drogas e Recursos, reúne formação direcionada à advocacia criminal e atualização constante para atuação precisa em casos complexos.",
       cases: "Atuação em investigações criminais, processos penais, medidas urgentes e recursos, com foco em estratégia defensiva, proteção de direitos e acompanhamento técnico em todas as fases do caso."
     },
-    { 
-      name: "Dra. Cleide Alves", 
-      role: "Advogada Criminalista e Especialista em Tribunal do Júri.", 
+    {
+      name: "Dra. Cleide Alves",
+      role: "Advogada Criminalista e Especialista em Tribunal do Júri.",
       img: "/assets/images/team/cleide-alves.jpg",
       alt: "Dra. Cleide Alves, advogada criminalista e especialista em Tribunal do Júri",
       description: "Advogada Criminalista com atuação dedicada à defesa técnica em processos criminais e especialização em Tribunal do Júri. Sua atuação conecta-se diretamente à vertente Criminal do escritório, com foco na análise rigorosa dos autos, na construção de teses defensivas e na condução estratégica de demandas que exigem preparo técnico, clareza e atenção aos detalhes.",
@@ -57,9 +57,9 @@ export function TeamFamilia() {
       areas: "Direito Criminal e Tribunal do Júri.",
       cases: "Defesa em processos criminais, análise técnica dos autos e atuação em demandas relacionadas ao Tribunal do Júri."
     },
-    { 
-      name: "Dr. Itamar Silveira", 
-      role: "Advogado Criminalista, Delegado de Polícia Aposentado e Professor Universitário.", 
+    {
+      name: "Dr. Itamar Silveira",
+      role: "Advogado Criminalista, Delegado de Polícia Aposentado e Professor Universitário.",
       img: "/assets/images/team/dr-itamar-silveira-team.webp",
       alt: "Dr. Itamar Silveira, advogado criminalista da Barreto Advocacia em Brasília",
       experience: "Reúne experiência prática no sistema de persecução penal e atuação na advocacia criminal, oferecendo visão ampla sobre investigações, procedimentos policiais e definição estratégica da defesa.",
@@ -75,27 +75,27 @@ export function TeamFamilia() {
       education: "Reúne competências associadas a funções de alta responsabilidade em gestão de contas, alianças estratégicas e expansão de mercado, com perfil próximo ao de Account Manager, Gerente de Alianças e Business Development Manager.",
       cases: "Destaca-se na estruturação de parcerias estratégicas, retenção e evolução de relacionamentos corporativos, negociação com stakeholders de alto nível e abertura de novas frentes de negócio com autoridade, consistência e forte capacidade de articulação."
     },
-    { 
-      name: "Luis Gonçalves", 
-      role: "Estagiário, Web Designer, Gestor de Tráfego e Estudante de Direito na UPIS.", 
+    {
+      name: "Luis Gonçalves",
+      role: "Estagiário, Web Designer, Gestor de Tráfego e Estudante de Direito na UPIS.",
       img: "/assets/images/team/luis-goncalves-team.webp",
       alt: "Luis Gonçalves, estagiário e estudante de Direito na UPIS",
       experience: "Atua no suporte às frentes digitais e institucionais do escritório, contribuindo com organização da presença online, comunicação estratégica e melhoria da experiência de contato com os clientes.",
       education: "Estudante de Direito na UPIS, com atuação complementar em web design e gestão de tráfego, reúne visão prática sobre comunicação, posicionamento digital e experiência aplicada ao ambiente jurídico.",
       cases: "Participação no fortalecimento digital do escritório, estruturação de presença online, apoio à comunicação institucional e melhoria da jornada de contato do cliente com a Barreto Advocacia."
     },
-    { 
-      name: "Paulo Barreto Filho", 
-      role: "Estagiário e Estudante de Direito no CEUB.", 
+    {
+      name: "Paulo Barreto Filho",
+      role: "Estagiário e Estudante de Direito no CEUB.",
       img: "/assets/images/team/paulo-barreto-filho-team.webp",
       alt: "Paulo Barreto Filho, estagiário e estudante de Direito no CEUB",
       experience: "Atua no suporte às rotinas do escritório, contribuindo com organização interna, suporte operacional e acompanhamento das atividades jurídicas, sempre com atenção aos detalhes e dedicação ao aprendizado prático.",
       education: "Estudante de Direito no CEUB, em formação contínua para atuação jurídica responsável, desenvolvendo experiência prática dentro da dinâmica real do escritório.",
       cases: "Apoio às atividades internas, organização de demandas e participação nas rotinas que sustentam o funcionamento operacional e o atendimento da equipe jurídica."
     },
-    { 
-      name: "Carlos Eduardo", 
-      role: "Estagiário e Estudante de Direito na Anhanguera.", 
+    {
+      name: "Carlos Eduardo",
+      role: "Estagiário e Estudante de Direito na Anhanguera.",
       img: "/assets/images/team/carlos-eduardo.jpg",
       alt: "Carlos Eduardo, estagiário e estudante de Direito na Anhanguera",
       description: "Estagiário e estudante de Direito na Anhanguera, com atuação de apoio na área de Direito de Família. Colabora na organização de documentos, estruturação de peças e preparo técnico de demandas relacionadas a divórcio, pensão alimentícia, guarda, convivência e partilha de bens. Também contribui com apoio em tecnologia da informação, fortalecendo a organização interna e os processos digitais do escritório.",
@@ -104,9 +104,9 @@ export function TeamFamilia() {
       areas: "Direito de Família e apoio em tecnologia da informação.",
       cases: "Organização documental, estruturação de peças e apoio operacional em demandas de Direito de Família."
     },
-    { 
-      name: "Laura Luna Mendeiros", 
-      role: "Estagiária e Estudante de Direito no CEUB.", 
+    {
+      name: "Laura Luna Mendeiros",
+      role: "Estagiária e Estudante de Direito no CEUB.",
       img: "/assets/images/team/laura-luna-mendeiros.jpg",
       alt: "Laura Luna Mendeiros, estagiária e estudante de Direito no CEUB",
       description: "Estagiária e estudante de Direito no CEUB, com atuação de apoio nas áreas Criminal e de Família. Contribui com a organização interna de documentos, acompanhamento de rotinas processuais e preparo de materiais que sustentam a atuação técnica do escritório. Sua atuação reforça a estrutura operacional das demandas de defesa criminal e das questões familiares conduzidas pela equipe.",
@@ -125,8 +125,8 @@ export function TeamFamilia() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {team.map((member, idx) => (
-            <div 
-              key={member.name} 
+            <div
+              key={member.name}
               role="button"
               tabIndex={0}
               aria-haspopup="dialog"
@@ -178,14 +178,14 @@ export function TeamFamilia() {
           aria-modal="true"
           aria-labelledby="team-familia-modal-title"
         >
-          <div 
+          <div
             className="absolute inset-0 bg-black/65 backdrop-blur-md transition-opacity"
             onClick={() => setSelectedMember(null)}
             aria-hidden="true"
           ></div>
-          
+
           <div className="relative w-full max-w-3xl apple-glass apple-glass-modal apple-glass-static overflow-hidden flex flex-col md:flex-row max-h-[88vh] sm:max-h-[90vh]">
-            <button 
+            <button
               type="button"
               onClick={() => setSelectedMember(null)}
               className="apple-glass absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-white cursor-pointer"

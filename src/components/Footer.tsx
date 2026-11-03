@@ -18,7 +18,7 @@ export function Footer() {
     <footer className="px-4 sm:px-6 py-8 sm:py-12 border-t border-text-primary/10 bg-text-primary/5">
       <div className="max-w-7xl mx-auto">
         <div className="liquid-glass-card rounded-[24px] sm:rounded-3xl p-6 sm:p-8 md:p-12 mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 shadow-2xl">
-          
+
           {/* Logo & About */}
           <div className="flex flex-col items-start lg:col-span-1">
             <div className="flex items-center gap-2 mb-6">
@@ -69,8 +69,8 @@ export function Footer() {
             <h4 className="text-text-primary font-semibold mb-6">Contato</h4>
             <ul className="space-y-4 text-sm text-text-secondary">
               <li>
-                <a 
-                  href="tel:+5561991591105" 
+                <a
+                  href="tel:+5561991591105"
                   onClick={() => trackMetaEvent('Contact', { contact_method: 'Phone', content_name: 'Link Telefone Footer' })}
                   className="group relative flex items-center gap-2 hover:text-accent-primary transition-colors"
                 >
@@ -79,8 +79,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a 
-                  href="mailto:barretoadvocacia01@gmail.com" 
+                <a
+                  href="mailto:barretoadvocacia01@gmail.com"
                   onClick={() => trackMetaEvent('Contact', { contact_method: 'Email', content_name: 'Link Email Footer' })}
                   className="group relative flex items-center gap-2 hover:text-accent-primary transition-colors break-all"
                 >

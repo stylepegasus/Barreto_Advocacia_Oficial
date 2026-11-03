@@ -14,11 +14,10 @@ export function Hero() {
     if (!heroSection || !parallaxTitle) return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Only run on desktop
       if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
-      
-      const x = (e.clientX - window.innerWidth / 2) / 20; // Sensibilidade
-      const y = (e.clientY - window.innerHeight / 2) / 20;
+
+      const x = (e.clientX - window.innerWidth / 2) / 25;
+      const y = (e.clientY - window.innerHeight / 2) / 25;
 
       parallaxTitle.style.setProperty('--mouse-x', `${x}px`);
       parallaxTitle.style.setProperty('--mouse-y', `${y}px`);
@@ -34,18 +33,13 @@ export function Hero() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const handleScroll = () => {
-      // Ignorar efeitos de scroll-parallax em telas mobile para economizar processamento e evitar jank
       if (window.innerWidth < 768) {
         return;
       }
 
-      const scrollY = window.scrollY;
-      parallaxTitle.style.setProperty('--scroll-y', `${scrollY}px`);
-
       if (!reduceMotion && mediaRef.current && !ticking) {
         animationFrameId = requestAnimationFrame(() => {
-          const intensity = 0.16;
-          const offset = scrollY * intensity;
+          const offset = window.scrollY * 0.14;
           if (mediaRef.current) {
             mediaRef.current.style.transform = `translate3d(0, ${offset}px, 0) scale(1.1)`;
           }
@@ -58,8 +52,7 @@ export function Hero() {
     heroSection.addEventListener('mousemove', handleMouseMove);
     heroSection.addEventListener('mouseleave', handleMouseLeave);
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Initial setup call
+
     handleScroll();
 
     return () => {
@@ -73,10 +66,13 @@ export function Hero() {
   }, []);
 
   return (
-    <section ref={heroRef} className="hero-section section-bg-fade-bottom relative pt-28 sm:pt-32 pb-20 px-4 sm:px-6 min-h-[100vh] flex items-center justify-center overflow-hidden">
+    <section
+      ref={heroRef}
+      className="hero-section section-bg-fade-bottom relative pt-28 sm:pt-32 pb-24 sm:pb-28 min-h-[100vh] min-h-[100svh] flex items-center justify-center overflow-hidden"
+    >
       <div ref={mediaRef} className="hero-parallax-media" aria-hidden="true">
         <picture>
-          <source media="(max-width: 768px)" srcSet="/assets/images/hero/hero-background-mobile.webp" />
+          <source media="(max-width: 768px)" srcSet="/assets/images/hero/hero-background-mobile.webp" type="image/webp" />
           <img
             src="/assets/images/hero/hero-background-desktop.webp"
             alt=""
@@ -84,74 +80,79 @@ export function Hero() {
             fetchPriority="high"
             loading="eager"
             decoding="async"
-            width="1920"
-            height="1080"
+            width="1024"
+            height="540"
           />
         </picture>
       </div>
       <div className="hero-overlay"></div>
 
-      {/* Floating Glass Elements (Decorative with subtle SVG refraction) */}
+      {/* Floating Glass Elements (Decorative, strictly absolute so they never affect flex centering) */}
       <div
         aria-hidden="true"
-        className="apple-glass apple-glass-static apple-glass-floating apple-glass-refractive absolute top-1/4 left-1/4 w-24 h-32 rounded-2xl rotate-12 hidden lg:block z-10 pointer-events-none"
+        className="apple-glass apple-glass-static apple-glass-floating apple-glass-refractive absolute top-1/4 left-[8%] w-24 h-32 rounded-2xl rotate-12 hidden xl:block z-10 pointer-events-none"
       ></div>
       <div
         aria-hidden="true"
-        className="apple-glass apple-glass-static apple-glass-floating apple-glass-refractive absolute top-1/3 right-1/4 w-32 h-24 rounded-2xl -rotate-12 hidden lg:block z-10 pointer-events-none"
+        className="apple-glass apple-glass-static apple-glass-floating apple-glass-refractive absolute top-1/3 right-[8%] w-32 h-24 rounded-2xl -rotate-12 hidden xl:block z-10 pointer-events-none"
       ></div>
 
-      {/* Main Content Card - Liquid Glass Refinado */}
-      <div className="hero-content relative z-20 max-w-4xl w-full liquid-glass-card apple-glass-refractive rounded-[2rem] p-5 sm:p-10 md:p-16 text-center shadow-2xl">
-        <h1 ref={titleRef} className="hero-title parallax-title text-text-primary" data-text="Barreto Advocacia">
-          Barreto Advocacia
-          <span className="sr-only"> - Advogado em Brasília</span>
-        </h1>
-        <h2 className="hero-subtitle">
-          Compromisso com o Direito. Excelência no Resultado.
-        </h2>
-        <div className="hero-areas mb-8 md:mb-10">
-          CRIMINAL - CÍVEL - FAMÍLIA - EMPRESARIAL
-        </div>
-        
-        <div className="flex flex-col items-center gap-4 w-full">
-          <a 
-            href="https://api.whatsapp.com/send/?phone=5561991591105&text=Vi+o+site+de+voc%C3%AAs+pelo+o+Google+e+gostaria+de+falar+com+um+advogado.&type=phone_number&app_absent=0"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="apple-glass apple-glass-whatsapp px-5 py-3.5 sm:px-8 sm:py-4 min-h-[48px] rounded-full font-bold flex items-center justify-center gap-2.5 mx-auto text-xs sm:text-sm md:text-base w-full sm:w-auto sm:whitespace-nowrap text-center leading-snug"
-          >
-            <WhatsAppIcon className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] shrink-0 text-emerald-300" />
-            <span>AVALIAR MEU CASO PELO WHATSAPP</span>
-          </a>
-          <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-text-muted text-[11px] sm:text-xs md:text-sm font-medium text-center">
-            <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 shrink-0" />
-            <span>Resposta rápida. Sigilo absoluto garantido.</span>
+      {/* Standardized Section Container */}
+      <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center relative z-20">
+        {/* Main Content Card - Liquid Glass Refinado */}
+        <div className="hero-content max-w-4xl w-full mx-auto liquid-glass-card apple-glass-refractive rounded-[24px] sm:rounded-[32px] p-6 sm:p-10 md:p-14 lg:p-16 text-center shadow-2xl flex flex-col items-center gap-6 sm:gap-8">
+          <div className="flex flex-col items-center gap-4 w-full">
+            <h1 ref={titleRef} className="hero-title parallax-title text-text-primary !mb-0" data-text="Barreto Advocacia">
+              Barreto Advocacia
+              <span className="sr-only"> - Advogado em Brasília</span>
+            </h1>
+            <h2 className="hero-subtitle !mb-0 max-w-2xl mx-auto">
+              Compromisso com o Direito. Excelência no Resultado.
+            </h2>
+            <div className="hero-areas">
+              CRIMINAL - CÍVEL - FAMÍLIA - EMPRESARIAL
+            </div>
           </div>
 
-          {/* Contact Details */}
-          <div className="flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-6 mt-4 text-xs sm:text-sm text-text-secondary">
-            <a 
-              href="tel:+5561991591105" 
-              className="group relative flex items-center gap-2 py-1.5 min-h-[44px] hover:text-accent-primary transition-colors"
+          <div className="flex flex-col items-center gap-4 w-full">
+            <a
+              href="https://api.whatsapp.com/send/?phone=5561991591105&text=Vi+o+site+de+voc%C3%AAs+pelo+o+Google+e+gostaria+de+falar+com+um+advogado.&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="apple-glass apple-glass-whatsapp px-5 py-3.5 sm:px-8 sm:py-4 min-h-[48px] rounded-full font-bold flex items-center justify-center gap-2.5 mx-auto text-xs sm:text-sm md:text-base w-full sm:w-auto sm:whitespace-nowrap text-center leading-snug"
             >
-              <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent-primary shrink-0" />
-              <span>+55 61 99159-1105</span>
+              <WhatsAppIcon className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] shrink-0 text-emerald-300" />
+              <span>AVALIAR MEU CASO PELO WHATSAPP</span>
             </a>
-            <span className="hidden sm:block text-text-primary/20">•</span>
-            <a 
-              href="mailto:barretoadvocacia01@gmail.com" 
-              className="group relative flex items-center gap-2 py-1.5 min-h-[44px] hover:text-accent-primary transition-colors break-all sm:break-normal"
-            >
-              <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent-primary shrink-0" />
-              <span>barretoadvocacia01@gmail.com</span>
-            </a>
+            <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-text-muted text-[11px] sm:text-xs md:text-sm font-medium text-center">
+              <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 shrink-0" />
+              <span>Resposta rápida. Sigilo absoluto garantido.</span>
+            </div>
+
+            {/* Contact Details */}
+            <div className="flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-1 sm:gap-6 pt-2 text-xs sm:text-sm text-text-secondary">
+              <a
+                href="tel:+5561991591105"
+                className="group relative flex items-center justify-center gap-2 py-1.5 min-h-[44px] hover:text-accent-primary transition-colors"
+              >
+                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent-primary shrink-0" />
+                <span>+55 61 99159-1105</span>
+              </a>
+              <span className="hidden sm:block text-text-primary/20" aria-hidden="true">•</span>
+              <a
+                href="mailto:barretoadvocacia01@gmail.com"
+                className="group relative flex items-center justify-center gap-2 py-1.5 min-h-[44px] hover:text-accent-primary transition-colors break-all sm:break-normal"
+              >
+                <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent-primary shrink-0" />
+                <span>barretoadvocacia01@gmail.com</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 z-20" aria-hidden="true">
+      {/* Scroll Indicator positioned cleanly below the card */}
+      <div className="scroll-indicator absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none" aria-hidden="true">
         <div className="scroll-indicator-icon"></div>
       </div>
     </section>

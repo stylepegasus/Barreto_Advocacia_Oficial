@@ -105,14 +105,14 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   overflow-x: hidden;
-  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   overflow-x: hidden;
-  overflow-x: clip;
+  max-width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -122,229 +122,240 @@ body {
 }
 
 /* ==========================================================================
-   APPLE LIQUID GLASS SYSTEM (.apple-glass)
+   APPLE LIQUID GLASS SYSTEM (.apple-glass) — inside @layer components so
+   Tailwind utilities (absolute, fixed, rounded-2xl, rounded-3xl, etc.) win.
    ========================================================================== */
-
-.apple-glass {
-  position: relative;
-  isolation: isolate;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--glass-radius);
-  backdrop-filter: blur(var(--glass-blur)) saturate(160%);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
-    var(--glass-shadow);
-  transition:
-    background var(--glass-transition),
-    border-color var(--glass-transition),
-    box-shadow var(--glass-transition),
-    transform var(--glass-transition);
-}
-
-.apple-glass::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.18) 0%,
-      rgba(255, 255, 255, 0.04) 38%,
-      rgba(255, 255, 255, 0) 62%,
-      rgba(255, 255, 255, 0.08) 100%
-    );
-  mix-blend-mode: screen;
-  opacity: 0.75;
-  z-index: -1;
-}
-
-.apple-glass::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.10),
-    inset 0 1px 1px rgba(255, 255, 255, 0.25);
-  opacity: 0.55;
-  z-index: -1;
-}
-
-.apple-glass:hover {
-  background: var(--glass-bg-strong);
-  border-color: rgba(255, 255, 255, 0.28);
-  transform: translateY(-1px);
-}
-
-.apple-glass:active {
-  transform: translateY(0) scale(0.985);
-}
-
-/* Light mode contrast adaptation for standalone .apple-glass controls over light backgrounds */
-:root[data-theme="light"] .apple-glass-adaptive {
-  background: rgba(15, 23, 42, 0.05);
-  border-color: rgba(15, 23, 42, 0.14);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.75),
-    inset 0 -1px 0 rgba(15, 23, 42, 0.04),
-    0 6px 24px rgba(15, 23, 42, 0.08);
-}
-
-:root[data-theme="light"] .apple-glass-adaptive:hover {
-  background: rgba(15, 23, 42, 0.09);
-  border-color: rgba(15, 23, 42, 0.22);
-}
-
-/* Non-interactive containers (Navbar bar, Hero frame, Modal dialog) */
-.apple-glass-static:hover {
-  background: var(--glass-bg);
-  border-color: var(--glass-border);
-  transform: none;
-}
-
-.apple-glass-static:active {
-  transform: none;
-}
-
-/* Primary Glass — Fixed Navbar */
-.apple-glass-nav {
-  background: rgba(14, 14, 16, 0.46);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(var(--glass-blur-strong)) saturate(175%);
-  -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(175%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.30),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
-    0 10px 36px -6px rgba(0, 0, 0, 0.42);
-}
-
-.apple-glass-nav.is-scrolled {
-  background: rgba(12, 12, 14, 0.64);
-  border-color: rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(calc(var(--glass-blur-strong) + 6px)) saturate(190%);
-  -webkit-backdrop-filter: blur(calc(var(--glass-blur-strong) + 6px)) saturate(190%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.34),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-    0 14px 42px -6px rgba(0, 0, 0, 0.55);
-}
-
-:root[data-theme="light"] .apple-glass-nav {
-  background: rgba(255, 255, 255, 0.48);
-  border-color: rgba(15, 23, 42, 0.12);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.85),
-    inset 0 -1px 0 rgba(15, 23, 42, 0.04),
-    0 10px 32px -6px rgba(15, 23, 42, 0.10);
-}
-
-:root[data-theme="light"] .apple-glass-nav.is-scrolled {
-  background: rgba(255, 255, 255, 0.64);
-  border-color: rgba(15, 23, 42, 0.16);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.92),
-    inset 0 -1px 0 rgba(15, 23, 42, 0.06),
-    0 14px 36px -6px rgba(15, 23, 42, 0.14);
-}
-
-/* Primary Glass — WhatsApp CTA (translucent emerald physical glass, no loud gradient) */
-.apple-glass-whatsapp {
-  background: rgba(16, 185, 129, 0.22);
-  border-color: rgba(52, 211, 153, 0.42);
-  color: #ecfdf5;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.36),
-    inset 0 -1px 0 rgba(16, 185, 129, 0.20),
-    0 10px 32px -4px rgba(6, 78, 59, 0.45);
-}
-
-.apple-glass-whatsapp:hover {
-  background: rgba(16, 185, 129, 0.32);
-  border-color: rgba(110, 231, 183, 0.62);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1px 0 rgba(16, 185, 129, 0.28),
-    0 14px 38px -4px rgba(6, 78, 59, 0.58);
-  transform: translateY(-1px);
-}
-
-.apple-glass-whatsapp:active {
-  transform: translateY(0) scale(0.985);
-}
-
-:root[data-theme="light"] .apple-glass-whatsapp {
-  background: rgba(5, 150, 105, 0.82);
-  border-color: rgba(16, 185, 129, 0.55);
-  color: #ffffff;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1px 0 rgba(6, 78, 59, 0.25),
-    0 10px 28px -4px rgba(5, 150, 105, 0.32);
-}
-
-:root[data-theme="light"] .apple-glass-whatsapp:hover {
-  background: rgba(4, 120, 87, 0.90);
-  border-color: rgba(52, 211, 153, 0.70);
-}
-
-/* Modal Glass — Strong blur, luminous border, high legibility */
-.apple-glass-modal {
-  border-radius: 28px;
-  background: rgba(18, 18, 20, 0.84);
-  border: 1px solid rgba(255, 255, 255, 0.20);
-  backdrop-filter: blur(var(--glass-blur-strong)) saturate(170%);
-  -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(170%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-    0 24px 64px rgba(0, 0, 0, 0.65);
-}
-
-:root[data-theme="light"] .apple-glass-modal {
-  background: rgba(255, 255, 255, 0.86);
-  border-color: rgba(15, 23, 42, 0.14);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    0 24px 64px rgba(15, 23, 42, 0.22);
-}
-
-/* Realistic SVG Refraction — only on larger/highlighted elements on desktop */
-@media (min-width: 768px) {
-  .apple-glass-refractive::before {
-    filter: url(#liquid-glass-refraction);
+@layer components {
+  .apple-glass {
+    position: relative;
+    isolation: isolate;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--glass-radius);
+    backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.22),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+      var(--glass-shadow);
+    transition:
+      background var(--glass-transition),
+      border-color var(--glass-transition),
+      box-shadow var(--glass-transition),
+      transform var(--glass-transition);
   }
-  .apple-glass-floating.apple-glass-refractive {
-    filter: url(#liquid-glass-refraction);
-  }
-}
 
-@media (max-width: 767px) {
-  .apple-glass-refractive,
-  .apple-glass-refractive::before {
-    filter: none;
+  .apple-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.04) 38%,
+        rgba(255, 255, 255, 0) 62%,
+        rgba(255, 255, 255, 0.08) 100%
+      );
+    mix-blend-mode: screen;
+    opacity: 0.75;
+    z-index: -1;
   }
-}
 
-/* Fallback for browsers without backdrop-filter support */
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .apple-glass,
-  .apple-glass-nav,
+  .apple-glass::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.10),
+      inset 0 1px 1px rgba(255, 255, 255, 0.25);
+    opacity: 0.55;
+    z-index: -1;
+  }
+
+  .apple-glass:hover {
+    background: var(--glass-bg-strong);
+    border-color: rgba(255, 255, 255, 0.28);
+    transform: translateY(-1px);
+  }
+
+  .apple-glass:active {
+    transform: translateY(0) scale(0.985);
+  }
+
+  /* Light mode contrast adaptation for standalone .apple-glass controls over light backgrounds */
+  :root[data-theme="light"] .apple-glass-adaptive {
+    background: rgba(15, 23, 42, 0.05);
+    border-color: rgba(15, 23, 42, 0.14);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.75),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.04),
+      0 6px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  :root[data-theme="light"] .apple-glass-adaptive:hover {
+    background: rgba(15, 23, 42, 0.09);
+    border-color: rgba(15, 23, 42, 0.22);
+  }
+
+  /* Non-interactive containers (Navbar bar, Hero frame, Modal dialog) */
+  .apple-glass-static:hover {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    transform: none;
+  }
+
+  .apple-glass-static:active {
+    transform: none;
+  }
+
+  /* Primary Glass — Fixed Navbar */
+  .apple-glass-nav {
+    background: rgba(14, 14, 16, 0.46);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(var(--glass-blur-strong)) saturate(175%);
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(175%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.30),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+      0 10px 36px -6px rgba(0, 0, 0, 0.42);
+  }
+
+  .apple-glass-nav.is-scrolled {
+    background: rgba(12, 12, 14, 0.64);
+    border-color: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(calc(var(--glass-blur-strong) + 6px)) saturate(190%);
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur-strong) + 6px)) saturate(190%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.34),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+      0 14px 42px -6px rgba(0, 0, 0, 0.55);
+  }
+
+  :root[data-theme="light"] .apple-glass-nav {
+    background: rgba(255, 255, 255, 0.48);
+    border-color: rgba(15, 23, 42, 0.12);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.04),
+      0 10px 32px -6px rgba(15, 23, 42, 0.10);
+  }
+
+  :root[data-theme="light"] .apple-glass-nav.is-scrolled {
+    background: rgba(255, 255, 255, 0.64);
+    border-color: rgba(15, 23, 42, 0.16);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.92),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.06),
+      0 14px 36px -6px rgba(15, 23, 42, 0.14);
+  }
+
+  /* Primary Glass — WhatsApp CTA (translucent emerald physical glass, no loud gradient) */
+  .apple-glass-whatsapp {
+    background: rgba(16, 185, 129, 0.22);
+    border-color: rgba(52, 211, 153, 0.42);
+    color: #ecfdf5;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.36),
+      inset 0 -1px 0 rgba(16, 185, 129, 0.20),
+      0 10px 32px -4px rgba(6, 78, 59, 0.45);
+  }
+
+  .apple-glass-whatsapp:hover {
+    background: rgba(16, 185, 129, 0.32);
+    border-color: rgba(110, 231, 183, 0.62);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.45),
+      inset 0 -1px 0 rgba(16, 185, 129, 0.28),
+      0 14px 38px -4px rgba(6, 78, 59, 0.58);
+    transform: translateY(-1px);
+  }
+
+  .apple-glass-whatsapp:active {
+    transform: translateY(0) scale(0.985);
+  }
+
+  :root[data-theme="light"] .apple-glass-whatsapp {
+    background: rgba(5, 150, 105, 0.82);
+    border-color: rgba(16, 185, 129, 0.55);
+    color: #ffffff;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.45),
+      inset 0 -1px 0 rgba(6, 78, 59, 0.25),
+      0 10px 28px -4px rgba(5, 150, 105, 0.32);
+  }
+
+  :root[data-theme="light"] .apple-glass-whatsapp:hover {
+    background: rgba(4, 120, 87, 0.90);
+    border-color: rgba(52, 211, 153, 0.70);
+  }
+
+  /* Modal Glass — Strong blur, luminous border, high legibility */
   .apple-glass-modal {
-    background: rgba(20, 20, 20, 0.86);
+    border-radius: 28px;
+    background: rgba(18, 18, 20, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(var(--glass-blur-strong)) saturate(170%);
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(170%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+      0 24px 64px rgba(0, 0, 0, 0.65);
+  }
+
+  :root[data-theme="light"] .apple-glass-modal {
+    background: rgba(255, 255, 255, 0.90);
+    border-color: rgba(15, 23, 42, 0.14);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      0 24px 64px rgba(15, 23, 42, 0.22);
+  }
+
+  /* Prevent stacked backdrop-filter inside already-blurred cards & modals */
+  .liquid-glass-card .apple-glass:not(.apple-glass-whatsapp),
+  .apple-glass-modal .apple-glass {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
-  :root[data-theme="light"] .apple-glass,
-  :root[data-theme="light"] .apple-glass-nav,
-  :root[data-theme="light"] .apple-glass-modal {
-    background: rgba(248, 249, 250, 0.92);
+
+  /* Realistic SVG Refraction — only on larger/highlighted elements on desktop */
+  @media (min-width: 768px) {
+    .apple-glass-refractive::before {
+      filter: url(#liquid-glass-refraction);
+    }
+    .apple-glass-floating.apple-glass-refractive {
+      filter: url(#liquid-glass-refraction);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .apple-glass-refractive,
+    .apple-glass-refractive::before {
+      filter: none;
+    }
+  }
+
+  /* Fallback for browsers without backdrop-filter support */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .apple-glass,
+    .apple-glass-nav,
+    .apple-glass-modal,
+    .liquid-glass-card {
+      background: rgba(20, 20, 20, 0.86);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    :root[data-theme="light"] .apple-glass,
+    :root[data-theme="light"] .apple-glass-nav,
+    :root[data-theme="light"] .apple-glass-modal,
+    :root[data-theme="light"] .liquid-glass-card {
+      background: rgba(248, 249, 250, 0.92);
+    }
   }
 }
 
@@ -463,11 +474,10 @@ body {
     pointer-events: none;
   }
 
+  /* Icon inside cards — no inner backdrop-filter to avoid stacked blurs */
   .liquid-glass-icon {
     border-radius: 50%;
     background: var(--lg-icon-bg);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
     border: 1px solid var(--lg-icon-border);
     box-shadow: var(--lg-icon-shadow);
     width: 48px;
@@ -517,7 +527,6 @@ body {
     align-items: center;
     justify-content: center;
     background-color: var(--bg-primary);
-    /* Fallback */
   }
 
   .hero-parallax-media {
@@ -542,13 +551,16 @@ body {
     position: relative;
   }
 
+  :where(.parallax-title) {
+    font-size: clamp(2rem, 5.5vw, 4.5rem);
+  }
+
   .parallax-title {
-    font-size: clamp(2.1rem, 7vw, 5rem);
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.12;
     letter-spacing: -0.03em;
     position: relative;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     font-family: var(--font-serif);
     background: var(--title-highlight-gradient);
     -webkit-background-clip: text;
@@ -565,56 +577,23 @@ body {
   @media (min-width: 768px) and (hover: hover) {
     .parallax-title {
       will-change: transform;
-      transform: translate(calc(var(--mouse-x, 0px) * 0.3), calc(var(--scroll-y, 0px) * 0.4 + var(--mouse-y, 0px) * 0.3));
-      filter: drop-shadow(calc(var(--mouse-x, 0px) * -0.5) calc(var(--mouse-y, 0px) * -0.5) 12px rgba(197, 168, 128, 0.3));
-    }
-
-    .parallax-title::before,
-    .parallax-title::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      filter: blur(8px);
-      opacity: 0.6;
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 20%, black 80%, transparent 100%);
-      mask-image: linear-gradient(90deg, transparent 0%, black 20%, black 80%, transparent 100%);
-      pointer-events: none;
-      background: var(--title-highlight-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      transition: transform 0.2s ease-out;
-    }
-
-    .parallax-title::before {
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
-      mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
-      transform: translate(calc(var(--mouse-x, 0px) * -0.8), calc(var(--mouse-y, 0px) * -0.8));
-    }
-
-    .parallax-title::after {
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 25%, black 75%, transparent 100%);
-      mask-image: linear-gradient(90deg, transparent 0%, black 25%, black 75%, transparent 100%);
-      transform: translate(calc(var(--mouse-x, 0px) * 1.2), calc(var(--mouse-y, 0px) * 1.2));
+      transform: translate3d(calc(var(--mouse-x, 0px) * 0.25), calc(var(--mouse-y, 0px) * 0.25), 0);
+      filter: drop-shadow(0 4px 16px rgba(197, 168, 128, 0.22));
     }
   }
 
   .hero-subtitle {
-    font-size: clamp(0.95rem, 3vw, 1.8rem);
+    font-size: clamp(0.95rem, 2.5vw, 1.5rem);
     font-weight: 400;
     color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     opacity: 0.92;
-    line-height: 1.4;
+    line-height: 1.45;
     padding: 0 0.25rem;
   }
 
   .hero-areas {
-    font-size: clamp(0.7rem, 2vw, 1.1rem);
+    font-size: clamp(0.7rem, 1.8vw, 1.05rem);
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -657,11 +636,10 @@ body {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
-  /* Sticky Section & Reveal Cards */
+  /* Section & Reveal Cards */
   .sticky-section,
   .letter-reveal-section {
     position: relative;
-    min-height: 100vh;
   }
 
   .reveal-title span.reveal-char {
@@ -683,32 +661,20 @@ body {
   }
 
   .sticky-title-container {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 100px;
-    /* Abaixo do header fixo */
-    z-index: 30;
+    position: relative;
+    z-index: 10;
     background: var(--lg-card-bg);
-    -webkit-backdrop-filter: blur(12px) saturate(145%);
-    backdrop-filter: blur(12px) saturate(145%);
     border: 1px solid var(--lg-card-border);
     border-radius: 24px;
     padding: 24px;
-    margin-bottom: 40px;
+    margin-bottom: 36px;
     box-shadow: var(--lg-card-shadow);
-  }
-
-  @media (max-width: 768px) {
-    .sticky-title-container .section-desc {
-      display: none;
-      /* Remove descrição no mobile */
-    }
   }
 
   .reveal-card {
     opacity: 0;
-    transform: translate3d(0, 32px, 0);
-    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translate3d(0, 28px, 0);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transition-delay: 0s;
     will-change: opacity, transform;
   }
@@ -740,10 +706,6 @@ body {
       transform: none !important;
     }
 
-    .parallax-title::before,
-    .parallax-title::after {
-      display: none !important;
-    }
     .apple-glass,
     .apple-glass:hover,
     .apple-glass:active,
@@ -757,16 +719,30 @@ body {
   /* Map Section */
   .map-section {
     width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
     padding: 0 16px;
   }
 
+  @media (min-width: 640px) {
+    .map-section {
+      padding: 0 24px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .map-section {
+      padding: 0 32px;
+    }
+  }
+
   .map-container {
     position: relative;
     width: 100%;
-    max-width: 1280px;
-    /* max-w-7xl */
+    max-width: 1200px;
     aspect-ratio: 16 / 6;
     border-radius: 24px;
     overflow: hidden;
@@ -785,7 +761,7 @@ body {
 
   @media (max-width: 768px) {
     .map-container {
-      aspect-ratio: 16 / 8.5;
+      aspect-ratio: 16 / 9;
       border-radius: 18px;
     }
   }
@@ -797,10 +773,10 @@ body {
   }
 
   .scroll-indicator-icon {
-    width: 32px;
-    height: 48px;
+    width: 28px;
+    height: 44px;
     border: 2px solid var(--accent-primary);
-    border-radius: 16px;
+    border-radius: 14px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -810,20 +786,20 @@ body {
     content: '';
     position: absolute;
     width: 4px;
-    height: 10px;
+    height: 9px;
     background: var(--accent-primary);
     border-radius: 2px;
-    top: 8px;
+    top: 7px;
     animation: scrollBounce 1.5s infinite;
   }
 
   @media (max-width: 767px) {
     .scroll-indicator-icon {
       border: none;
-      width: 36px;
-      height: 48px;
+      width: 32px;
+      height: 36px;
       border-radius: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%23C5A880' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14'/%3E%3Cpath d='m19 12-7 7-7-7'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%23C5A880' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14'/%3E%3Cpath d='m19 12-7 7-7-7'/%3E%3C/svg%3E");
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
@@ -836,38 +812,24 @@ body {
   }
 
   @keyframes scrollBounce {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
+    0%, 20%, 50%, 80%, 100% {
       transform: translateY(0);
     }
-
     40% {
       transform: translateY(8px);
     }
-
     60% {
       transform: translateY(4px);
     }
   }
 
   @keyframes scrollBounceMobile {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
+    0%, 20%, 50%, 80%, 100% {
       transform: translateY(0);
     }
-
     40% {
       transform: translateY(6px);
     }
-
     60% {
       transform: translateY(3px);
     }
@@ -876,9 +838,8 @@ body {
   @keyframes fadeInUpScroll {
     from {
       opacity: 0;
-      transform: translateX(-50%) translateY(20px);
+      transform: translateX(-50%) translateY(12px);
     }
-
     to {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
@@ -930,7 +891,6 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    /* Overlay sugerido para proteger leitura */
     background: rgba(0, 0, 0, 0.45);
     pointer-events: none;
     z-index: 0;
@@ -991,7 +951,6 @@ body {
       opacity: 0;
       transform: translateY(12px);
     }
-
     to {
       opacity: 1;
       transform: translateY(0);

@@ -11,24 +11,14 @@ const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 export const initGA = () => {
   if (typeof window === 'undefined') return;
 
-  const id = GA_MEASUREMENT_ID;
-  if (!id) {
-    console.warn('[GA4] VITE_GA_MEASUREMENT_ID não definido. GA não será inicializado.');
+  const id = typeof GA_MEASUREMENT_ID === 'string' ? GA_MEASUREMENT_ID.trim() : '';
+  if (!id || !/^G-[A-Z0-9]+$/i.test(id)) {
     return;
   }
 
   if (window.gtag) {
-    // Já inicializado
     return;
   }
-
-  console.log('[GA4] Inicializando GA4 com ID:', id);
-
-  // Carrega gtag.js
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
-  document.head.appendChild(script);
 
   window.dataLayer = window.dataLayer || [];
   function gtag(...args: any[]) {
@@ -38,8 +28,21 @@ export const initGA = () => {
   window.gtag = gtag as any;
 
   window.gtag('js', new Date());
-  // send_page_view: false para SPA; page_view manual em cada rota
   window.gtag('config', id, { send_page_view: false });
+
+  const loadScript = () => {
+    if (document.querySelector(`script[src*="googletagmanager.com/gtag/js"]`)) return;
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+    document.head.appendChild(script);
+  };
+
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(loadScript, { timeout: 2500 });
+  } else {
+    setTimeout(loadScript, 1200);
+  }
 };
 
 export const trackPageView = (path: string) => {
