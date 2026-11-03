@@ -15,12 +15,12 @@ export function Footer() {
   };
 
   return (
-    <footer className="px-4 sm:px-6 py-8 sm:py-12 border-t border-text-primary/10 bg-text-primary/5">
-      <div className="max-w-7xl mx-auto">
+    <footer className="py-8 sm:py-12 border-t border-text-primary/10 bg-text-primary/5">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="liquid-glass-card rounded-[24px] sm:rounded-3xl p-6 sm:p-8 md:p-12 mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 shadow-2xl">
 
           {/* Logo & About */}
-          <div className="flex flex-col items-start lg:col-span-1">
+          <div className="flex flex-col items-start lg:col-span-1 min-w-0">
             <div className="flex items-center gap-2 mb-6">
               <Link to="/" className="min-h-[44px] flex items-center">
                 <picture>
@@ -28,22 +28,22 @@ export function Footer() {
                   <img
                     src="/assets/branding/logo/logo-footer.png"
                     alt="Logotipo da Advocacia Barreto"
-                    className="h-8 md:h-12 w-auto object-contain"
+                    className="h-10 md:h-12 w-10 md:w-12 object-contain aspect-square"
                     loading="lazy"
-                    width="210"
+                    width="48"
                     height="48"
                   />
                 </picture>
               </Link>
             </div>
-            <p className="text-text-secondary text-sm">
+            <p className="text-text-secondary text-sm text-left">
               Defendendo seus direitos com excelência, ética e dedicação.
             </p>
           </div>
 
           {/* Links Rápidos */}
-          <div>
-            <h4 className="text-text-primary font-semibold mb-6">Navegação</h4>
+          <div className="min-w-0">
+            <h3 className="text-text-primary font-semibold mb-6">Navegação</h3>
             <ul className="space-y-3 text-sm text-text-secondary">
               <li><a href={getHref('#home')} className="hover:text-accent-primary transition-colors">Home</a></li>
               <li><a href={getHref('#areas')} className="hover:text-accent-primary transition-colors">Áreas de Atuação</a></li>
@@ -54,8 +54,8 @@ export function Footer() {
           </div>
 
           {/* Institucional (Legal Links) */}
-          <div>
-            <h4 className="text-text-primary font-semibold mb-6">Institucional</h4>
+          <div className="min-w-0">
+            <h3 className="text-text-primary font-semibold mb-6">Institucional</h3>
             <ul className="space-y-3 text-sm text-text-secondary">
               <li><Link to="/termos-de-uso" className="hover:text-accent-primary transition-colors">Termos de Uso</Link></li>
               <li><Link to="/politica-de-privacidade" className="hover:text-accent-primary transition-colors">Política de Privacidade</Link></li>
@@ -65,8 +65,8 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
-            <h4 className="text-text-primary font-semibold mb-6">Contato</h4>
+          <div className="min-w-0">
+            <h3 className="text-text-primary font-semibold mb-6">Contato</h3>
             <ul className="space-y-4 text-sm text-text-secondary">
               <li>
                 <a
