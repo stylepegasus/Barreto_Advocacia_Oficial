@@ -1,31 +1,12 @@
-import { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
-
-interface TeamMember {
-  name: string;
-  role: string;
-  img: string;
-  alt: string;
-  description?: string;
-  experience: string;
-  education: string;
-  areas?: string;
-  cases: string;
-}
+import { useState, useCallback } from 'react';
+import { TeamMemberModal, type TeamMember } from './TeamMemberModal';
 
 export function TeamFamilia() {
   const [selectedMember, setSelectedMember] = useState<number | null>(null);
 
-  useEffect(() => {
-    if (selectedMember === null) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setSelectedMember(null);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedMember]);
+  const handleCloseModal = useCallback(() => {
+    setSelectedMember(null);
+  }, []);
 
   const team: TeamMember[] = [
     {
@@ -118,7 +99,10 @@ export function TeamFamilia() {
   ];
 
   return (
-    <section className="liquid-glass-section px-4 sm:px-6 max-w-7xl mx-auto w-full py-16 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden my-6">
+    <section
+      id="equipe"
+      className="liquid-glass-section max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 w-full py-14 sm:py-20 rounded-[24px] sm:rounded-[40px] overflow-hidden"
+    >
       <div className="relative z-10">
         <h2 className="text-3xl md:text-4xl text-center font-serif font-bold text-text-primary mb-10 sm:mb-12">
           Conheça Nosso <span className="text-accent-primary">Time</span>
@@ -130,8 +114,9 @@ export function TeamFamilia() {
               role="button"
               tabIndex={0}
               aria-haspopup="dialog"
+              aria-expanded={selectedMember === idx}
               aria-label={`Ver perfil completo de ${member.name}`}
-              className="liquid-glass-card hover-lift overflow-hidden group p-1 cursor-pointer focus-visible:outline-2 focus-visible:outline-accent-primary"
+              className="liquid-glass-card hover-lift overflow-hidden group p-1 cursor-pointer focus-visible:outline-2 focus-visible:outline-accent-primary touch-manipulation"
               onClick={() => setSelectedMember(idx)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -150,12 +135,12 @@ export function TeamFamilia() {
                       className="team-photo group-hover:scale-105"
                       loading="lazy"
                       decoding="async"
-                      width="400"
-                      height="400"
+                      width="600"
+                      height="800"
                     />
                   </picture>
-                  <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="apple-glass px-5 py-2.5 min-h-[44px] inline-flex items-center justify-center text-white text-sm font-medium rounded-full">
+                  <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                    <span className="apple-glass px-5 py-2.5 min-h-[44px] inline-flex items-center justify-center text-white text-sm font-medium rounded-full pointer-events-none">
                       Ver Perfil
                     </span>
                   </div>
@@ -170,113 +155,11 @@ export function TeamFamilia() {
         </div>
       </div>
 
-      {/* MODAL DO MEMBRO DA EQUIPE COM APPLE LIQUID GLASS */}
-      {selectedMember !== null && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="team-familia-modal-title"
-        >
-          <div
-            className="absolute inset-0 bg-black/65 backdrop-blur-md transition-opacity"
-            onClick={() => setSelectedMember(null)}
-            aria-hidden="true"
-          ></div>
-
-          <div className="relative w-full max-w-3xl apple-glass apple-glass-modal apple-glass-static overflow-hidden flex flex-col md:flex-row max-h-[88vh] sm:max-h-[90vh]">
-            <button
-              type="button"
-              onClick={() => setSelectedMember(null)}
-              className="apple-glass absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-white cursor-pointer"
-              aria-label="Fechar perfil"
-              title="Fechar"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            {/* Foto sem vidro sobreposto */}
-            <div className="w-full md:w-2/5 h-56 sm:h-64 md:h-auto relative shrink-0">
-              <picture>
-                <source srcSet={team[selectedMember].img.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
-                <img
-                  src={team[selectedMember].img}
-                  alt={team[selectedMember].alt}
-                  className="w-full h-full object-cover object-top md:object-center"
-                  loading="eager"
-                  decoding="async"
-                  width="400"
-                  height="400"
-                />
-              </picture>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent md:hidden pointer-events-none"></div>
-              <div className="absolute bottom-3 left-4 right-4 md:hidden">
-                <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">{team[selectedMember].name}</h3>
-              </div>
-            </div>
-
-            <div className="w-full md:w-3/5 p-5 sm:p-6 md:p-8 overflow-y-auto min-h-0 flex-1 overscroll-contain">
-              <div className="hidden md:block mb-5">
-                <h3 id="team-familia-modal-title" className="text-3xl font-serif font-bold text-text-primary mb-2">{team[selectedMember].name}</h3>
-                <p className="text-accent-primary font-medium text-sm">{team[selectedMember].role}</p>
-              </div>
-              <div className="md:hidden mb-4">
-                <p className="text-accent-primary font-medium text-xs sm:text-sm">{team[selectedMember].role}</p>
-              </div>
-
-              {team[selectedMember].description && (
-                <p className="text-text-secondary text-sm leading-relaxed mb-6 pb-5 border-b border-text-primary/10">
-                  {team[selectedMember].description}
-                </p>
-              )}
-
-              <div className="space-y-5">
-                <div>
-                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-text-muted mb-1.5 flex items-center gap-2">
-                    <span className="w-4 h-[1px] bg-accent-primary"></span>
-                    Experiência
-                  </h4>
-                  <p className="text-text-secondary text-sm leading-relaxed">
-                    {team[selectedMember].experience}
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-text-muted mb-1.5 flex items-center gap-2">
-                    <span className="w-4 h-[1px] bg-accent-primary"></span>
-                    Formação
-                  </h4>
-                  <p className="text-text-secondary text-sm leading-relaxed">
-                    {team[selectedMember].education}
-                  </p>
-                </div>
-
-                {team[selectedMember].areas && (
-                  <div>
-                    <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-text-muted mb-1.5 flex items-center gap-2">
-                      <span className="w-4 h-[1px] bg-accent-primary"></span>
-                      Áreas de Atuação
-                    </h4>
-                    <p className="text-text-secondary text-sm leading-relaxed">
-                      {team[selectedMember].areas}
-                    </p>
-                  </div>
-                )}
-
-                <div>
-                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-text-muted mb-1.5 flex items-center gap-2">
-                    <span className="w-4 h-[1px] bg-accent-primary"></span>
-                    Casos de Destaque
-                  </h4>
-                  <p className="text-text-secondary text-sm leading-relaxed">
-                    {team[selectedMember].cases}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <TeamMemberModal
+        member={selectedMember !== null ? team[selectedMember] : null}
+        onClose={handleCloseModal}
+        titleId="team-familia-modal-title"
+      />
     </section>
   );
 }

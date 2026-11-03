@@ -30,7 +30,7 @@ const PageLoader = () => (
 // Layout do site oficial (com Navbar e Footer)
 function MainLayout() {
   return (
-    <div className="relative z-10 flex flex-col min-h-screen overflow-x-hidden">
+    <div className="relative z-10 flex flex-col min-h-screen overflow-x-clip">
       <Navbar />
       <div className="flex-grow">
         <Suspense fallback={<PageLoader />}>
@@ -45,7 +45,7 @@ function MainLayout() {
 // Layout limpo (sem Navbar e Footer)
 function CleanLayout() {
   return (
-    <div className="relative z-10 flex flex-col min-h-screen overflow-x-hidden">
+    <div className="relative z-10 flex flex-col min-h-screen overflow-x-clip">
       <div className="flex-grow">
         <Suspense fallback={<PageLoader />}>
           <Outlet />
@@ -68,7 +68,7 @@ export default function App() {
       <LiquidGlassDefs />
       <MetaPixelRouterListener />
       <GoogleAnalyticsRouterListener />
-      <div className="min-h-screen bg-bg-primary text-text-primary font-sans transition-colors duration-300 overflow-x-hidden">
+      <div className="min-h-screen bg-bg-primary text-text-primary font-sans transition-colors duration-300 overflow-x-clip">
         {/* Background ambient glow contained inside overflow-hidden */}
         <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-primary/10 rounded-full blur-[128px]"></div>
