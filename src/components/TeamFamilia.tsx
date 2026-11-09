@@ -86,10 +86,10 @@ export function TeamFamilia() {
       cases: "Organização documental, estruturação de peças e apoio operacional em demandas de Direito de Família."
     },
     {
-      name: "Laura Luna Mendeiros",
+      name: "Laura Luna Medeiros",
       role: "Estagiária e Estudante de Direito no CEUB.",
-      img: "/assets/images/team/laura-luna-mendeiros.jpg",
-      alt: "Laura Luna Mendeiros, estagiária e estudante de Direito no CEUB",
+      img: "/assets/images/team/laura-luna-medeiros.jpg",
+      alt: "Laura Luna Medeiros, estagiária e estudante de Direito no CEUB",
       description: "Estagiária e estudante de Direito no CEUB, com atuação de apoio nas áreas Criminal e de Família. Contribui com a organização interna de documentos, acompanhamento de rotinas processuais e preparo de materiais que sustentam a atuação técnica do escritório. Sua atuação reforça a estrutura operacional das demandas de defesa criminal e das questões familiares conduzidas pela equipe.",
       experience: "Apoio na organização interna de documentos e rotinas das áreas Criminal e de Família.",
       education: "Estudante de Direito no CEUB.",

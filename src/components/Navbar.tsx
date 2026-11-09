@@ -58,19 +58,23 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 py-3 sm:py-4">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div
-          className={`apple-glass apple-glass-nav apple-glass-static apple-glass-refractive rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3 relative z-20 ${
+          className={`apple-glass apple-glass-nav apple-glass-static rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3 relative z-20 ${
             isScrolled ? 'is-scrolled' : ''
           }`}
         >
           {/* Subtle top specular light line */}
           <div
-            className="pointer-events-none absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent"
+            className="pointer-events-none absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/35 to-transparent"
             aria-hidden="true"
           />
 
           {/* Left Side: Logo + Theme Toggle (flex-1 on lg for exact center alignment) */}
           <div className="flex items-center gap-2.5 sm:gap-3.5 lg:flex-1 min-w-0">
-            <Link to="/" onClick={closeMenu} className="flex items-center justify-center min-h-[44px] min-w-[44px] shrink-0">
+            <Link
+              to="/"
+              onClick={closeMenu}
+              className="flex items-center justify-center min-h-[44px] min-w-[44px] shrink-0 rounded-full focus-visible:outline-2 focus-visible:outline-accent-primary focus-visible:outline-offset-2"
+            >
               <picture>
                 <source srcSet="/assets/branding/logo/logo-barreto.webp" type="image/webp" />
                 <img
@@ -88,7 +92,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={toggleTheme}
-              className="apple-glass apple-glass-adaptive w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center text-text-primary shrink-0 cursor-pointer"
+              className="apple-glass apple-glass-adaptive w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center text-text-primary shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-accent-primary focus-visible:outline-offset-2"
               aria-label={theme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'}
               aria-pressed={theme === 'dark'}
             >
@@ -97,11 +101,11 @@ export function Navbar() {
           </div>
 
           {/* Center: Links (Desktop only) — Mathematically centered */}
-          <div className="hidden lg:flex items-center justify-center gap-7 text-sm font-medium shrink-0">
-            <a href={getHref('#home')} className="text-text-primary/90 hover:text-accent-primary py-2 transition-colors">Home</a>
-            <a href={getHref('#areas')} className="text-text-primary/90 hover:text-accent-primary py-2 transition-colors">Áreas de Atuação</a>
-            <a href={getHref('#equipe')} className="text-text-primary/90 hover:text-accent-primary py-2 transition-colors">Nossa Equipe</a>
-            <a href={getHref('#localizacao')} className="text-text-primary/90 hover:text-accent-primary py-2 transition-colors">Localização</a>
+          <div className="hidden lg:flex items-center justify-center gap-6 text-sm font-medium shrink-0">
+            <a href={getHref('#home')} className="text-text-primary hover:text-accent-primary px-2 py-1.5 rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-accent-primary focus-visible:outline-offset-2">Home</a>
+            <a href={getHref('#areas')} className="text-text-primary hover:text-accent-primary px-2 py-1.5 rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-accent-primary focus-visible:outline-offset-2">Áreas de Atuação</a>
+            <a href={getHref('#equipe')} className="text-text-primary hover:text-accent-primary px-2 py-1.5 rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-accent-primary focus-visible:outline-offset-2">Nossa Equipe</a>
+            <a href={getHref('#localizacao')} className="text-text-primary hover:text-accent-primary px-2 py-1.5 rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-accent-primary focus-visible:outline-offset-2">Localização</a>
           </div>
 
           {/* Right Side: Actions & Mobile Toggle (flex-1 justify-end on lg) */}
@@ -111,7 +115,7 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackMetaEvent('Contact', { contact_method: 'WhatsApp', content_name: 'Botão WhatsApp Header' })}
-              className="apple-glass apple-glass-whatsapp px-5 py-2.5 min-h-[44px] rounded-full font-semibold text-sm hidden sm:flex items-center justify-center gap-2.5 whitespace-nowrap shrink-0 m-0"
+              className="apple-glass apple-glass-whatsapp px-5 py-2.5 min-h-[44px] rounded-full font-semibold text-sm hidden sm:flex items-center justify-center gap-2.5 whitespace-nowrap shrink-0 m-0 focus-visible:outline-2 focus-visible:outline-accent-primary focus-visible:outline-offset-2"
             >
               <WhatsAppIcon className="w-[18px] h-[18px] shrink-0 text-emerald-300" />
               <span>WhatsApp</span>
@@ -120,7 +124,7 @@ export function Navbar() {
             {/* Mobile menu toggle */}
             <button
               type="button"
-              className="lg:hidden apple-glass apple-glass-adaptive w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center text-text-primary rounded-full shrink-0 cursor-pointer"
+              className="lg:hidden apple-glass apple-glass-adaptive w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center text-text-primary rounded-full shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-accent-primary focus-visible:outline-offset-2"
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
               aria-expanded={isOpen}
@@ -132,7 +136,7 @@ export function Navbar() {
 
         {/* Mobile Dropdown Menu — Centered items, rounded-3xl */}
         {isOpen && (
-          <div className="absolute top-full left-4 right-4 sm:left-6 sm:right-6 mt-2.5 p-4 apple-glass apple-glass-nav apple-glass-static is-scrolled rounded-3xl flex flex-col items-center text-center gap-1.5 z-30 lg:hidden">
+          <div className="absolute top-full left-4 right-4 sm:left-6 sm:right-6 mt-2.5 p-4 apple-glass apple-glass-nav-menu apple-glass-static rounded-3xl flex flex-col items-center text-center gap-1.5 z-30 lg:hidden">
             <a
               href={getHref('#home')}
               onClick={closeMenu}

@@ -107,12 +107,12 @@ export function FamiliaPage() {
           <Link
             to="/"
             aria-label="Voltar para a página inicial da Barreto Advocacia"
-            className={`apple-glass apple-glass-nav apple-glass-refractive flex items-center justify-center gap-2 px-3.5 py-2 min-h-[44px] min-w-[44px] rounded-full shrink-0 ${
+            className={`apple-glass apple-glass-nav flex items-center justify-center gap-2 px-3.5 py-2 min-h-[44px] min-w-[44px] rounded-full shrink-0 focus-visible:outline-2 focus-visible:outline-accent-primary focus-visible:outline-offset-2 ${
               isScrolled ? 'is-scrolled' : ''
             }`}
           >
             <div
-              className="pointer-events-none absolute inset-x-3 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent"
+              className="pointer-events-none absolute inset-x-3 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/35 to-transparent"
               aria-hidden="true"
             />
             <picture>
@@ -134,7 +134,7 @@ export function FamiliaPage() {
             href="https://api.whatsapp.com/send/?phone=5561991591105&text=Vi+o+site+de+voc%C3%AAs+pelo+Google+e+gostaria+de+falar+sobre+um+caso+de+fam%C3%ADlia.&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
-            className="apple-glass apple-glass-whatsapp px-4 py-2.5 sm:px-5 sm:py-2.5 min-h-[44px] rounded-full font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shrink-0"
+            className="apple-glass apple-glass-whatsapp px-4 py-2.5 sm:px-5 sm:py-2.5 min-h-[44px] rounded-full font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shrink-0 focus-visible:outline-2 focus-visible:outline-accent-primary focus-visible:outline-offset-2"
           >
             <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-emerald-300" />
             <span className="hidden sm:inline">Falar com Advogado</span>
